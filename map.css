@@ -1,0 +1,17 @@
+.svg-image path {
+	fill: #aaa;
+    stroke-width: 3px;
+	stroke: #222;
+	transition: 600ms;
+}
+
+.svg-image path:hover {
+	transition: fill 0ms;
+	transition-timing-function: ease-in;
+	fill: brown;
+}
+.svg-image path:active {
+	transition: 120ms;
+	fill: red;
+}
+

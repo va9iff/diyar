@@ -1,0 +1,149 @@
+/* flex containers */
+
+.row,
+.col {
+	display: flex;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.col {
+	flex-direction: column;
+}
+
+/* alignment */
+
+.align-center, .centered {
+	align-items: center;
+}
+.justify-center, .middle {
+	justify-content: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+.justify-start {
+	align-items: flex-start;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+.justify-end {
+	align-items: flex-end;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+.justify-between {
+	justify-content: space-between;
+}
+
+
+
+/* scrolls */
+
+.scroll-x {
+	overflow-x: scroll;
+}
+
+.scroll-y {
+	overflow-y: scroll;
+}
+
+.auto-x {
+	overflow-x: auto;
+}
+
+.auto-y {
+	overflow-y: auto;
+}
+
+/* positions */
+
+*[class^="sticky"] {
+	position: sticky;
+}
+
+.sticky-top {
+	top: 0;
+}
+
+.sticky-bottom {
+	bottom: 0;
+}
+
+.sticky-left {
+	left: 0;
+}
+
+.sticky-right {
+	right: 0;
+}
+
+/* children of flex */
+
+.grow {
+	flex-grow: 1;
+}
+
+/* move to end/start */
+
+.snap-center,
+.snap-left {
+	margin-right: auto;
+}
+
+.snap-center,
+.snap-right {
+	margin-left: auto;
+}
+
+.snap-center,
+.snap-top {
+	margin-bottom: auto;
+}
+
+.snap-center,
+.snap-bottom {
+	margin-top: auto;
+}
+
+/*  */
+
+.wrap {
+	flex-wrap: wrap;
+}
+
+
+/* center a div in a way that its justify overflow is after (so it's scrollable if wanted) */
+
+.col.box > *:first-child {
+	margin-top: auto;
+	background-color: red;
+}
+.col.box > *:last-child {
+	background-color: blue;
+	margin-bottom: auto;
+}
+.col.box > * {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.row.box > *:first-child {
+	margin-left: auto;
+	background-color: red;
+}
+.row.box > *:last-child {
+	background-color: blue;
+	margin-right: auto;
+}
+.row.box > * {
+	margin-top: auto;
+	margin-bottom: auto;
+}
