@@ -1,4 +1,4 @@
-import { maply } from "./maply.js"
+import { maply } from "./views/maply.js"
 
 import { update, v } from "./v.js"
 

@@ -1,0 +1,29 @@
+input.typing {
+	padding: 12px 5px;
+	border-radius: 12px;
+	font-size: 14px;
+	border: #00000099 2px solid;
+	/* background-color: #00000022 */
+}
+
+.city-select-field {
+	width: 400px;
+}
+
+.chips {
+	gap: 3px;
+	padding: 5px;
+	min-height: 50px;
+	padding-bottom: 10px;
+	overflow-x: auto;
+}
+
+.chip {
+	padding:  4px 12px;
+	background-color: #0002;
+	border-radius: 14px;
+}
+
+.chip.selected {
+	background-color: #E4BE88
+}

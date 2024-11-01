@@ -126,7 +126,7 @@ class ArrayIon  {
 			}
 		}
 		while (this.ions.length && !this.ions.at(-1)) this.ions.pop()
-		this.el.nodeValue = this.ions.length
+		// this.el.nodeValue = this.ions.length
 	}
 	die() {
 		for (const ion of this.ions) ion?.die()
@@ -253,8 +253,8 @@ export class onn {
 	init(arg, el) {
 		for (const key in arg) {
 			if (arg[key] !== on) {
-				el.addEventListener(key, () => {
-					arg[key]()
+				el.addEventListener(key, e => {
+					arg[key](e)
 					schedule() // update
 				})
 			}
