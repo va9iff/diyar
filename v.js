@@ -12,6 +12,7 @@ export class Velo  {
 		this.ions = []
 		for (const [i, IonClass] of ionClasses.entries()) {
 			let pin = this.query(container, i)
+			pin.removeAttribute(`v${i}`)
 			if (IonClass.out) {
 				const textNode = document.createTextNode("")
 				pin.replaceWith(textNode)
@@ -253,6 +254,7 @@ export class onn {
 	init(arg, el) {
 		for (const key in arg) {
 			if (arg[key] !== on) {
+				console.log(el, key, arg, arg[key])
 				el.addEventListener(key, e => {
 					arg[key](e)
 					schedule() // update

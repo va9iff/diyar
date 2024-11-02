@@ -10,11 +10,18 @@ mapSvgElement.classList.add("svg-image")
 export const pathes = {}
 for (const pathTitle of pathTitles) {
 	const path = mapSvgElement.querySelector(`[title="${pathTitle}"]`)
-	// const pathTitle = path.getAttribute("title")
-	// pathTitles.push(pathTitle)
 	pathes[pathTitle] = path
 }
 
-console.log(pathes)
+export function fill(cityTitle, color) {
+	pathes[cityTitle].setAttribute("fill", color)
+	// beaware that css class fills overwrites attribute values
+}
+
+export function clear(color = "#ffffff") {
+	for (const pathTitle of pathTitles) fill(pathTitle, color)
+}
+
+clear()
 
 export { mapSvgElement }

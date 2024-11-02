@@ -1,11 +1,18 @@
 import { v, put, state, onn, cls, custom } from "../v.js"
 
-import { mapSvgElement  } from "../map.js"
+import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 
 state.input = ""
 state.showingTitles = pathTitles
 state.activeChip = 1
+
+function activate(i = null) {
+	if (i != null) state.activeChip = i
+	const path = pathes[state.showingTitles[state.activeChip]]
+	if (path) path.setAttribute("fill", "#f00")
+	else alert(`no such city. input: ${state.inpupt}`)
+}
 
 const input = () => {
 	if (state.activeChip >= state.showingTitles.length) state.activeChip = state.showingTitles.length - 1
@@ -30,19 +37,20 @@ const input = () => {
 			} else if (e.key == "Enter") {
 				const selected = state.showingTitles[state.activeChip]
 				if (selected) {
-					alert(`${state.activeChip}, ${selected}`)
+					activate()
 				}
 			}
 		}
 	}}>
 	<div class="row chips">
 		${state.showingTitles.map((title,i) =>v`
-			<div class="chip" 
+			<button class="chip" 
 			${{ cls, selected: state.activeChip == i }}
 			${{ custom, update: el =>state.activeChip == i && el.scrollIntoView() }}
+			${{ onn, click: e => activate(i)}}
 			>
 				${title}
-			</div>
+			</button>
 		`)}
 	</div>
 </div>
@@ -56,8 +64,13 @@ export const maply = () => v`
 				${put(mapSvgElement)}
 			</div>
 		</div>
-		<div class="contentside centered middle col grow">
-			${input()}
+		<div class="contentside middle col grow">
+			<div class="centered col">
+				<div>
+					${input()}
+					<button class="chip" ${{ onn, click: e => clear()}}>clear</button>
+				</div>
+			</div>
 		</div>
 	</div>
 `

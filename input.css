@@ -20,6 +20,7 @@ input.typing {
 }
 
 .chip {
+	border: none;
 	padding:  4px 12px;
 	background-color: #0002;
 	border-radius: 14px;
