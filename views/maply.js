@@ -1,6 +1,7 @@
 import { v, put, state, onn, cls, custom } from "../v.js"
 
-import { mapSvgElement, pathTitles } from "../map.js"
+import { mapSvgElement  } from "../map.js"
+import { pathTitles } from "../path-titles.js"
 
 state.input = ""
 state.showingTitles = pathTitles
@@ -14,10 +15,9 @@ const input = () => {
 	console.log(state.activeChip)
 	
 	return v`
-<div class="city-select-field col">
+<div class="city-select-field col snap-bottom">
 	<input class="typing" type="text" ${{ onn, 
 		input: e => {
-
 			state.input = e.target.value 
 			state.showingTitles = pathTitles.filter(title=>
 				title.toLocaleLowerCase().includes(state.input.toLocaleLowerCase()))
@@ -50,13 +50,13 @@ const input = () => {
 }
 
 export const maply = () => v`
-	<div class="view toprow row centered">
-		<div class="mapside">
+	<div class="view toprow row">
+		<div class="mapside row grow">
 			<div class="svg-container">
 				${put(mapSvgElement)}
 			</div>
 		</div>
-		<div class="contentside">
+		<div class="contentside centered middle col grow">
 			${input()}
 		</div>
 	</div>

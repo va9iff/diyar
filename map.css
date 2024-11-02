@@ -13,6 +13,20 @@
 
 .svg-image path:active {
 	transition: 120ms;
-	fill: red;
+	fill: crimson;
 }
+
+.svg-container {
+	width: 400px;
+	max-width: calc(100vh);
+	padding: 40px;
+	display: flex;
+	flex: 1;
+}
+
+.svg-container svg {
+	width: 100%; 
+	height: auto; 
+}
+
 

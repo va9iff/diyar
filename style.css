@@ -10,3 +10,7 @@
 	box-sizing: border-box;
 	font-family: poppins;
 }
+
+.r, [r] {
+	border: 2px solid red
+}
