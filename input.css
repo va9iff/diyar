@@ -7,8 +7,13 @@ input.typing {
 }
 
 .city-select-field {
-	width: 400px;
-	margin: 8px
+	width: 500px;
+	/* align-self: stretch; */
+	/* max-width: 80vw; */
+	/* margin: 8px; */
+	padding: 8px;
+	background-color: #fff;
+	border-radius: 12px
 }
 
 .chips {
@@ -22,7 +27,8 @@ input.typing {
 .chip {
 	border: none;
 	padding:  4px 12px;
-	background-color: #0002;
+	/* background-color: #0002; */
+	background-color: #ddd;
 	border-radius: 14px;
 }
 

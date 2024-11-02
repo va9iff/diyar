@@ -22,7 +22,7 @@ const input = () => {
 	console.log(state.activeChip)
 	
 	return v`
-<div class="city-select-field col snap-bottom">
+<div class="city-select-field col">
 	<input class="typing" type="text" ${{ onn, 
 		input: e => {
 			state.input = e.target.value 
@@ -58,18 +58,21 @@ const input = () => {
 }
 
 export const maply = () => v`
-	<div class="view toprow row">
+	<div class="view toprow row flips">
 		<div class="mapside row grow">
 			<div class="svg-container">
 				${put(mapSvgElement)}
 			</div>
 		</div>
-		<div class="contentside middle col grow">
-			<div class="centered col">
-				<div>
+		<div class="contentside col grow">
+			<div class="drawer-glance col middle centered" style="position: sticky; top:0">
+					<h1>Diyar</h1>
+			</div>
+			<div class="drawer col">
+				<div class="drawer-padding"></div>
 					${input()}
-					<button class="chip" ${{ onn, click: e => clear()}}>clear</button>
-				</div>
+					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
+				<div class="drawer-padding-bottom"></div>
 			</div>
 		</div>
 	</div>

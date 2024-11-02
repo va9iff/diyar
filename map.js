@@ -18,7 +18,7 @@ export function fill(cityTitle, color) {
 	// beaware that css class fills overwrites attribute values
 }
 
-export function clear(color = "#ffffff") {
+export function clear(color = "#eee") {
 	for (const pathTitle of pathTitles) fill(pathTitle, color)
 }
 

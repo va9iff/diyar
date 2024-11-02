@@ -19,7 +19,7 @@
 }
 
 .svg-container {
-	width: 400px;
+	/* width: 400px; */
 	max-width: calc(100vh);
 	padding: 40px;
 	display: flex;
@@ -30,5 +30,4 @@
 	width: 100%; 
 	height: auto; 
 }
-
 
