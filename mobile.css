@@ -21,7 +21,8 @@
 	}
 	.city-select-field {
 		position: sticky;
-		top: 28px
+		top: 20px;  /*same with height of handle*/
+		padding-top: 0;
 	}
 	.view {
 		max-height: 100svh;
@@ -35,18 +36,34 @@
 		padding-bottom: 0;
 	}
 	.drawer-glance {
-		min-height: 300px
+		min-height: 300px;
+		color: #222;
 	}
 	.drawer-padding {
 		min-height: 60px;
 	}
 	.drawer-padding-bottom {
-		min-height: 600px;
+		min-height: 80px;
 	}
 
+	.drawer-handle-container {
+		background-color: #fff;
+		position: sticky;
+		width: 100%;
+		top: 0;
+		bottom: calc(100% - 20px);
+		min-height: 20px;
+		border-radius: 13px 13px 0 0;
+	}
+	.drawer-handle {
+		background-color: #ddd;
+		border-radius: 9px;
+		min-height: 3px;
+		width: 60px;
+	}
 }
 
- @media only screen and (min-width: 750px) {
+@media only screen and (min-width: 750px) {
 	 .drawer {
 		 margin: auto;
 		 padding: 70px;
@@ -58,5 +75,8 @@
 	 }
 	 .drawer-glance {
 		 display: none !important;
+	 }
+	 .city-select-field {
+		 background-color: #eee !important
 	 }
  }

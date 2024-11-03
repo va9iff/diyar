@@ -70,7 +70,54 @@ export const maply = () => v`
 			</div>
 			<div class="drawer col">
 				<div class="drawer-padding"></div>
+					<div class="drawer-handle-container row middle centered">
+						<div class="drawer-handle"></div>
+					</div>
 					${input()}
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
+					<div class="ja">jaja</div>
 					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>

@@ -6,6 +6,7 @@ input.typing {
 	/* background-color: #00000022 */
 }
 
+
 .city-select-field {
 	width: 500px;
 	/* align-self: stretch; */
@@ -13,7 +14,7 @@ input.typing {
 	/* margin: 8px; */
 	padding: 8px;
 	background-color: #fff;
-	border-radius: 12px
+	/* border-radius: 12px */
 }
 
 .chips {
