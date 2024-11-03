@@ -19,7 +19,6 @@ const input = () => {
 	if (state.activeChip <= 0) state.activeChip = state.activeChip = 0
 	if (state.activeChip != -1 && !state.showingTitles.length) state.activeChip = -1
 	if (state.activeChip == -1 && state.showingTitles.length) state.activeChip = 0
-	console.log(state.activeChip)
 	
 	return v`
 <div class="city-select-field col">
@@ -46,7 +45,25 @@ const input = () => {
 		${state.showingTitles.map((title,i) =>v`
 			<button class="chip" 
 			${{ cls, selected: state.activeChip == i }}
-			${{ custom, update: el =>state.activeChip == i && el.scrollIntoView() }}
+			${{ custom, update: el => {
+				if(state.activeChip == i) {
+				const target = el
+				const parent = el.parentElement
+				const targetRect = target.getBoundingClientRect();
+				const parentRect = parent.getBoundingClientRect();
+				// const targetRelativeLeft = targetRect.left - parentRect.left;
+				// console.log(targetRect)
+				// console.log(el.parentElement.scrollLeft, el.offsetLeft)
+				// parent.scrollLeft+=10
+				// if(state.activeChip == i) el.parentElement.scrollLeft = el.offsetLeft -30
+				// el.parentElement.scrollLeft = 
+				// 		el.offsetLeft - (parentRect.left + (parentRect.width/2) - targetRect.width/2)
+					parent.scrollTo({
+						left: el.offsetLeft - (parentRect.left + (parentRect.width/2) - targetRect.width/2),
+						behavior: 'smooth'
+					});
+				}
+			}}}
 			${{ onn, click: e => activate(i)}}
 			>
 				${title}
