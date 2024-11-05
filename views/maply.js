@@ -1,4 +1,4 @@
-import { v, put, state, onn, on, cls, set, custom, attr, none } from "../v.js"
+import { v, put, state, onn, on, cls, set, custom, style, attr, none } from "../v.js"
 
 import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
@@ -103,9 +103,13 @@ export const maply = () => v`
 						<div class="drawer-handle"></div>
 					</div>
 					${input()}
-					<img 
-						${{ cls, splashart: 1 }} 
-						${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
+					<div class="mpadded">
+						<h1 ${{ style, color: "#262626"}}>${state.activeCity}</h1>
+						<img 
+							${{ cls, splashart: 1 }} 
+							${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
+					</div>
+
 					<div>jajajajaja</div>
 					<div>jajajajaja</div>
 					<div>jajajajaja</div>

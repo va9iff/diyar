@@ -52,6 +52,9 @@
 		position: sticky;
 		top: 0;
 	}
+	.mpadded {
+		padding: 13px
+	}
 	.drawer-glance {
 		min-height: 300px;
 		color: #222;
