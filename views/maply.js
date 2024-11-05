@@ -92,7 +92,7 @@ export const maply = () => v`
 					${input()}
 					<img 
 						${{ cls, splashart: 1 }} 
-						${{ attr, src: state.activeCity ? `../imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
+						${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
 					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>
