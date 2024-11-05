@@ -1,17 +1,19 @@
-import { v, put, state, onn, cls, custom } from "../v.js"
+import { v, put, state, onn, cls, set, custom, attr, none } from "../v.js"
 
 import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 
 state.input = ""
 state.showingTitles = pathTitles
-state.activeChip = 1
+state.activeChip = 1 // = -1 when no match and no showingTitles
+state.activeCity = "" // = -1 when no match and no showingTitles
 
 function activate(i = null) {
+	if (state.activeChip == -1) return 0
 	if (i != null) state.activeChip = i
-	const path = pathes[state.showingTitles[state.activeChip]]
-	if (path) path.setAttribute("fill", "#f00")
-	else alert(`no such city. input: ${state.inpupt}`)
+	state.activeCity = state.showingTitles[state.activeChip]
+	const path = pathes[state.activeCity]
+	path.setAttribute("fill", "#f00")
 }
 
 const input = () => {
@@ -34,10 +36,7 @@ const input = () => {
 			} else if (event.key === "ArrowRight") {
 				state.activeChip++
 			} else if (e.key == "Enter") {
-				const selected = state.showingTitles[state.activeChip]
-				if (selected) {
-					activate()
-				}
+					activate() // it also checks
 			}
 		}
 	}}>
@@ -76,7 +75,7 @@ const input = () => {
 
 export const maply = () => v`
 	<div class="view toprow row flips">
-		<div class="mapside row grow">
+		<div class="mapside row">
 			<div class="svg-container">
 				${put(mapSvgElement)}
 			</div>
@@ -91,50 +90,9 @@ export const maply = () => v`
 						<div class="drawer-handle"></div>
 					</div>
 					${input()}
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
-					<div class="ja">jaja</div>
+					<img 
+						${{ cls, splashart: 1 }} 
+						${{ attr, src: state.activeCity ? `../imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
 					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>

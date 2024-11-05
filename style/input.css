@@ -6,9 +6,17 @@ input.typing {
 	/* background-color: #00000022 */
 }
 
+.drawer {
+	/* min-width: 0; */
+}
+.contentside {
+    /* finding how it works was awesome */
+	min-width: 0;
+}
 
 .city-select-field {
-	width: 500px;
+	/* width: 500px; */
+	max-width: 100%;
 	/* align-self: stretch; */
 	/* max-width: 80vw; */
 	/* margin: 8px; */

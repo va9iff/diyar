@@ -90,6 +90,9 @@
 .grow {
 	flex-grow: 1;
 }
+.flex-1 {
+	flex: 1
+}
 
 /* move to end/start */
 
@@ -124,10 +127,10 @@
 
 .col.box > *:first-child {
 	margin-top: auto;
-	background-color: red;
+	/* background-color: red; */
 }
 .col.box > *:last-child {
-	background-color: blue;
+	/* background-color: blue; */
 	margin-bottom: auto;
 }
 .col.box > * {
@@ -137,10 +140,10 @@
 
 .row.box > *:first-child {
 	margin-left: auto;
-	background-color: red;
+	/* background-color: red; */
 }
 .row.box > *:last-child {
-	background-color: blue;
+	/* background-color: blue; */
 	margin-right: auto;
 }
 .row.box > * {
