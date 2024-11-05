@@ -1,4 +1,4 @@
-import { v, put, state, onn, cls, set, custom, attr, none } from "../v.js"
+import { v, put, state, onn, on, cls, set, custom, attr, none } from "../v.js"
 
 import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
@@ -73,6 +73,17 @@ const input = () => {
 `
 }
 
+function immerseContent() {
+	document.body.classList.add("immerse-content")
+	document.body.classList.remove("immerse-map")
+}
+function immerseMap() {
+	document.body.classList.add("immerse-map")
+	document.body.classList.remove("immerse-content")
+}
+
+immerseMap()
+
 export const maply = () => v`
 	<div class="view toprow row flips">
 		<div class="mapside row">
@@ -80,7 +91,9 @@ export const maply = () => v`
 				${put(mapSvgElement)}
 			</div>
 		</div>
-		<div class="contentside col grow">
+		<div class="contentside col grow" 
+			${{ on, scroll: e => e.target.scrollTop > 150 ? immerseContent() : immerseMap() }}
+		>
 			<div class="drawer-glance col middle centered" style="position: sticky; top:0">
 					<h1>Diyar</h1>
 			</div>
@@ -93,6 +106,63 @@ export const maply = () => v`
 					<img 
 						${{ cls, splashart: 1 }} 
 						${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
+					<div>jajajajaja</div>
 					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>
