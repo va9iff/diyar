@@ -16,3 +16,14 @@
 .r, [r] {
 	border: 2px solid red
 }
+
+html {
+	overscroll-behavior: contain;
+	/* overscroll-behavior: none; */
+	/* overscroll-behavior-y: none; */
+}
+
+
+html, body {
+  overscroll-behavior: contain;
+}

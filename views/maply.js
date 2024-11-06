@@ -7,6 +7,10 @@ state.input = ""
 state.showingTitles = pathTitles
 state.activeChip = 1 // = -1 when no match and no showingTitles
 state.activeCity = "" // = -1 when no match and no showingTitles
+state.handleTouchStartY = 0
+state.handleTouchEndY = 0
+
+const contentsideRefGet = () => document.querySelector(".contentside")
 
 function activate(i = null) {
 	if (state.activeChip == -1) return 0
@@ -38,7 +42,10 @@ const input = () => {
 			} else if (e.key == "Enter") {
 					activate() // it also checks
 			}
-		}
+		},
+	}} ${{ on, 
+		click: e => contentsideRefGet().scrollTop < 300 ?
+		contentsideRefGet()?.scrollTo({ top: 300 }) : null,
 	}}>
 	<div class="row chips">
 		${state.showingTitles.map((title,i) =>v`
@@ -50,6 +57,7 @@ const input = () => {
 				const parent = el.parentElement
 				const targetRect = target.getBoundingClientRect();
 				const parentRect = parent.getBoundingClientRect();
+					//
 				// const targetRelativeLeft = targetRect.left - parentRect.left;
 				// console.log(targetRect)
 				// console.log(el.parentElement.scrollLeft, el.offsetLeft)
@@ -58,7 +66,7 @@ const input = () => {
 				// el.parentElement.scrollLeft = 
 				// 		el.offsetLeft - (parentRect.left + (parentRect.width/2) - targetRect.width/2)
 					parent.scrollTo({
-						left: el.offsetLeft - (parentRect.left + (parentRect.width/2) - targetRect.width/2),
+						left: el.offsetLeft - parentRect.width/2 + targetRect.width/2,
 						behavior: 'smooth'
 					});
 				}
@@ -86,7 +94,7 @@ immerseMap()
 
 export const maply = () => v`
 	<div class="view toprow row flips">
-		<div class="mapside row">
+		<div class="mapside row" ${{ on, touchstart: e => contentsideRefGet()?.scrollTo({ top: 0 })}}>
 			<div class="svg-container">
 				${put(mapSvgElement)}
 			</div>
@@ -98,17 +106,31 @@ export const maply = () => v`
 					<h1>Diyar</h1>
 			</div>
 			<div class="drawer col">
-				<div class="drawer-padding"></div>
-					<div class="drawer-handle-container row middle centered">
+				<div class="sticky-top">
+					<div class="drawer-padding"></div>
+					<div class="drawer-handle-container row middle centered" 
+					${{ on, touchstart: e => {
+						const clientY = e.touches[0].clientY;
+						state.handleTouchStartY = clientY
+					}}}
+					${{ on, touchmove: e=> { 
+						state.handleTouchEndY = e.changedTouches[0].clientY
+						if (state.handleTouchEndY - state.handleTouchStartY > 10) {
+							contentsideRefGet().scrollTo({ top: 0 })
+						}
+						console.log(state.handleTouchStartY, ",", state.handleTouchEndY)
+					
+					}}}>
 						<div class="drawer-handle"></div>
 					</div>
 					${input()}
-					<div class="mpadded">
-						<h1 ${{ style, color: "#262626"}}>${state.activeCity}</h1>
-						<img 
-							${{ cls, splashart: 1 }} 
-							${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
-					</div>
+				</div>
+				<div class="mpadded">
+					<h1 ${{ style, color: "#262626"}}>${state.activeCity}</h1>
+					<img 
+						${{ cls, splashart: 1 }} 
+						${{ attr, src: state.activeCity ? `./imgs/${state.activeCity.toLocaleLowerCase()}.jpg` : none}}>
+				</div>
 
 					<div>jajajajaja</div>
 					<div>jajajajaja</div>
