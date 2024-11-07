@@ -4,6 +4,7 @@ export const input = (inputArg, local) => {
 	inputArg.input ??= ""
 	inputArg.activeChip ??= 0
 	inputArg.list ??= []
+	inputArg.showingTitles ??= inputArg.list
 	if (inputArg.activeChip >= inputArg.length) inputArg.activeChip = inputArg.length - 1
 	if (inputArg.activeChip <= 0) inputArg.activeChip = inputArg.activeChip = 0
 	if (inputArg.activeChip != -1 && !inputArg.list.length) inputArg.activeChip = -1
@@ -14,7 +15,7 @@ export const input = (inputArg, local) => {
 	<input class="typing" type="text" ${{ onn, 
 		input: e => {
 			inputArg.input = e.target.value 
-			inputArg.list.filter(title=>
+			inputArg.showingTitles = inputArg.list.filter(title=>
 				title.toLocaleLowerCase().includes(inputArg.input.toLocaleLowerCase()))
 		},
 		keydown: e => {
@@ -31,7 +32,7 @@ export const input = (inputArg, local) => {
 		click: inputArg.inputClick,
 	}}>
 	<div class="row chips">
-		${inputArg.list.map((title,i) =>v`
+		${inputArg.showingTitles.map((title,i) =>v`
 			<button class="chip" 
 			${{ cls, selected: inputArg.activeChip == i }}
 			${{ custom, update: el => {
