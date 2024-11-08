@@ -1,5 +1,7 @@
 import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn } from "../v.js"
 
+const grab = s => document.querySelector(s)
+
 export const input = (inputArg, local) => {
 	inputArg.input ??= ""
 	inputArg.activeChip ??= 0
@@ -24,12 +26,18 @@ export const input = (inputArg, local) => {
 			} else if (event.key === "ArrowRight") {
 				inputArg.activeChip++
 			} else if (e.key == "Enter") {
-				if (inputArg.activeChip == -1) return 0
-				inputArg.citySelect()
+				let city = null
+				if (inputArg.activeChip != -1) city = inputArg.list[inputArg.activeChip]
+				inputArg.citySelect(city)
 			}
 		},
 	}} ${{ on, 
-		click: inputArg.inputClick,
+		click: e => {
+			if (inputArg.focusScroll)
+				grab(".contentside")?.scrollTop < 300 ?
+					grab(".contentside")?.scrollTo({ top: 300 }) : null
+			inputArg.inputClick?.(e)
+		},
 	}}>
 	<div class="row chips">
 		${inputArg.showingTitles.map((title,i) =>v`
@@ -47,7 +55,7 @@ export const input = (inputArg, local) => {
 					});
 				}
 			}}}
-			${{ onn, click: e => inputArg.citySelect(i)}}
+			${{ onn, click: e => inputArg.citySelect(inputArg.list[inputArg.activeChip])}}
 			>
 				${title}
 			</button>
