@@ -2,18 +2,19 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn } from 
 
 const grab = s => document.querySelector(s)
 
-export const input = (inputArg, local) => {
+export const input = inputArg => {
 	inputArg.input ??= ""
 	inputArg.activeChip ??= 0
 	inputArg.list ??= []
 	inputArg.showingTitles ??= inputArg.list
-	if (inputArg.activeChip >= inputArg.length - 1) inputArg.activeChip = inputArg.length - 1
+	if (inputArg.activeChip >= inputArg.showingTitles.length - 1) inputArg.activeChip = inputArg.showingTitles.length - 1
 	if (inputArg.activeChip <= 0) inputArg.activeChip = inputArg.activeChip = 0
-	if (inputArg.activeChip != -1 && !inputArg.list.length) inputArg.activeChip = -1
-	if (inputArg.activeChip == -1 && inputArg.list.length) inputArg.activeChip = 0
+	if (inputArg.activeChip != -1 && !inputArg.showingTitles.length) inputArg.activeChip = -1
+	if (inputArg.activeChip == -1 && inputArg.showingTitles.length) inputArg.activeChip = 0
 	
 	return v`
 <div class="city-select-field col">
+	${inputArg.activeChip}
 	<input class="typing" type="text" ${{ onn, 
 		input: e => {
 			inputArg.input = e.target.value 
@@ -27,7 +28,7 @@ export const input = (inputArg, local) => {
 				inputArg.activeChip++
 			} else if (e.key == "Enter") {
 				let city = null
-				if (inputArg.activeChip != -1) city = inputArg.list[inputArg.activeChip]
+				if (inputArg.activeChip != -1) city = inputArg.showingTitles[inputArg.activeChip]
 				inputArg.citySelect(city)
 			}
 		},
@@ -55,7 +56,7 @@ export const input = (inputArg, local) => {
 					});
 				}
 			}}}
-			${{ onn, click: e => inputArg.citySelect(inputArg.list[inputArg.activeChip])}}
+			${{ onn, click: e => inputArg.citySelect(inputArg.showingTitles[inputArg.activeChip])}}
 			>
 				${title}
 			</button>
