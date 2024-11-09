@@ -1,0 +1,43 @@
+.startPage button.start-mode{
+	border-radius: 30px;
+	background-color: #ddd;
+	font-size: 19px;
+	margin: 10px;
+	border: none;
+	animation: start-mode-button-anim 300ms;
+	transition: 200ms;
+	transform: scale(1);
+	padding: 40px 60px;
+}
+
+@keyframes start-mode-button-hover-anim {
+	from {
+		box-shadow: 0 0 0 30px #7f7 inset;
+	}
+	to {
+		box-shadow: 0 0 0 0 #7f7 inset;
+	}
+}
+.startPage button.start-mode:hover
+{
+	transform: scale(1.2);
+	transition: 200ms, margin 500ms, transform 700ms;
+	position: relative;
+	background-color: #eee;
+	border: 3px solid #7f7;
+	margin: 30px
+}
+
+.startPage button.start-mode:focus,
+.startPage button.start-mode:hover
+{
+	animation: start-mode-button-hover-anim 200ms
+}
+
+.startPage button.start-mode:active {
+	margin: 60px;
+	scale: 1.2;
+	transition: 60ms;
+}
+
+

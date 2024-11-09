@@ -11,22 +11,16 @@ const setMode = async modeId => {
 	update()
 }
 
-const btn = {
-	style, padding: `40px`
-}
 
 export const startPage = () => v`
-	<div class="col box" ${{ style, minHeight: '100svh'}}>
-		<button ${{ onn, click: e => alert("hi") }}>hi</button>
-		<button 
-			${btn}
+	<div class="centered middle row flips startPage" ${{ style, minHeight: '100svh'}}>
+		<button class="start-mode"
 			${{ onn, click: e => setMode('explore')}}>
-			explore 
+			Kəşf et 
 		</button>
-		<button 
-			${btn}
+		<button class="start-mode"
 			${{ onn, click: e => setMode('shortestPathCities')}}>
-			shortest
+			Yol tap
 		</button>
 	</div>
 `

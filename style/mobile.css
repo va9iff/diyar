@@ -1,8 +1,19 @@
 	body {
 		background-color: #eee
 	}
-
+.mobile {
+	display: none !important
+}
 @media only screen and (max-width: 750px) {
+	.mobile {
+		display: none !important
+	}
+	.pc {
+		display: none !important
+	}
+	.chip.selected {
+		background-color: var(--chip-bg)
+	}
 	body.immerse-content {
 		/* background-color: tan; */
 	}
@@ -78,7 +89,8 @@
 		top: 0;
 		bottom: calc(100% - 20px);
 		min-height: 50px;
-		border-radius: 13px 13px 0 0;
+		/* border-radius: 13px 13px 0 0; */
+		border-radius: 30px 30px 0 0;
 	}
 	.drawer-handle {
 		background-color: #ddd;
@@ -86,6 +98,10 @@
 		min-height: 3px;
 		width: 60px;
 		transition: 620ms;
+	}
+	.sticky-drawer-item {
+		position: sticky;
+		top: 50px;
 	}
 	/* .drawer-handle-container:hover .drawer-handle, */
 	.drawer-handle-container:active .drawer-handle

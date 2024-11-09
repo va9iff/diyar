@@ -57,7 +57,6 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			</div>
 			<div class="drawer col">
 					${state.mode.content()}
-					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>
 		</div>

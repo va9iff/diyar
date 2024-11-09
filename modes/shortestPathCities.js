@@ -59,13 +59,14 @@ export const shortestPathCities = {
 		// inputArg.list = pathTitles.filter(t => ![m.from, m.to, ...m.selecteds].includes(t))
 		inputArg.dimmed = m.selecteds
 		return v`
+			<div class="mpadded">
+				<button class="chip" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
+			</div>
 			<div class="sticky-top">
 				${drawerHandle()}
 				${input(inputArg)}
 			</div>
-			<button ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
 			<div class="mpadded">
-				<button ${{ onn, click: e => setPage("startPage")}}>back</button>
 				<h1 ${{ style, color: "#262626"}}>${m.activeCity}</h1>
 				<b>${m.from}</b> şəhərindən <b>${m.to}</b> şəhərinə çatmaq üçün şəhərləri daxil edin <br>
 				gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b>
@@ -73,6 +74,8 @@ export const shortestPathCities = {
 		`
 	}
 }
+				// <button ${{ onn, click: e => setPage("startPage")}}>back</button>
+	//
 				// <img 
 				// 	${{ cls, splashart: 1 }} 
 				// 	${{ attr, src: m.activeCity ? `./imgs/${m.activeCity.toLocaleLowerCase()}.jpg` : none}}>

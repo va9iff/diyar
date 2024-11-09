@@ -124,7 +124,7 @@
 
 
 /* center a div in a way that its justify overflow is after (so it's scrollable if wanted) */
-
+/* and I think it is supposed for only 1 childed elements. I mean you can always wrap tho */
 .col.box > *:first-child {
 	margin-top: auto;
 	/* background-color: red; */
@@ -149,4 +149,15 @@
 .row.box > * {
 	margin-top: auto;
 	margin-bottom: auto;
+}
+
+
+
+@media only screen and (max-width: 750px) {
+	.row.flips {
+		flex-direction: column
+	}
+	.col.flips {
+		flex-direction: row
+	}
 }

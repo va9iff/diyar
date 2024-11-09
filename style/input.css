@@ -1,3 +1,7 @@
+:root {
+	--chip-bg: #ddd;
+}
+
 input.typing {
 	padding: 12px 5px;
 	border-radius: 12px;
@@ -27,7 +31,7 @@ input.typing {
 
 .chips {
 	gap: 3px;
-	padding: 5px;
+	padding: 8px;
 	min-height: 50px;
 	padding-bottom: 10px;
 	overflow-x: auto;
@@ -37,16 +41,31 @@ input.typing {
 	border: none;
 	padding:  4px 12px;
 	/* background-color: #0002; */
-	background-color: #ddd;
+	background-color: var(--chip-bg);
 	border-radius: 14px;
+	transition: margin-left 700ms, margin-right 700ms;
+}
+
+
+.city-select-field .chip.dimmed {
+	background-color: #93e093;
+	transition: 500ms;
+	transform: scale(0.8);
+	margin: 0;
 }
 
 .chip.selected {
-	background-color: #E4BE88
+	background-color: #E4BE88;
+	/* transition: margin-left 500ms, margin-right 500ms; */
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
-.chip.dimmed {
-	background-color: #5b5;
-	transition: 300ms;
-	transform: scale(0.9);
+.city-select-field .chip:focus {
+	background-color: #ff7;
+	margin-left: 15px;
+	margin-right: 15px;
+	transition: 200ms;
+	transform: scale(1.1);
+
 }
