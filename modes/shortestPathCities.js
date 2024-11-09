@@ -44,6 +44,7 @@ export const shortestPathCities = {
 		})
 		m.adjecents=shortest(m.from, m.to)
 		m.activeCity = m.from
+		m.tried = 0
 		console.log(m.adjecents)
 		m.ideal = m.adjecents.length
 		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
@@ -60,6 +61,7 @@ export const shortestPathCities = {
 		inputArg.dimmed = m.selecteds
 		return v`
 			<div class="mpadded">
+				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
 				<button class="chip" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
 			</div>
 			<div class="sticky-top">
