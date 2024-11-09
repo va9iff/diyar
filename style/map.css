@@ -10,7 +10,7 @@
 .svg-image path:hover {
 	transition: fill 0ms;
 	transition-timing-function: ease-in;
-	fill: brown;
+	fill: #CAADE2;;
 }
 
 .svg-image path:active {
