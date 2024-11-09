@@ -14,7 +14,6 @@ export const input = inputArg => {
 	
 	return v`
 <div class="city-select-field col">
-	${inputArg.activeChip}
 	<input class="typing" type="text" ${{ onn, 
 		input: e => {
 			inputArg.input = e.target.value 

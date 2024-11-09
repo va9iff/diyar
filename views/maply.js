@@ -7,7 +7,8 @@ state.mode = null
 
 // import { mode}
 
-import { mode } from "../modes/explore.js"
+// import { mode } from "../modes/explore.js"
+import { mode } from "../modes/shortestPathCities.js"
 state.mode = mode
 // import("../modes/explore.js").then(({ mode }) => {
 // 	state.mode = mode
@@ -50,63 +51,6 @@ export const maply = () => v`
 			</div>
 			<div class="drawer col">
 					${state.mode.content()}
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
-					<div>jajajajaja</div>
 					<button class="chip" ${{ onn, click: e => clear()}}>Təmizlə</button>
 				<div class="drawer-padding-bottom"></div>
 			</div>
