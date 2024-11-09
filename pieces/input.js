@@ -55,7 +55,7 @@ export const input = inputArg => {
 					});
 				}
 			}}}
-			${{ onn, click: e => inputArg.citySelect(inputArg.showingTitles[inputArg.activeChip])}}
+			${{ onn, click: e => inputArg.citySelect(inputArg.showingTitles[inputArg.activeChip = i])}}
 			>
 				${title}
 			</button>
