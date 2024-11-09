@@ -198,5 +198,10 @@ export const shortest = (city, final) => shortestE(neighbours, city, final)
 
 
 
-
+export const randomCity = (exceptions = []) => {
+	const locals = { ...titleid }
+	for (const exception of exceptions) delete locals[exception]
+	const keys = Object.keys(locals)
+	return keys[Math.floor(Math.random()*keys.length)]
+}
 

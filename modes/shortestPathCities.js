@@ -1,44 +1,78 @@
 import { v, state, onn,  cls, style, attr, none, update } from "../v.js"
 import { input } from "../pieces/input.js"
 import { drawerHandle } from "../pieces/drawer-handle.js"
-
+import { setPage } from "../pages.js"
 import { mapSvgElement, pathes,  clear, fill } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 
-import { neighbours, shortest } from "../data/neighbours.js"
+import { neighbours, shortest, randomCity } from "../data/neighbours.js"
 
-const activeCity = "Abşeron"
-let from = "Abşeron"
-let to = "Ağdaş"
-
-let neighs = []
+const m = {
+	from: "Abşeron",
+	to: "Qazax",
+	activeCity: "Abşeron",
+	tried: 0,
+	ideal: 1,
+	selecteds: [],
+	adjecents: []
+}
 
 const inputArg  = {
 	list: pathTitles,
 	citySelect(city) {
+		if (m.selecteds.includes(city)) return null
 		clear("#eee")
-		const adjecents = shortest(from, city)
-		if (adjecents) adjecents.map(a=>fill(a, 'red'))
+		m.activeCity = city
+		m.adjecents = shortest(m.activeCity, m.to)
+		m.selecteds.push(city)
+		for (const s of m.selecteds) fill(s, "#ff7")
+		fill(m.from, "#7f7")
+		fill(m.to, "#77f")
+		fill(m.activeCity, "#f33")
+		m.tried++
 	}
 }
 
-export const mode = {
+console.log('now is loaded!!! shortestPathCities')
+
+export const shortestPathCities = {
+	reset() {
+		Object.assign(m, {
+			from: randomCity(),
+			to: randomCity(),
+			selecteds: [],
+		})
+		m.adjecents=shortest(m.from, m.to)
+		m.activeCity = m.from
+		console.log(m.adjecents)
+		m.ideal = m.adjecents.length
+		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
+		inputArg.activeChip = -1
+
+		clear("#eee")
+		fill(m.from, "#7f7")
+		fill(m.to, "#77f")
+		fill(m.activeCity, "#f33")
+
+	},
 	content() {
+		// inputArg.list = pathTitles.filter(t => ![m.from, m.to, ...m.selecteds].includes(t))
+		inputArg.dimmed = m.selecteds
 		return v`
 			<div class="sticky-top">
-				<div class="drawer-padding"></div>
 				${drawerHandle()}
 				${input(inputArg)}
 			</div>
+			<button ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
 			<div class="mpadded">
-				<h1 ${{ style, color: "#262626"}}>${activeCity}</h1>
-				<img 
-					${{ cls, splashart: 1 }} 
-					${{ attr, src: activeCity ? `./imgs/${activeCity.toLocaleLowerCase()}.jpg` : none}}>
-					<ul>
-						${neighs.map(c => v`<li>${c}</li>`)}
-					</ul>
+				<button ${{ onn, click: e => setPage("startPage")}}>back</button>
+				<h1 ${{ style, color: "#262626"}}>${m.activeCity}</h1>
+				<b>${m.from}</b> şəhərindən <b>${m.to}</b> şəhərinə çatmaq üçün şəhərləri daxil edin <br>
+				gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b>
 			</div>
 		`
 	}
 }
+				// <img 
+				// 	${{ cls, splashart: 1 }} 
+				// 	${{ attr, src: m.activeCity ? `./imgs/${m.activeCity.toLocaleLowerCase()}.jpg` : none}}>

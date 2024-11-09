@@ -21,7 +21,14 @@ function citySelect(city) {
 	update()
 }
 
-export const mode = {
+console.log('now is loaded!!! explore')
+
+export const explore = {
+	reset() {
+		clear("#eee")
+		activeCity = ""
+
+	},
 	content() {
 		return v`
 

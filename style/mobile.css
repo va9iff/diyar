@@ -66,7 +66,9 @@
 		display: none; /*we don't need it since we have big drawer now */
 	}
 	.drawer-padding-bottom {
-		min-height: 80px;
+		min-height: 100vh; /*to avoid scroll thingies*/
+		/* background-image: linear-gradient(to up, #222, #fff) */
+		background-image: linear-gradient(to top, #eee , #fff );
 	}
 
 	.drawer-handle-container {

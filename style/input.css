@@ -44,3 +44,9 @@ input.typing {
 .chip.selected {
 	background-color: #E4BE88
 }
+
+.chip.dimmed {
+	background-color: #5b5;
+	transition: 300ms;
+	transform: scale(0.9);
+}

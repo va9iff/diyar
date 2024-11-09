@@ -2,14 +2,20 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update
 
 import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
-
-state.mode = null
+import { setPage } from "../pages.js"
+// state.mode = null
 
 // import { mode}
 
 // import { mode } from "../modes/explore.js"
-import { mode } from "../modes/shortestPathCities.js"
-state.mode = mode
+// import { mode } from "../modes/shortestPathCities.js"
+
+// export async function setMode(modeId) {
+// 	const { mode } = import(`./${modeId}`)
+// 	state.mode = state.mode
+// }
+
+// state.mode = mode
 // import("../modes/explore.js").then(({ mode }) => {
 // 	state.mode = mode
 // 	update()
@@ -36,7 +42,7 @@ function immerseMap() {
 
 immerseMap()
 
-export const maply = () => v`
+export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 	<div class="view toprow row flips">
 		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
 			<div class="svg-container">
@@ -44,10 +50,10 @@ export const maply = () => v`
 			</div>
 		</div>
 		<div class="contentside col grow" 
-			${{ on, scroll: e => e.target.scrollTop > 150 ? immerseContent() : immerseMap() }}
+			${{ on, scroll: e => e.target.scrollTop > 150 ? immerseContent() : e.target.scrollTop < 50 ? immerseMap() : 0 }}
 		>
 			<div class="drawer-glance col middle centered" style="position: sticky; top:0">
-					<h1>Diyar</h1>
+					<h1 ${{ onn, click: e => setPage("startPage")}}>&lt;-Diyar</h1>
 			</div>
 			<div class="drawer col">
 					${state.mode.content()}
