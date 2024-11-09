@@ -6,7 +6,7 @@ export const input = inputArg => {
 	inputArg.input ??= ""
 	inputArg.activeChip ??= 0
 	inputArg.list ??= []
-	inputArg.showingTitles ??= inputArg.list
+	inputArg.showingTitles = inputArg.list
 	if (inputArg.activeChip >= inputArg.showingTitles.length - 1) inputArg.activeChip = inputArg.showingTitles.length - 1
 	if (inputArg.activeChip <= 0) inputArg.activeChip = inputArg.activeChip = 0
 	if (inputArg.activeChip != -1 && !inputArg.showingTitles.length) inputArg.activeChip = -1
