@@ -7,4 +7,7 @@ const main = _ => div`
 	${current()}
 `
 
+document.querySelector("#loading").remove()
 app("#pin", main)
+
+
