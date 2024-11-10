@@ -251,14 +251,36 @@ export class on {
 
 export class onn {
 	static embedded = true
+	listens = {}
 	init(arg, el) {
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!
+		this.el = el
+		this.update(arg)
+		// it wasn't removing the previous event listener
+		// when a new one came. curcial for same type of 
+		// elements with different returns and functionality
+	}
+	// !!!!!!!!!!!!!!!!!!!!!
+	update(arg) {
 		for (const key in arg) {
 			if (arg[key] !== on) {
-				// console.log(el, key, arg, arg[key])
-				el.addEventListener(key, e => {
+				if (this.listens[key] == arg[key]) continue
+				const funToBind = e => {
 					arg[key](e)
 					schedule() // update
-				})
+				}
+				// this does not make sense for `onn`
+				// but would for on. cuz here we create new function
+				// every time, so no 2 function can be same.
+					
+				// but for `on` we can pass a predefined function 
+				// like ${{ on, checkSomething }} and this reference
+				// would be the same so we wouldn't need to remove 
+				// and add new one the function since it's the same.
+				this.el.removeEventListener(key, this.listens[key])
+				this.listens[key] = funToBind
+				this.el.addEventListener(key, funToBind)
+				// I did it so I can remake it for `on`
 			}
 		}
 	}
