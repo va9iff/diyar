@@ -14,7 +14,17 @@ const m = {
 	tried: 0,
 	ideal: 1,
 	selecteds: [],
-	adjecents: []
+	adjecents: [],
+	wents : ["Abşeron"]
+}
+
+function checkWents() {
+	for (const selected of m.selecteds.filter(s => !m.wents.includes(s))) {
+		if (m.wents.some(went => neighbours[went].includes(selected))) {
+			m.wents.push(selected)
+			checkWents()
+		}
+	}
 }
 
 const inputArg  = {
@@ -26,6 +36,8 @@ const inputArg  = {
 		m.adjecents = shortest(m.activeCity, m.to)
 		m.selecteds.push(city)
 		for (const s of m.selecteds) fill(s, "#ff7")
+		checkWents()
+		for (const w of m.wents) fill(w, "#7ff")
 		fill(m.from, "#7f7")
 		fill(m.to, "#77f")
 		fill(m.activeCity, "#f33")
@@ -33,20 +45,20 @@ const inputArg  = {
 	}
 }
 
-console.log('now is loaded!!! shortestPathCities')
-
 export const shortestPathCities = {
 	reset() {
+		const cachedRandomCity = randomCity()
 		Object.assign(m, {
-			from: randomCity(),
-			to: randomCity(),
+			from: cachedRandomCity,
+			to: randomCity(cachedRandomCity),
 			selecteds: [],
 		})
 		m.adjecents=shortest(m.from, m.to)
 		m.activeCity = m.from
+		m.wents = [m.from]
 		m.tried = 0
 		console.log(m.adjecents)
-		m.ideal = m.adjecents.length
+		m.ideal = m.adjecents.length - 1
 		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
 		inputArg.activeChip = -1
 
