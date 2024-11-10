@@ -22,5 +22,9 @@ export const startPage = () => v`
 			${{ onn, click: e => setMode('shortestPathCities')}}>
 			Yol tap
 		</button>
+		<button class="start-mode"
+			${{ onn, click: e => setMode('ride')}}>
+			Sürməyə başla
+		</button>
 	</div>
 `
