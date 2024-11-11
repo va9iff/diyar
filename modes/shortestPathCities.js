@@ -87,7 +87,11 @@ export const shortestPathCities = {
 			<div class="mpadded">
 				<h1 ${{ style, color: "#262626"}}>${m.activeCity}</h1>
 				<b>${m.from}</b> şəhərindən <b>${m.to}</b> şəhərinə çatmaq üçün şəhərləri daxil edin <br>
-				gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b>
+				gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b> <hr>
+				gedilən şəhərlər:
+				<ul>
+					${m.selecteds.map(s => v`<li>${s}</li>`)}
+				</ul>
 			</div>
 		`
 	}

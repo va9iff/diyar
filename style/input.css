@@ -67,5 +67,8 @@ input.typing {
 	margin-right: 15px;
 	transition: 200ms;
 	transform: scale(1.1);
+}
 
+.city-select-field .chip.dimmed.selected {
+	box-shadow: 0 0 0 4px #E4BE88;
 }

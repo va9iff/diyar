@@ -12,6 +12,7 @@ const inputArg = {
 }
 
 let activeCity = ""
+let currentCityAsset = null
 
 function citySelect(city) {
 	activeCity = city
@@ -20,6 +21,13 @@ function citySelect(city) {
 	inputArg.dimmed.forEach(t => fill(t, "#7f7"))
 	fill(activeCity, "#ff7")
 	update()
+	currentCityAsset = null
+	import(`../assets/cities/${city}.js`).then(asset => {
+		currentCityAsset = asset.city
+		update()
+	}).catch(err => {
+		currentCityAsset = null
+	})
 }
 
 const greetings = v`, objectFit: "cover"
@@ -53,14 +61,22 @@ export const explore = {
 					${drawerHandle()}
 				</div>
 				<div class="mpadded">
-					<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
+					<button class="pc chip backButton" 
+					${{ style, borderRadius: `30px 0 0 30px`}}
+					${{ onn, click: e => setPage("startPage")}}>geri</button>
 					<button class="chip" ${{ onn, click: explore.reset}}>Təmizlə</button>
 				</div>
 				<div class="sticky-drawer-item">
 					${input(inputArg)}
 				</div>
 				<div class="mpadded">
-					${activeCity ? cityInfo(activeCity) : greetings}
+					<h1>${activeCity}</h1>
+					${currentCityAsset?.content() || greetings}
+					${currentCityAsset?.img ? v`<img class="splashart" 
+						${{ attr, src: currentCityAsset.img }}>` : ""}
+					${currentCityAsset?.imgRef ? 
+						v`<a target="blank" ${{attr, 
+							href: currentCityAsset.imgRef}}>şəkil qaynağı</a>` : ""}
 				</div>
 		`
 	}
