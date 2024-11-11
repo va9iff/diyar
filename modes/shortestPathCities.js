@@ -62,7 +62,7 @@ export const shortestPathCities = {
 		m.activeCity = m.from
 		m.wents = [m.from]
 		m.tried = 0
-		m.ideal = m.shortestRoad.length - 1
+		m.ideal = m.shortestRoad.length - 2
 		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
 		inputArg.activeChip = -2
 
