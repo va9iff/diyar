@@ -33,6 +33,7 @@ function win() {
 const inputArg  = {
 	list: pathTitles,
 	citySelect(city) {
+		if (!city) return null
 		if (m.selecteds.includes(city)) return null
 		clear("#eee")
 		m.activeCity = city
