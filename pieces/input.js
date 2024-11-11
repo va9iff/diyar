@@ -18,7 +18,9 @@ export const input = inputArg => {
 	
 	return v`
 <div class="city-select-field col">
-	<input class="typing" type="text" ${{ onn, 
+	<input class="typing" type="text" 
+	${{ set, value: inputArg.input}}
+	${{ onn, 
 		input: e => {
 			inputArg.input = e.target.value 
 		},
