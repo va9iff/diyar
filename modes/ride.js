@@ -17,9 +17,9 @@ export const ride = {
 	reset() {
 		m.at = randomCity()
 		m.coins = []
-		m.coins.push({collected: false, city: randomCity(m.at)})
-		m.coins.push({collected: false, city: randomCity(m.at, m.coins[0])})
-		m.coins.push({collected: false, city: randomCity(m.at, m.coins[0], m.coins[1])})
+		m.coins.push({collected: false, city: randomCity([m.at])})
+		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0]])})
+		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0], m.coins[1]])})
 	},
 	content() {
 		repaint()
