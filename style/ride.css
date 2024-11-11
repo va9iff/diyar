@@ -1,0 +1,33 @@
+.neighbourCard {
+	background-color: #ddd;
+	/* border: 2px solid #777; */
+	border: none;
+	padding: 20px;
+	font-size: 17px;
+	border-radius: 20px;
+	margin: 6px;
+	transition: 500ms;
+	min-width: 100px;
+	animation: nbcardanim 300ms
+}
+
+@keyframes nbcardanim {
+	from {
+		opacity: 0;
+		transform: translateX(-40px)
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0px)
+	}
+}
+
+.neighbourCard:hover {
+	transition: 150ms;
+	box-shadow: 0 0 0 5px #777 inset;
+}
+
+.neighbourCard:active {
+	transform: scale(1.5);
+	transition: 0ms;
+}

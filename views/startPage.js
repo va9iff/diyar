@@ -24,7 +24,8 @@ export const startPage = () => v`
 		</button>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('ride')}}>
-			Sürməyə başla
+			xəzinə toplayıcı
 		</button>
 	</div>
 `
+

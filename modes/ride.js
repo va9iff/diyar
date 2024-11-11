@@ -35,19 +35,16 @@ export const ride = {
 				</div>
 				<div class="mpadded">
 					<h1>at ${m.at}</h1>
-					${neighbours[m.at].map(city=>v`<button 
-						${{ style, 
-								padding: "40px",
-								borderRadius: '13px',
-								margin: '10px'
-								}}
-						${{ onn, click: e => {
-							m.at = city
-							const coin = m.coins.find(c => c.city == city)
-							if (coin) coin.collected = true
-							if (m.coins.every(coin => coin.collected)) alert("win")
-						}}}>${city}
-					</button>`)}
+					<div class="row middle wrap">
+						${neighbours[m.at].map(city=>v`<button class="neighbourCard"
+							${{ onn, click: e => {
+								m.at = city
+								const coin = m.coins.find(c => c.city == city)
+								if (coin) coin.collected = true
+								if (m.coins.every(coin => coin.collected)) alert("win")
+							}}}>${city}
+						</button>`)}
+					</div>
 				</div>
 		`
 	}
