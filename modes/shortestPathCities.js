@@ -55,7 +55,7 @@ export const shortestPathCities = {
 		const cachedRandomCity = randomCity()
 		Object.assign(m, {
 			from: cachedRandomCity,
-			to: randomCity(cachedRandomCity, ...neighbours[cachedRandomCity]),
+			to: randomCity([cachedRandomCity, ...neighbours[cachedRandomCity]]),
 			selecteds: [],
 		})
 		m.shortestRoad=shortest(m.from, m.to)
