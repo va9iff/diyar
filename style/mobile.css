@@ -11,9 +11,9 @@
 	.pc {
 		display: none !important
 	}
-	.chip.selected {
-		background-color: var(--chip-bg)
-	}
+	/* .chip.selected { */
+	/* 	background-color: var(--chip-bg) */
+	/* } */
 	body.immerse-content {
 		/* background-color: tan; */
 	}

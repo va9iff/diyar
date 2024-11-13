@@ -15,7 +15,7 @@ export const input = inputArg => {
 	if (inputArg.activeChip <= 0) inputArg.activeChip = inputArg.activeChip = 0
 	if (inputArg.activeChip != -1 && !inputArg.showingTitles.length) inputArg.activeChip = -1
 	if (inputArg.activeChip == -1 && inputArg.showingTitles.length) inputArg.activeChip = 0
-	
+	const showSelected =  inputArg.showingTitles.length == 1 || window.innerWidth > 750
 	return v`
 <div class="city-select-field col">
 	<input class="typing" type="text" 
@@ -30,6 +30,7 @@ export const input = inputArg => {
 			} else if (event.key === "ArrowRight") {
 				inputArg.activeChip++
 			} else if (e.key == "Enter") {
+				if (!showSelected) return null
 				let city = null
 				if (inputArg.activeChip != -1) city = inputArg.showingTitles[inputArg.activeChip]
 				inputArg.citySelect(city)
@@ -46,7 +47,7 @@ export const input = inputArg => {
 	<div class="row chips">
 		${inputArg.showingTitles.map((title,i) =>v`
 			<button class="chip" 
-			${{ cls, selected: inputArg.activeChip == i, dimmed: inputArg.dimmed.includes(title) }}
+			${{ cls, selected: inputArg.activeChip == i && showSelected, dimmed: inputArg.dimmed.includes(title) }}
 			${{ custom, update: el => {
 				if(inputArg.activeChip == i) {
 				const target = el
