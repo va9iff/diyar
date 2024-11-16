@@ -47,6 +47,7 @@ function drawerContent() {
 				m.state = "game"
 				ride.reset()
 			}}}>oyuna yenidən başla</button>
+			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
 		</div>
 	`
 		case "game" :
