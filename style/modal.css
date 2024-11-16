@@ -86,4 +86,7 @@
 	max-width: min(70vh, 70vw);
 }
 
+.qr-img:active {
+	filter: saturate(0) contrast(200) !important
+}
 
