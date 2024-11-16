@@ -28,11 +28,14 @@ function drawerContent() {
 		case "init":
 		return v`
 		<div>
-			Siz bu modda düşdüyünüz şəhərdə başlayaraq qızılı rəngli şəhərlərə sərbəst şəkildə çataraq xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. Hazırsınızsa 
-			<button ${{ onn, click: e => {
-			m.step = "game"
-			ride.reset()
-			}}}>başlayaq!</button>
+			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button> <br><br>
+			Siz bu modda düşdüyünüz şəhərdən irəliləyərək qızılı rəngli şəhərlərə sərbəst şəkildə çatmalı və oradakı xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. <br><br>
+			<button class="chip" style="font-size: 16px" ${{ onn, click: e => {
+				m.step = "game"
+				ride.reset()
+				}}}>Hazırsınızsa 
+				başlayaq!
+			</button>
 		</div>
 
 	`
@@ -71,6 +74,7 @@ export const ride = {
 	// if exists, only firest this in the start and does not fire reset
 	init() {
 		m.step = "init"
+		clear()
 	},
 	reset() {
 		m.at = randomCity()
