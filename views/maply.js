@@ -46,7 +46,7 @@ immerseMap()
 export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 	<div class="view toprow row flips">
 		<div class="pinneds">
-			<button ${{ on, click: e => pop(() => v`
+			<button class="pc" ${{ on, click: e => pop(() => v`
 				<div class="col box">
 					<img src="./qrh.png" class="qr-img">
 				</div>
