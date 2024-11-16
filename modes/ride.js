@@ -34,10 +34,9 @@ function drawerContent() {
 	`
 	:v`
 		
+		<div class="mpadded">
 			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
 			<button class="chip" ${{ onn, click: ride.reset}}>Yenidən başla</button>
-		</div>
-		<div class="mpadded">
 			<h1>at ${m.at}</h1>
 			<div class="row middle wrap">
 				${neighbours[m.at].map(city=>v`<button class="neighbourCard"
@@ -63,9 +62,7 @@ export const ride = {
 	content() {
 		repaint()
 		return v`
-
 				<div class="sticky-top">
-					<div class="drawer-padding"></div>
 					${drawerHandle()}
 				</div>
 				<div class="mpadded">
