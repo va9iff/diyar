@@ -80,6 +80,7 @@ export const shortestPathCities = {
 		m.won = false
 		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
 		inputArg.activeChip = -2
+		inputArg.input = ""
 
 		clear("#eee")
 		fill(m.from, "#7f7")
