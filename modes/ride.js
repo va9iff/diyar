@@ -14,26 +14,41 @@ function repaint() {
 }
 
 function win() {
-	m.won = true
+	m.step = "won"
+	repaint()
 	update()
 }
 
 const m = {
-	won: false,
+	step: "init",
 }
 
 function drawerContent() {
-	return m.won ? v`
+	switch (m.step) {
+		case "init":
+		return v`
+		<div>
+			Siz bu modda düşdüyünüz şəhərdə başlayaraq qızılı rəngli şəhərlərə sərbəst şəkildə çataraq xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. Hazırsınızsa 
+			<button ${{ onn, click: e => {
+			m.step = "game"
+			ride.reset()
+			}}}>başlayaq!</button>
+		</div>
+
+	`
+		case "won":
+		return v`
 		<div>
 			Təbriklər! siz ${m.coins.slice(0, -1).map(({city}) => v`<b>${city}, </b>`)} və ${v`<b>${m.coins.at(-1).city}</b>`} şəhərlərindəki bütün xəzinələri toplayaraq qalib oldunuz.
 			<button ${{ onn, click: e => {
-				m.won = false
+				m.state = "game"
 				ride.reset()
 			}}}>oyuna yenidən başla</button>
 		</div>
 	`
-	:v`
-		
+		case "game" :
+		repaint()
+		return v`		
 		<div class="mpadded">
 			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
 			<button class="chip" ${{ onn, click: ride.reset}}>Yenidən başla</button>
@@ -48,19 +63,25 @@ function drawerContent() {
 					}}}>${city}
 				</button>`)}
 			</div>
+		</div>
 	`
+	}
 }
 export const ride = {
+	// if exists, only firest this in the start and does not fire reset
+	init() {
+		m.step = "init"
+	},
 	reset() {
 		m.at = randomCity()
-		m.won = false
+		m.step = "game"
 		m.coins = []
 		m.coins.push({collected: false, city: randomCity([m.at])})
 		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0].city])})
 		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0].city, m.coins[1].city])})
 	},
 	content() {
-		repaint()
+		// repaint()
 		return v`
 				<div class="sticky-top">
 					${drawerHandle()}

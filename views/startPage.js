@@ -7,7 +7,7 @@ const setMode = async modeId => {
 	const m = await import(`../modes/${modeId}.js`)
 	await setPage("maply")
 	state.mode = m[modeId]
-	state.mode.reset?.()
+	;(state.mode.init || state.mode.reset)?.()
 	update()
 }
 
