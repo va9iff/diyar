@@ -202,6 +202,7 @@ export const randomCity = (exceptions = []) => {
 	const locals = { ...titleid }
 	for (const exception of exceptions) delete locals[exception]
 	const keys = Object.keys(locals)
-	return keys[Math.floor(Math.random()*keys.length)]
+	const a = keys.slice(0,20)
+	return a[Math.floor(Math.random()*a.length)]
 }
 
