@@ -1,0 +1,89 @@
+.modalWrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100vw;
+	max-height: 100vh;
+	z-index: 99;
+	/* backdrop-filter: blur(10px); */
+	backdrop-filter: blur(8px) brightness(0.8);
+	/* animation: bluranim 300ms; */
+	padding: 80px 40px;
+	overflow: scroll;
+	display: grid;
+	place-items: center;
+}
+
+
+.modal {
+	background-color: #fff;
+	min-width: 0;
+	min-width: 50vw;
+	min-height: min(50vw, 70vh);
+	border-radius: 30px;
+	padding: 20px;
+	position: relative;
+	max-width: 100%;
+}
+
+.modalHeader {
+	z-index: 80;
+
+}
+
+.modal .closeButton {
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	margin-left: auto;
+
+	text-align: center;
+	vertical-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	background-color: #f77;
+	font: sans-serif;
+	color: #000;
+}
+
+@keyframes meta-liq {
+	from {
+		filter: blur(30px) contrast(190)
+	} to {
+		filter: blur(0) contrast(1)
+	}
+}
+
+@keyframes popanima {
+	from {
+		transform: scale(0.7)
+	} to {
+		transform: scale(1)
+	}
+}
+
+.popanim {
+	animation: popanima 400ms cubic-bezier(.33,1.18,.13,1.18);
+
+}
+
+@keyframes bluranim {
+	from {
+		backdrop-filter: blur(0px) brightness(1);
+	} to {
+		backdrop-filter: blur(10px) brightness(0.8);
+	}
+}
+
+.qr-img {
+	animation: meta-liq 1000ms forwards;
+	max-height: min(70vh, 70vw);
+	max-width: min(70vh, 70vw);
+}
+
+

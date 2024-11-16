@@ -161,3 +161,11 @@
 		flex-direction: row
 	}
 }
+
+
+
+/* dudeee put this by default and min-width: auto for specific class*/
+/*it's awesome cuz I want my containers to fit by default, grow when needed.*/
+/* .col, .row { */
+/* 	min-width: 0; */
+/* } */

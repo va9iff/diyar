@@ -3,6 +3,7 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update
 import { mapSvgElement, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { setPage } from "../pages.js"
+import { pop } from "../pieces/modal/modal.js"
 // state.mode = null
 
 // import { mode}
@@ -44,6 +45,13 @@ immerseMap()
 
 export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 	<div class="view toprow row flips">
+		<div class="pinneds">
+			<button ${{ on, click: e => pop(() => v`
+				<div class="col box">
+					<img src="./qrh.png" class="qr-img">
+				</div>
+			`)}}>i</button>	
+		</div>
 		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
 			<div class="svg-container">
 				${put(mapSvgElement)}

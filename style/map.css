@@ -46,3 +46,21 @@ img.splashart {
 	/* max-width: 100%; */
 	/* border: 2px solid gold; */
 }
+
+.pinneds {
+	position: absolute;
+	z-index: 70;
+	top: 0;
+	left: 0;
+	padding: 8px;
+}
+
+.pinneds button {
+	padding: 4px;
+	border: 1px solid #000;
+	border-radius: 13px;
+	min-width: 30px;
+	min-height: 30px;
+}
+
+
