@@ -1,4 +1,4 @@
-import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn } from "../v.js"
+import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, ottr } from "../v.js"
 
 const grab = s => document.querySelector(s)
 
@@ -7,6 +7,7 @@ export const input = inputArg => {
 	inputArg.activeChip ??= 0
 	inputArg.list ??= []
 	inputArg.dimmed ??= []
+	inputArg.disabled ??= false
 	inputArg.filteredList = inputArg.list.filter(title=>
 				title.toLocaleLowerCase().includes(inputArg.input.toLocaleLowerCase()))
 
@@ -19,7 +20,8 @@ export const input = inputArg => {
 	return v`
 <div class="city-select-field col">
 	<input class="typing" type="text" 
-	${{ set, value: inputArg.input}}
+	${{ set, value: inputArg.input }}
+	${{ ottr, disabled: inputArg.disabled }}
 	${{ onn, 
 		input: e => {
 			inputArg.input = e.target.value 

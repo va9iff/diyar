@@ -4,6 +4,7 @@ import { drawerHandle } from "../pieces/drawer-handle.js"
 import { setPage } from "../pages.js"
 import { mapSvgElement, pathes,  clear, fill } from "../map.js"
 import { pathTitles } from "../path-titles.js"
+import { pop } from "../pieces/modal/modal.js"
 
 import { neighbours, shortest, randomCity } from "../data/neighbours.js"
 
@@ -15,7 +16,8 @@ const m = {
 	ideal: 1,
 	selecteds: [],
 	shortestRoad: [],
-	wents : ["Abşeron"]
+	wents : ["Abşeron"],
+	won: false
 }
 
 function checkWents() {
@@ -27,7 +29,19 @@ function checkWents() {
 	}
 }
 function win() {
-	alert("Win!")
+	m.won = true
+	pop(close => v`
+		<div>
+			Qalib gəldiniz! Oynamağa dəvam etmək istəyirsiniz?
+			<button ${{ onn, click: e => { 
+				shortestPathCities.reset()
+				m.won = false
+				close()
+			}}}>yenidən başla</button>
+			<button ${{ onn, click: close}}>bağla</button>
+		</div>
+	`)
+	update()
 }
 
 const inputArg  = {
@@ -63,6 +77,7 @@ export const shortestPathCities = {
 		m.wents = [m.from]
 		m.tried = 0
 		m.ideal = m.shortestRoad.length - 2
+		m.won = false
 		inputArg.list = pathTitles.filter(t => ![m.from, m.to].includes(t))
 		inputArg.activeChip = -2
 
@@ -75,6 +90,7 @@ export const shortestPathCities = {
 	content() {
 		// inputArg.list = pathTitles.filter(t => ![m.from, m.to, ...m.selecteds].includes(t))
 		inputArg.dimmed = m.selecteds
+		inputArg.disabled = m.won
 		return v`
 			<div class="mpadded">
 				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
