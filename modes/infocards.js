@@ -82,11 +82,11 @@ export const infocards = {
 				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
 				<button class="chip" ${{ onn, click: e => infocards.reset()}}>yenidən başlat</button>
 			</div>
-			<div class="sticky-top">
+			<div class="sticky-top" style="background-color: var(--content-bg)">
 				${drawerHandle()}
+				<div style="text-align: center; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
 			</div>
 			<div class="mpadded">
-				${new Array(m.lives).fill(v`<span>❤️</span>`)}<br>
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
 					çata bildiniz! <button ${{ onn, click: e => { infocards.reset() }}}>
 						yenidən başlaya</button> və ya <button ${{ onn, click: e => setPage("startPage")}}>

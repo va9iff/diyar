@@ -1,3 +1,6 @@
+:root {
+	--content-bg: #eee
+}
 	body {
 		background-color: #eee
 	}
@@ -5,6 +8,9 @@
 	display: none !important
 }
 @media only screen and (max-width: 750px) {
+	:root {
+		--content-bg: #fff
+	}
 	.mobile {
 		display: none !important
 	}
