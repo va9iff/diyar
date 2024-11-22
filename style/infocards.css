@@ -1,0 +1,10 @@
+.game-card {
+	border: 2px solid #444;
+	margin: 4px;
+	border-radius: 13px;
+	padding: 17px;
+}
+
+.game-card.disabled {
+	opacity: 0.6;
+}

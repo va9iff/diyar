@@ -26,6 +26,10 @@ export const startPage = () => v`
 			${{ onn, click: e => setMode('ride')}}>
 			xəzinə toplayıcı
 		</button>
+		<button class="start-mode"
+			${{ onn, click: e => setMode('infocards')}}>
+			Cards
+		</button>
 	</div>
 `
 

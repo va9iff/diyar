@@ -22,6 +22,15 @@ export function clear(color = "#eee") {
 	for (const pathTitle of pathTitles) fill(pathTitle, color)
 }
 
+export function fillClass(cityTitle, className) {
+	pathes[cityTitle].className = className
+}
+
+export function clearClass(className = "") {
+	for (const pathTitle of pathTitles) fillClass(pathTitle, className)
+
+}
+
 clear()
 
 export { mapSvgElement }

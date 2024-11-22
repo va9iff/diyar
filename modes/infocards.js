@@ -7,6 +7,8 @@ import { mapSvgElement, pathes,  clear, fill } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { pop } from "../pieces/modal/modal.js"
 
+import { ipucus } from "../assets/ipucus.js"
+
 import { neighbours, shortest, randomCity } from "../data/neighbours.js"
 
 const m = {}
@@ -80,7 +82,7 @@ export const infocards = {
 			<div class="mpadded">
 				loves ${m.lives} <br>
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
-					çata bildiniz! <button ${{ onn, click: e => { infocards.reset(); close() }}}>
+					çata bildiniz! <button ${{ onn, click: e => { infocards.reset() }}}>
 						yenidən başlaya</button> və ya <button ${{ onn, click: e => setPage("startPage")}}>
 						geri qayıda</button> bilərsiniz.
 					</div>` :
@@ -103,7 +105,7 @@ export const infocards = {
 							m.misclicks.push(city)
 						}
 					}}}>burada ${city} haqqında elə bir fakt var ki hörmətli istifadəçimiz bu faktı
-					istifadə edərək kartın ${city} şəhərini təmsil etdiyini tapmalıdır</div>
+					istifadə edərək kartın ${ipucus[city]} şəhərini təmsil etdiyini tapmalıdır</div>
 				`)}
 			</div>
 		`
