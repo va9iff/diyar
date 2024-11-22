@@ -19,7 +19,8 @@ export function fill(cityTitle, color) {
 	// beaware that css class fills overwrites attribute values
 }
 
-export function clear(color = "#eee") {
+export function clear(color = "#eee", classesToo = true) {
+	if (classesToo) clearClass() // we weren't caling it so class fills would stay
 	for (const pathTitle of pathTitles) fill(pathTitle, color)
 }
 
