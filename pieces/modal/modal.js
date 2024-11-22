@@ -32,8 +32,8 @@ export const pop = (contentfun, opts = {}) => {
 }
 
 
-pop(close => v`
-	<div>
-		jajaka
-	</div>
-`)
+// pop(close => v`
+// 	<div>
+// 		jajaka
+// 	</div>
+// `)

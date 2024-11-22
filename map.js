@@ -23,11 +23,12 @@ export function clear(color = "#eee") {
 }
 
 export function fillClass(cityTitle, className) {
-	pathes[cityTitle].className = className
+	// pathes[cityTitle].className = className
+	pathes[cityTitle].classList.add(className)
 }
 
 export function clearClass(className = "") {
-	for (const pathTitle of pathTitles) fillClass(pathTitle, className)
+	for (const pathTitle of pathTitles) pathes[pathTitle].classList = []
 
 }
 

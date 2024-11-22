@@ -3,7 +3,7 @@ import { v, state, onn,  cls, style, attr, none, update } from "../v.js"
 import { input } from "../pieces/input.js"
 import { drawerHandle } from "../pieces/drawer-handle.js"
 import { setPage } from "../pages.js"
-import { mapSvgElement, pathes,  clear, fill } from "../map.js"
+import { mapSvgElement, pathes,  clear, clearClass, fill, fillClass } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { pop } from "../pieces/modal/modal.js"
 
@@ -39,7 +39,10 @@ const shuffle = arr => arr
 function getGameCards() {
 	m.misclicks = []
 	if (m.currentStep >= m.shortestRoad.length) throw new Error("Qaqa hara belə? axırıncı şəhərin kartları lazımdı?")
-	const neighs = shuffle(neighbours[m.shortestRoad[m.currentStep]])
+	let neighs = shuffle(neighbours[m.shortestRoad[m.currentStep]])
+	console.log(neighs)
+	if (neighs.length > 3) neighs = neighs.filter(neigh => !m.shortestRoad.slice(0, m.currentStep).includes(neigh))
+	console.log(neighs)
 	const arr = []
 	arr.push(m.shortestRoad[m.currentStep])
 	if (neighs.length) arr.push(neighs.pop())
@@ -53,24 +56,27 @@ export const infocards = {
 		m.from = randomCity()
 		m.to = randomCity([m.from, ...neighbours[m.from]])
 		m.shortestRoad=shortest(m.from, m.to)
-		m.currentStep = 1
+		m.currentStep = 0
 		m.wents = []
 		m.misclicks = []
-		m.lives = 30
+		m.lives = 15
 		m.cards = getGameCards()
 		clear("#eee")
+		clearClass()
 		// fill(m.current, "#f33")
 
 	},
 	content() {
 		clear()
-		for (let i = 0; i < m.currentStep && i < m.shortestRoad.length; i++) {
-			console.log(m.shortestRoad[i])
-			fill(m.shortestRoad[i], "lime")
-		}
-		fill(m.from, "red")
-		fill(m.to, "blue")
-		fill(m.shortestRoad[m.currentStep], "green")
+		clearClass()
+		for (const city of m.shortestRoad) 
+			fill(city, "#aca")
+		for (let i = 0; i < m.currentStep && i < m.shortestRoad.length; i++) 
+			fill(m.shortestRoad[i], "#7f7")	
+		fill(m.from, "#7f7")
+		// fill(m.to, "#ff7")
+		fill(m.shortestRoad[m.currentStep], "#77f")
+		fillClass(m.shortestRoad[m.currentStep], "current-blinking")
 		return v`
 			<div class="mpadded">
 				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
@@ -80,7 +86,7 @@ export const infocards = {
 				${drawerHandle()}
 			</div>
 			<div class="mpadded">
-				loves ${m.lives} <br>
+				${new Array(m.lives).fill(v`<span>❤️</span>`)}<br>
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
 					çata bildiniz! <button ${{ onn, click: e => { infocards.reset() }}}>
 						yenidən başlaya</button> və ya <button ${{ onn, click: e => setPage("startPage")}}>
@@ -91,7 +97,8 @@ export const infocards = {
 						if (m.misclicks.includes(city)) return null
 						if (city == m.shortestRoad[m.currentStep]) {
 							if (m.currentStep == m.shortestRoad.length - 1) return m.won = pop(close => v`
-								<button ${{onn, click: e => { infocards.reset(); close(); }}}>you won</button>
+								<h1>Qalib oldunuz! </h1>
+								<button ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
 								`) || true
 							m.currentStep++
 							m.cards = getGameCards()

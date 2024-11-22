@@ -7,4 +7,20 @@
 
 .game-card.disabled {
 	opacity: 0.6;
+} 
+
+@keyframes current-blinking {
+	0% {
+		fill: #7f7;
+	}
+	50% {
+		fill: #77f;
+	}
+	100% {
+		fill: #7f7;
+	}
+}
+
+.current-blinking{
+	animation: current-blinking 900ms infinite linear;
 }
