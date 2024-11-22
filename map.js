@@ -10,6 +10,7 @@ mapSvgElement.classList.add("svg-image")
 export const pathes = {}
 for (const pathTitle of pathTitles) {
 	const path = mapSvgElement.querySelector(`[title="${pathTitle}"]`)
+	if (true) path.removeAttribute("id")
 	pathes[pathTitle] = path
 }
 
