@@ -16,19 +16,19 @@ export const startPage = () => v`
 	<div class="centered middle row flips startPage" ${{ style, minHeight: '100svh'}}>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('explore')}}>
-			Kəşf et 
+			İşsiz
 		</button>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('shortestPathCities')}}>
-			Yol tap
+			Kaşif
 		</button>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('ride')}}>
-			xəzinə toplayıcı
+			Xəzinədar
 		</button>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('infocards')}}>
-			Cards
+			Səyyar
 		</button>
 	</div>
 `
