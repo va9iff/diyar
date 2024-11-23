@@ -79,6 +79,7 @@
 		color: #222;
 	}
 	.drawer-padding {
+		/*risky to change since other stickies too are hard coded*/ 
 		min-height: 20px;
 		display: none; /*we don't need it since we have big drawer now */
 	}
@@ -109,7 +110,7 @@
 	}
 	.sticky-drawer-item {
 		position: sticky;
-		top: 50px;
+		top: 20px;
 	}
 	/* .drawer-handle-container:hover .drawer-handle, */
 	.drawer-handle-container:active .drawer-handle
