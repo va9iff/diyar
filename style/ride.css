@@ -1,14 +1,17 @@
 .neighbourCard {
-	background-color: #ddd;
+	/* background-color: #ddd; */
+	background-color: #eee;
 	/* border: 2px solid #777; */
-	border: none;
-	padding: 20px;
-	font-size: 17px;
-	border-radius: 20px;
+	/* border: none; */
+	border: 5px solid #252525;
+	padding: 15px 20px;
+	font-size: 16px;
+	border-radius: 30px;
 	margin: 6px;
 	transition: 500ms;
 	min-width: 100px;
-	animation: nbcardanim 300ms
+	animation: nbcardanim 300ms;
+	box-shadow: 0 0 0 0px #777 inset;
 }
 
 @keyframes nbcardanim {
@@ -24,7 +27,8 @@
 
 .neighbourCard:hover {
 	transition: 150ms;
-	box-shadow: 0 0 0 5px #777 inset;
+	box-shadow: 0 0 0 7px #777 inset;
+	border-radius: 30px;
 }
 
 .neighbourCard:active {

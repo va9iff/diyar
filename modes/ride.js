@@ -28,9 +28,9 @@ function drawerContent() {
 		case "init":
 		return v`
 		<div>
-			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button> <br><br>
+			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
 			Siz bu modda düşdüyünüz şəhərdən irəliləyərək qızılı rəngli şəhərlərə sərbəst şəkildə çatmalı və oradakı xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. <br><br>
-			<button class="chip" style="font-size: 16px" ${{ onn, click: e => {
+			<button class="btn" style="font-size: 16px" ${{ onn, click: e => {
 				m.step = "game"
 				ride.reset()
 				}}}>Hazırsınızsa 
@@ -47,15 +47,15 @@ function drawerContent() {
 				m.state = "game"
 				ride.reset()
 			}}}>oyuna yenidən başla</button>
-			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
+			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 		</div>
 	`
 		case "game" :
 		repaint()
 		return v`		
 		<div class="mpadded">
-			<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geri</button>
-			<button class="chip" ${{ onn, click: ride.reset}}>Yenidən başla</button>
+			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+			<button class="btn" ${{ onn, click: ride.reset}}>Yenidən başla</button>
 			<h1>at ${m.at}</h1>
 			<div class="row middle wrap">
 				${neighbours[m.at].map(city=>v`<button class="neighbourCard"

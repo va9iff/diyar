@@ -32,8 +32,8 @@ function win() {
 	m.won = true
 	pop(close => v`
 		<div>
-			Qalib gəldiniz! Oynamağa dəvam etmək istəyirsiniz?
-			<button ${{ onn, click: e => { 
+			<h1>Qalib gəldiniz! Oynamağa dəvam etmək istəyirsiniz? </h1> <br>
+			<button class="btn" ${{ onn, click: e => { 
 				shortestPathCities.reset()
 				m.won = false
 				close()
@@ -94,8 +94,8 @@ export const shortestPathCities = {
 		inputArg.disabled = m.won
 		return v`
 			<div class="mpadded">
-				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
-				<button class="chip" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
+				<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+				<button class="btn" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
 			</div>
 			<div class="sticky-top">
 				${drawerHandle()}

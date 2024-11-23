@@ -18,12 +18,12 @@ function win() {
 	pop(close => v`
 		<div>
 			Qalib gəldiniz! Oynamağa dəvam etmək istəyirsiniz?
-			<button ${{ onn, click: e => { 
+			<button class="btn" ${{ onn, click: e => { 
 				infocards.reset()
 				m.won = false
 				close()
 			}}}>yenidən başla</button>
-			<button ${{ onn, click: close}}>bağla</button>
+			<button class="btn" ${{ onn, click: close}}>bağla</button>
 		</div>
 	`)
 	update()
@@ -59,7 +59,7 @@ export const infocards = {
 		m.currentStep = 0
 		m.wents = []
 		m.misclicks = []
-		m.lives = 15
+		m.lives = 3
 		m.cards = getGameCards()
 		clear("#eee")
 		clearClass()
@@ -79,18 +79,18 @@ export const infocards = {
 		fillClass(m.shortestRoad[m.currentStep], "current-blinking")
 		return v`
 			<div class="mpadded">
-				<button class="pc chip" ${{ onn, click: e => setPage("startPage")}}>geriyə</button>
-				<button class="chip" ${{ onn, click: e => infocards.reset()}}>yenidən başlat</button>
+				<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+				<button class="btn" ${{ onn, click: e => infocards.reset()}}>yenidən başlat</button>
 			</div>
 			<div class="sticky-top" style="background-color: var(--content-bg)">
 				${drawerHandle()}
-				<div style="text-align: center; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
+				<div style="text-align: center; font-size: 30px; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
 			</div>
 			<div class="mpadded">
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
-					çata bildiniz! <button ${{ onn, click: e => { infocards.reset() }}}>
-						yenidən başlaya</button> və ya <button ${{ onn, click: e => setPage("startPage")}}>
-						geri qayıda</button> bilərsiniz.
+					çata bildiniz! <button class="btn" ${{ onn, click: e => { infocards.reset() }}}>
+						yenidən başlaya</button> və ya <button class="btn" ${{ onn, click: e => setPage("startPage")}}>
+						&lt; geri qayıda</button> bilərsiniz.
 					</div>` :
 						m.cards.map(city => v`
 					<div class="game-card" ${{ cls, disabled: m.misclicks.includes(city)}} ${{ onn, click: e => {
@@ -98,22 +98,23 @@ export const infocards = {
 						if (city == m.shortestRoad[m.currentStep]) {
 							if (m.currentStep == m.shortestRoad.length - 1) return m.won = pop(close => v`
 								<h1>Qalib oldunuz! </h1>
-								<button ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
+								<button class="btn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
 								`) || true
 							m.currentStep++
 							m.cards = getGameCards()
 						} else {
 							m.lives--
 							if (m.lives <= 0) return pop(close => v`<div>
-								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <button ${{
+								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="btn" ${{
 									onn, click: e => { infocards.reset(); close() }
-								}}>yenidən başla</button> ?
+								}}>yenidən başla</button> 
 								</div>`)
 							m.misclicks.push(city)
 						}
 					}}}>burada ${city} haqqında elə bir fakt var ki hörmətli istifadəçimiz bu faktı
 					istifadə edərək kartın ${ipucus[city]} şəhərini təmsil etdiyini tapmalıdır</div>
 				`)}
+				<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			</div>
 		`
 	}

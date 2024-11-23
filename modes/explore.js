@@ -61,10 +61,10 @@ export const explore = {
 					${drawerHandle()}
 				</div>
 				<div class="mpadded">
-					<button class="pc chip backButton" 
-					${{ style, borderRadius: `30px 0 0 30px`}}
-					${{ onn, click: e => setPage("startPage")}}>geri</button>
-					<button class="chip" ${{ onn, click: explore.reset}}>Təmizlə</button>
+					<button class="pc btn backButton" 
+					${{ style, borderRadiusUWU: `30px 0 0 30px`}}
+					${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+					<button class="btn" ${{ onn, click: explore.reset}}>Təmizlə</button>
 				</div>
 				<div class="sticky-drawer-item">
 					${input(inputArg)}
