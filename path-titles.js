@@ -1,4 +1,6 @@
 export const pathTitles = [
+	"Bakı",
+	"Zəngəzur dəhlizi",
 	"Abşeron",
 	"Astara",
 	"Ağcabədi",
@@ -7,7 +9,6 @@ export const pathTitles = [
 	"Ağstafa",
 	"Ağsu",
 	"Babək",
-	"Bakı",
 	"Balakən",
 	"Beyləqan",
 	"Biləsuvar",
@@ -69,6 +70,5 @@ export const pathTitles = [
 	"Yevlax",
 	"Zaqatala",
 	"Zəngilan",
-	"Zəngəzur",
 	"Zərdab",
 ]

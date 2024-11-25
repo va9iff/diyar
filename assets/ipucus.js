@@ -69,6 +69,6 @@ export const ipucus = {
 	"Yevlax": "fakt abaut Yevlax",
 	"Zaqatala": "fakt abaut Zaqatala",
 	"Zəngilan": "fakt abaut Zəngilan",
-	"Zəngəzur": "fakt abaut Zəngəzur",
+	"Zəngəzur dəhlizi": "fakt abaut Zəngəzur",
 	"Zərdab": "fakt abaut Zərdab",
 }
