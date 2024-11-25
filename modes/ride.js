@@ -1,7 +1,7 @@
 import { v, state, onn,  cls, style, attr, none, update } from "../v.js"
 import { drawerHandle } from "../pieces/drawer-handle.js"
 import {setPage} from "../pages.js"
-import { mapSvgElement, pathes,  clear, fill } from "../map.js"
+import { mapSvgElement, pathes,  clear, fill, fillClass } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { neighbours, shortest, randomCity } from "../data/neighbours.js"
 import { pop } from "../pieces/modal/modal.js"
@@ -10,7 +10,7 @@ function repaint() {
 	clear()
 	for (const coin of m.coins) 
 		fill(coin.city, coin.collected ? "#7ff" : "#ff7")
-	fill(m.at, "#7f7")
+	fillClass(m.at, "current-blinking")
 }
 
 function win() {
@@ -43,7 +43,7 @@ function drawerContent() {
 		return v`
 		<div>
 			Təbriklər! siz ${m.coins.slice(0, -1).map(({city}) => v`<b>${city}, </b>`)} və ${v`<b>${m.coins.at(-1).city}</b>`} şəhərlərindəki bütün xəzinələri toplayaraq qalib oldunuz.
-			<button ${{ onn, click: e => {
+			<button class="btn" ${{ onn, click: e => {
 				m.state = "game"
 				ride.reset()
 			}}}>oyuna yenidən başla</button>
