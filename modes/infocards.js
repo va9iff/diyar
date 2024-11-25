@@ -82,7 +82,7 @@ export const infocards = {
 				<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 				<button class="btn" ${{ onn, click: e => infocards.reset()}}>yenidən başlat</button>
 			</div>
-			<div class="sticky-top" style="background-color: var(--content-bg)">
+			<div class="sticky-top" style="background-color: var(--content-bg); z-index: 10">
 				${drawerHandle()}
 				<div style="text-align: center; font-size: 30px; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
 			</div>
