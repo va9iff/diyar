@@ -62,9 +62,10 @@ const popc = {
 	coins: []
 }
 export function moveCar(city) {
-	car.style.display = city ? "inline" : "none"
-	clear()
-	fill(city, "red")
+	if (!city) return car.style.display = "none"
+	else car.style.display = "inline"
+	// clear()
+	// fill(city, "red")
 	if (+(coords[city][0].slice(0, -1)) > +(coords[popc.car][0].slice(0, -1))) {
 		car.style.transform = "scaleX(-1)"
 		car.style.translate = "50% -50%"
@@ -77,22 +78,23 @@ export function moveCar(city) {
 	car.style.left = coords[popc.car][0]
 	car.style.top = coords[popc.car][1]
 }
-setInterval(()=>{
-	moveCar(pathTitles[Math.floor(Math.random() * pathTitles.length)])
-}, 1500)
+// setInterval(()=>{
+// 	moveCar(pathTitles[Math.floor(Math.random() * pathTitles.length)])
+// }, 1500)
 function setCoins(arr) {
 	for (const city of arr) {
 		//
 	}
 }
 const car = document.createElement("img")
+moveCar(null)
 const coins = []
 car.style.position = "absolute"
 // car.style.backgroundColor = "#0008"
 car.style.transition = "1700ms, transform 400ms, translate 700ms"
 car.style.transformOrigin = "left"
 // car.style.borderRadius = "50%"
-car.style.width = "14%"
+car.style.width = "12%"
 car.style.filter = "drop-shadow(0 4px 3px #0008)"
 // car.style.height = "30px"
 car.style.transform = "translate(-50%, -50%)"
