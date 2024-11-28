@@ -1,6 +1,6 @@
 import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update } from "../v.js"
 
-import { mapSvgElement, pathes,  clear } from "../map.js"
+import { mapSvgElement, popups, pathes,  clear } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { setPage } from "../pages.js"
 import { pop } from "../pieces/modal/modal.js"
@@ -55,6 +55,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
 			<div class="svg-container">
 				${put(mapSvgElement)}
+				${put(popups)}
 			</div>
 		</div>
 		<div class="contentside col grow" 
