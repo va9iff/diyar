@@ -35,3 +35,34 @@
 	transform: scale(1.5);
 	transition: 0ms;
 }
+
+.indicator-coin {
+	filter: saturate(0);
+	scale: 0.7;
+	transition: 200ms ,rotate 700ms, scale 1200ms;
+	width: 40px;
+}
+.indicator-coin.collected {
+	filter: saturate(1);
+	rotate: y 360deg;
+	scale: 1;
+}
+@keyframes win-coin-anim {
+	from {
+		scale: 0;
+		rotate: y 1800deg
+	} 
+	to {
+		scale: 1
+		rotate: y 0deg
+	}
+
+}
+.indicator-coin.won {
+	animation: coin-anim 1700ms infinite linear, win-coin-anim 3000ms cubic-bezier(.14,.66,.14,1.09);
+	width: 70px
+}
+.indicator-coin.won:active {
+	transition: 200ms;
+	scale: 1.3
+}

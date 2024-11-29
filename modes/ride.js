@@ -44,6 +44,11 @@ function drawerContent() {
 		case "won":
 		return v`
 		<div>
+			<div class="centered middle row" style="margin-bottom: 20px; gap: 7px">
+				${m.coins.map(coin => v`
+					<img src="./assets/img/coin-no-dollar.png" class="indicator-coin collected won"
+				>`)}
+			</div>
 			Təbriklər! siz ${m.coins.slice(0, -1).map(({city}) => v`<b>${city}, </b>`)} və ${v`<b>${m.coins.at(-1).city}</b>`} şəhərlərindəki bütün xəzinələri toplayaraq qalib oldunuz.
 			<button class="btn" ${{ onn, click: e => {
 				m.state = "game"
@@ -59,6 +64,13 @@ function drawerContent() {
 			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 			<button class="btn" ${{ onn, click: ride.reset}}>Yenidən başla</button>
 			<h1>at ${m.at}</h1>
+			<div class="centered row middle wrap" style="margin-bottom: 10px">
+
+			${m.coins.map(coin => v`
+					<img src="./assets/img/coin-no-dollar.png" 
+						class="indicator-coin" ${{ cls, collected: coin.collected }}>
+			`)}
+				</div>
 			<div class="row middle wrap">
 				${neighbours[m.at].map(city=>v`<button class="neighbourCard"
 					${{ onn, click: e => {
@@ -77,6 +89,10 @@ export const ride = {
 	// if exists, only firest this in the start and does not fire reset
 	init() {
 		m.step = "init"
+		// setTimeout(()=>{
+		// 	m.step = "won"
+		// 	update()
+		// }, 1000)
 		clear()
 		moveCar(null)
 	},
