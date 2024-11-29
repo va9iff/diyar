@@ -48,9 +48,9 @@ for (const pathTitle of pathTitles) {
 
 
 		_coords[pathTitle] = [div.style.left, div.style.top]
-		console.log(Object.keys(_coords).length)
-		console.log(pathTitles.length)
-		console.log(_coords)
+		// console.log(Object.keys(_coords).length)
+		// console.log(pathTitles.length)
+		// console.log(_coords)
 
 	}
 	if (true) path.removeAttribute("id")
@@ -81,9 +81,26 @@ export function moveCar(city) {
 // setInterval(()=>{
 // 	moveCar(pathTitles[Math.floor(Math.random() * pathTitles.length)])
 // }, 1500)
-function setCoins(arr) {
-	for (const city of arr) {
-		//
+var coinElements = []
+export function setCoins(cities) {
+	for (const coinElement of coinElements) {
+		coinElement.remove()
+	}
+	coinElements = []
+	for (const city of cities) {
+		const coinElement = document.createElement("img")
+		coinElement.classList.add("coin")
+		coinElement.src = "./assets/img/coin-no-dollar.png"
+		coinElement.style.position = "absolute"
+		coinElement.style.zIndex = "89"
+		// coinElement.style.width = "30px"
+		// coinElement.style.height = "30px"
+
+		popups.appendChild(coinElement)
+		coinElements.push(coinElement)
+		coinElement.style.left = coords[city][0]
+		coinElement.style.top = coords[city][1]
+		// console.log(coinElement)
 	}
 }
 const car = document.createElement("img")
@@ -107,6 +124,8 @@ car.style.top = coords[popc.car][1]
 
 export const popups = document.createElement("div")
 popups.classList.add("map-popups")
+// setCoins(["Bakı"])
+// setInterval(()=>setCoins([pathTitles[Math.floor(Math.random() * pathTitles.length)], pathTitles[Math.floor(Math.random() * pathTitles.length)], pathTitles[Math.floor(Math.random() * pathTitles.length)]]), 200)
 // const popups = document.querySelector(".map-popups")
 for (const coordTitle in coords) {
 	const div = document.createElement("div")

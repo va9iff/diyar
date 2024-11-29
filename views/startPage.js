@@ -4,9 +4,12 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update
 import { setPage } from "../pages.js"
 // shortestPathCities
 const setMode = async modeId => {
+	const prevMode = state.mode
+	// console.log(state.mode)
 	const m = await import(`../modes/${modeId}.js`)
 	await setPage("maply")
 	state.mode = m[modeId]
+	if (prevMode) prevMode.die?.()
 	;(state.mode.init || state.mode.reset)?.()
 	update()
 }

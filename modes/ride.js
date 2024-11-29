@@ -1,7 +1,7 @@
 import { v, state, onn,  cls, style, attr, none, update } from "../v.js"
 import { drawerHandle } from "../pieces/drawer-handle.js"
 import {setPage} from "../pages.js"
-import { mapSvgElement, pathes,  clear, fill, fillClass, moveCar } from "../map.js"
+import { mapSvgElement, pathes,  clear, fill, fillClass, moveCar, setCoins } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { neighbours, shortest, randomCity } from "../data/neighbours.js"
 import { pop } from "../pieces/modal/modal.js"
@@ -11,6 +11,7 @@ function repaint() {
 	for (const coin of m.coins) 
 		fill(coin.city, coin.collected ? "#7ff" : "#ff7")
 	fillClass(m.at, "current-blinking")
+	setCoins(m.coins.filter(coin=>!coin.collected).map(coin => coin.city))
 	moveCar(m.at)
 }
 
@@ -77,6 +78,10 @@ export const ride = {
 	init() {
 		m.step = "init"
 		clear()
+		moveCar(null)
+	},
+	die() {
+		setCoins([])
 		moveCar(null)
 	},
 	reset() {

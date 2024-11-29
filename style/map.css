@@ -79,3 +79,22 @@ img.splashart {
 .current-blinking{
 	animation: current-blinking 900ms infinite linear;
 }
+
+@keyframes coin-anim {
+	0%{
+		rotate: y 0deg;
+	} 
+	50% {
+		rotate: y 180deg;
+	} 
+	100% {
+		rotate: y 360deg;
+	}
+}
+
+.coin {
+	animation: coin-anim 1700ms infinite linear;
+	/* transform: translate(0, -50%); */
+	translate: -50% -100%;
+	width: 7%;
+}
