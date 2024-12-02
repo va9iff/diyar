@@ -36,3 +36,5 @@ export const startPage = () => v`
 	</div>
 `
 
+
+setTimeout(()=>setMode('shortestPathCities'), 200)

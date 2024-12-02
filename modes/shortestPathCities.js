@@ -94,25 +94,42 @@ export const shortestPathCities = {
 		inputArg.disabled = m.won
 		return v`
 			<div class="mpadded">
-				<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
-				<button class="btn" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
 			</div>
-			<div class="sticky-top">
-				${drawerHandle()}
+			<div class="mpadded">
+					<span class="dimmy-text" ${{ onn, click: e => shortestPathCities.reset()}}>İstiqamət <img src="./assets/img/refresh.svg"></span><br>
+				<div class="destination-text centered row">
+					<div class="dot-mark" style="background-color: #E4975E"></div>${m.from}a       -&gt; 
+					<div class="dot-mark" style="background-color: #0D92F4"></div>${m.to} <br>
+				</div>
+				<div class="path-find-stats" style="font-size: 16px;">
+					${m.from} şəhərindən ${m.top} şəhərinə getmək üçün keçiləcək şəhərləri tapın. <br><br>
+					<img height='18px' style="margin: 0 8px" src="./assets/img/roader.svg">tapılan ${m.tried} 
+					ideal: ${m.ideal}
+				</div>
+			</div>
+			<div class="sticky-top" style="padding-top: 10px;">
 				${input(inputArg)}
 			</div>
 			<div class="mpadded">
-				<h1 ${{ style, color: "#262626"}}>${m.activeCity}</h1>
-				<b>${m.from}</b> şəhərindən <b>${m.to}</b> şəhərinə çatmaq üçün şəhərləri daxil edin <br>
-				gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b> <hr>
-				gedilən şəhərlər:
-				<ul>
-					${m.selecteds.map(s => v`<li>${s}</li>`)}
-				</ul>
-			</div>
+				<div class="melumat-card">
+					<div class="head">${m.activeCity}</div>
+					
+				</div>
 		`
 	}
 }
+			// 	<h1 ${{ style, color: "#262626"}}>${m.activeCity}</h1>
+			// 	<b>${m.from}</b> şəhərindən <b>${m.to}</b> şəhərinə çatmaq üçün şəhərləri daxil edin <br>
+			// 	gedildi: <b>${m.tried}</b>; ideal <b>${m.ideal}</b> <hr>
+			// 	gedilən şəhərlər:
+			// 	<ul>
+			// 		${m.selecteds.map(s => v`<li>${s}</li>`)}
+			// 	</ul>
+			// 	<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+			// 	<button class="btn" ${{ onn, click: e => shortestPathCities.reset()}}>yenidən başlat</button>
+			// </div>
+	//
+	//---------------------------
 				// <button ${{ onn, click: e => setPage("startPage")}}>back</button>
 	//
 				// <img 

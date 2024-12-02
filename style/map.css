@@ -1,3 +1,7 @@
+.svg-image {
+	filter: drop-shadow(0 14px #252525)
+}
+
 .svg-image path {
 	/* don't give a standby theme */
 	/* we won't be set fill atribute */
@@ -10,7 +14,8 @@
 .svg-image path:hover {
 	transition: fill 0ms;
 	transition-timing-function: ease-in;
-	fill: #CAADE2;;
+	fill: #CAADE266;;
+	/* fill: #fff0; */
 }
 
 .svg-image path:active {
@@ -19,6 +24,7 @@
 }
 
 .svg-container {
+	position: relative;
 	/* width: 400px; */
 	/* max-width: calc(100vh); */
 	justify-content: center;
@@ -97,4 +103,25 @@ img.splashart {
 	/* transform: translate(0, -50%); */
 	translate: -50% -100%;
 	width: 7%;
+}
+
+.azebg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	filter: blur(3px);
+	box-sizing: border-box;
+}
+
+.bgfade {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: linear-gradient(-90deg, #eee 6%, #eee0);
+	scale: 1.03;
 }

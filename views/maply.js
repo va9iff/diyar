@@ -53,6 +53,8 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			`)}}>i</button>	
 		</div>
 		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
+			<img src="./assets/img/azebg.png" class="azebg">
+			<div class="bgfade"></div>
 			<div class="svg-container">
 				${put(mapSvgElement)}
 				${put(popups)}

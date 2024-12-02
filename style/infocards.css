@@ -17,3 +17,56 @@
 	translate: 10px 0
 }
 
+
+.destination-text {
+	font-size: 36px;
+	font-weight: 500
+
+}
+
+.path-find-stats {
+	margin: 20px 0;
+}
+.dimmy-text {
+	color: #252525;
+	font-family: Poppins;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 275;
+	line-height: 100%; /* 18px */
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+	.path-find-stats {
+		margin-top: 9px;
+		margin-bottom: 0;
+	}
+	.destination-text {
+		font-size: 30px
+	}
+}
+
+
+.melumat-card {
+	border-radius: 16px;
+	border: 2px solid rgba(37, 37, 37, 0.20);
+	background: #FFF;
+	/* box-shadow: 4px 4px 24px 0px rgba(37, 37, 37, 0.16); */
+	/* box-shadow: 0 0 24px 0px #3333 inset; */
+	min-height: 462px;
+	padding: 32px;
+}
+.melumat-card .head {
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 120%; /* 38.4px */
+	color: #252525
+}
+.dot-mark {
+	width: 10px;
+	height: 10px;
+	background-color: red;
+	border-radius: 50%;
+	margin: 0 10px;
+}

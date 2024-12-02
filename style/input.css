@@ -30,27 +30,31 @@ input.typing {
 }
 
 .chips {
-	gap: 3px;
+	gap: 7px;
 	padding: 8px;
 	min-height: 50px;
 	padding-bottom: 10px;
 	overflow-x: auto;
+	white-space: nowrap;
+	flex-shrink: 0;
+
 }
 
 .chip {
-	border: none;
+	border: 1px solid #000;
 	padding:  4px 12px;
 	/* background-color: #0002; */
-	background-color: var(--chip-bg);
+	background-color: transparent;
 	border-radius: 14px;
 	transition: margin-left 700ms, margin-right 700ms;
 }
 
 
 .city-select-field .chip.dimmed {
-	background-color: #93e093;
+	background-color: #00D80866;
+	box-shadow: 2px 3px 4px 0px rgba(255, 255, 255, 0.25) inset, -2px -5px 4px 0px rgba(39, 194, 26, 0.60) inset;
 	transition: 500ms;
-	transform: scale(0.8);
+	/* transform: scale(0.8); */
 	margin: 0;
 }
 
@@ -62,13 +66,13 @@ input.typing {
 }
 
 .city-select-field .chip:focus {
-	background-color: #ff7;
-	margin-left: 15px;
-	margin-right: 15px;
+	/* background-color: #ff7; */
+	/* margin-left: 15px; */
+	/* margin-right: 15px; */
 	transition: 200ms;
 	transform: scale(1.1);
 }
 
 .city-select-field .chip.dimmed.selected {
-	box-shadow: 0 0 0 4px #E4BE88;
+	/* box-shadow: 0 0 0 4px #E4BE88; */
 }

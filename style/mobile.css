@@ -19,7 +19,13 @@
 	 aspect-ratio: 1.26 / 1;
 	 pointer-events: none;
  }
+ .sticky-top {
+	 background-color: #eee
+ }
 @media only screen and (max-width: 750px) {
+	.sticky-top {
+		background-color: #fff
+	}
 	.map-popups {
 		/*svg is already 80%*/
 		top: 0;
@@ -100,7 +106,7 @@
 		top: 0;
 	}
 	.mpadded {
-		padding: 13px
+		padding: 6px 13px
 	}
 	.drawer-glance {
 		min-height: 200px;
@@ -167,5 +173,4 @@
 		 background-color: #eee !important
 	 }
  }
-
 
