@@ -96,10 +96,12 @@ export const shortestPathCities = {
 			<div class="mpadded">
 			</div>
 			<div class="mpadded">
-					<span class="dimmy-text" ${{ onn, click: e => shortestPathCities.reset()}}>İstiqamət <img src="./assets/img/refresh.svg"></span><br>
-				<div class="destination-text centered row">
-					<div class="dot-mark" style="background-color: #E4975E"></div>${m.from}a       -&gt; 
-					<div class="dot-mark" style="background-color: #0D92F4"></div>${m.to} <br>
+					<span class="dimmy-text" ${{ onn, click: e => shortestPathCities.reset()}}>İstiqamət <img src="./assets/img/refresh.svg"></span>
+					<button class="bbtn pc" style="float: right" ${{ onn, click: e => setPage("startPage")}}>geri</button><br>
+				<div class="destination-text centered row wrap">
+					<div class="centered row"><div class="dot-mark" style="background-color: #E4975E"></div>${m.from}</div>
+					<img src="./assets/img/arrow-right.svg" height="40px" alt="">
+					<div class="centered row"><div class="dot-mark" style="background-color: #0D92F4"></div>${m.to}</div> <br>
 				</div>
 				<div class="path-find-stats" style="font-size: 16px;">
 					${m.from} şəhərindən ${m.top} şəhərinə getmək üçün keçiləcək şəhərləri tapın. <br><br>
