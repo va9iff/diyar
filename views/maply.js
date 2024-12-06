@@ -61,7 +61,11 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			</div>
 		</div>
 		<div class="contentside col grow" 
-			${{ on, scroll: e => e.target.scrollTop > 150 ? immerseContent() : e.target.scrollTop < 50 ? immerseMap() : 0 }}
+			${{ on, scroll: e => 
+					state.modeId == "ride" ? immerseMap() :
+					e.target.scrollTop > 150 ? immerseContent() : 
+					e.target.scrollTop < 50  ? immerseMap() 
+			: 0 }}
 		>
 			<div class="drawer-glance col middle centered" style="position: sticky; top:0">
 					<h1 ${{ onn, click: e => setPage("startPage")}}>&lt;-Diyar</h1>

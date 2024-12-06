@@ -8,6 +8,7 @@ const setMode = async modeId => {
 	// console.log(state.mode)
 	const m = await import(`../modes/${modeId}.js`)
 	await setPage("maply")
+	state.modeId = modeId
 	state.mode = m[modeId]
 	if (prevMode) prevMode.die?.()
 	;(state.mode.init || state.mode.reset)?.()
