@@ -120,6 +120,7 @@
 	.drawer-padding-bottom {
 		/* min-height: 100vh; */ /*to avoid scroll thingies*/
 		min-height: 50vh; /*to avoid scroll thingies*/
+		min-height: 20vh; /*to avoid scroll thingies*/
 		/* background-image: linear-gradient(to up, #222, #fff) */
 		background-image: linear-gradient(to top, #eee , #fff );
 	}

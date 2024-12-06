@@ -38,4 +38,4 @@ export const startPage = () => v`
 `
 
 
-setTimeout(()=>setMode('shortestPathCities'), 200)
+// setTimeout(()=>setMode('ride'), 200)

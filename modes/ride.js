@@ -30,9 +30,9 @@ function drawerContent() {
 		case "init":
 		return v`
 		<div>
-			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
+			<button class="pc bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
 			Siz bu modda düşdüyünüz şəhərdən irəliləyərək qızılı rəngli şəhərlərə sərbəst şəkildə çatmalı və oradakı xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. <br><br>
-			<button class="btn" style="font-size: 16px" ${{ onn, click: e => {
+			<button class="bbtn" style="font-size: 16px" ${{ onn, click: e => {
 				m.step = "game"
 				ride.reset()
 				}}}>Hazırsınızsa 
@@ -50,20 +50,22 @@ function drawerContent() {
 				>`)}
 			</div>
 			Təbriklər! siz ${m.coins.slice(0, -1).map(({city}) => v`<b>${city}, </b>`)} və ${v`<b>${m.coins.at(-1).city}</b>`} şəhərlərindəki bütün xəzinələri toplayaraq qalib oldunuz.
-			<button class="btn" ${{ onn, click: e => {
+			<button class="bbtn" ${{ onn, click: e => {
 				m.state = "game"
 				ride.reset()
 			}}}>oyuna yenidən başla</button>
-			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+			<button class="pc bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 		</div>
 	`
 		case "game" :
 		repaint()
 		return v`		
 		<div class="mpadded">
-			<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
-			<button class="btn" ${{ onn, click: ride.reset}}>Yenidən başla</button>
-			<h1>at ${m.at}</h1>
+			<div class="row" style="gap: 14px; margin-bottom: 14px">
+				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+				<button class="bbtn" ${{ onn, click: ride.reset}}>Yenidən başla</button>
+			</div>
+			<h1 style="color: #252525">📍${m.at}</h1>
 			<div class="centered row middle wrap" style="margin-bottom: 10px">
 
 			${m.coins.map(coin => v`
@@ -72,7 +74,14 @@ function drawerContent() {
 			`)}
 				</div>
 			<div class="row middle wrap">
-				${neighbours[m.at].map(city=>v`<button class="neighbourCard"
+				${neighbours[m.at].map(city=>v`<button class="bbtn"
+					style="
+
+	padding: 15px 20px;
+	font-size: 16px;
+	border-radius: 30px;
+					margin: 7px;
+					"
 					${{ onn, click: e => {
 						m.at = city
 						const coin = m.coins.find(c => c.city == city)

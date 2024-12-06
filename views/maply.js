@@ -37,6 +37,7 @@ function immerseContent() {
 	document.body.classList.remove("immerse-map")
 }
 function immerseMap() {
+	if (state.modeId == "ride") return
 	document.body.classList.add("immerse-map")
 	document.body.classList.remove("immerse-content")
 }
@@ -46,7 +47,7 @@ immerseMap()
 export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 	<div class="view toprow row flips">
 		<div class="pinneds">
-			<button class="pc" ${{ on, click: e => pop(() => v`
+			<button style="position: fixed" class="pc" ${{ on, click: e => pop(() => v`
 				<div class="col box">
 					<img src="./qr-code.png" class="qr-img">
 				</div>
