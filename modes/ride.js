@@ -129,3 +129,12 @@ export const ride = {
 		`
 	}
 }
+const img_name = "Green_JEEP_CLEAN_All"
+const img_dir = "./assets/car"
+const img_ext = "png"
+setTimeout(() => {
+	for (let i = 0; i <= 48; i++) {
+		let img = new Image();
+		img.src = img_dir + "/" + img_name + "_" + (i + "").padStart(3, "0") + "." + img_ext
+	}
+})
