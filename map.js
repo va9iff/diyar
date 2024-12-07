@@ -77,14 +77,14 @@ function fixCarSprite(selectedSprite) {
 	else if (popc.destSprite < popc.sprite) {
 		phaseSprite = popc.sprite - 1
 		if (Math.abs(popc.destSprite - popc.sprite) > 24){
-			phaseSprite = popc.sprite + 4
+			phaseSprite = popc.sprite + 1
 			if (phaseSprite >= 49) phaseSprite = 0
 		}
 	}
 	else if (popc.destSprite > popc.sprite) {
 		phaseSprite = popc.sprite + 1
 		if (Math.abs(popc.destSprite - popc.sprite) > 24){
-			phaseSprite = popc.sprite - 4
+			phaseSprite = popc.sprite - 1
 			if (phaseSprite <= -1) phaseSprite = 48
 		}
 	}
