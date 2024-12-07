@@ -74,8 +74,20 @@ function fixCarSprite(selectedSprite) {
 	if (popc.destSprite == popc.sprite) {
 		return
 	}
-	else if (popc.destSprite < popc.sprite) phaseSprite = popc.sprite-1
-	else if (popc.destSprite > popc.sprite) phaseSprite = popc.sprite+1
+	else if (popc.destSprite < popc.sprite) {
+		phaseSprite = popc.sprite - 1
+		if (Math.abs(popc.destSprite - popc.sprite) > 24){
+			phaseSprite = popc.sprite + 4
+			if (phaseSprite >= 49) phaseSprite = 0
+		}
+	}
+	else if (popc.destSprite > popc.sprite) {
+		phaseSprite = popc.sprite + 1
+		if (Math.abs(popc.destSprite - popc.sprite) > 24){
+			phaseSprite = popc.sprite - 4
+			if (phaseSprite <= -1) phaseSprite = 48
+		}
+	}
 
 	popc.sprite = phaseSprite
 	const spriteString = (phaseSprite+"").padStart(2, "0")
@@ -86,7 +98,7 @@ function fixCarSprite(selectedSprite) {
 		setTimeout(()=>{
 			popc.willRotate = false
 			fixCarSprite()
-		}, 90 / ((Math.abs(popc.destSprite - popc.sprite)) + 1))
+		}, 80 / ((Math.abs(popc.destSprite - popc.sprite)) + 1))
 	}
 
 	// if (popc.sprite == selectedSprite) return null
