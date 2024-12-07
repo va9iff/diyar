@@ -113,7 +113,6 @@ function fixCarSprite(selectedSprite) {
 
 export function moveCar(city) {
 	if (!city) return car.style.display = "none"
-	else car.style.display = "inline"
 	// clear()
 	// fill(city, "red")
 	const prevCoords = coords[popc.car].map(c => +c.slice(0, -1))
@@ -132,6 +131,7 @@ export function moveCar(city) {
 	selectedSprite = Math.floor(degrees / 7.5)
 	popc.destSprite = selectedSprite
 	fixCarSprite()
+	car.style.display = "inline"
 
 // 
 	/*if (+(coords[city][0].slice(0, -1)) > +(coords[popc.car][0].slice(0, -1))) {

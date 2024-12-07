@@ -63,7 +63,13 @@ function drawerContent() {
 		<div class="mpadded">
 			<div class="row" style="gap: 14px; margin-bottom: 14px">
 				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
-				<button class="bbtn" ${{ onn, click: ride.reset}}>Yenidən başla</button>
+				<button class="bbtn" ${{ onn, click: e =>{
+					ride.reset()
+					setTimeout(()=>{
+						moveCar(null)
+						setTimeout(()=>moveCar(m.at), 60)
+					}, 60)
+				}}}>Yenidən başla</button>
 			</div>
 			<h1 style="color: #252525">📍${m.at}</h1>
 			<div class="centered row middle wrap" style="margin-bottom: 10px">
