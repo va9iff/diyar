@@ -53,7 +53,10 @@ for (const pathTitle of pathTitles) {
 		// console.log(_coords)
 
 	}
-	if (true) path.removeAttribute("id")
+	if (true) { 
+		path.removeAttribute("id")
+		path.removeAttribute("title")
+	}
 	pathes[pathTitle] = path
 }
 
