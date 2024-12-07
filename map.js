@@ -69,14 +69,34 @@ export function moveCar(city) {
 	else car.style.display = "inline"
 	// clear()
 	// fill(city, "red")
-	if (+(coords[city][0].slice(0, -1)) > +(coords[popc.car][0].slice(0, -1))) {
+	const prevCoords = coords[popc.car].map(c => +c.slice(0, -1))
+	const currCoords = coords[city].map(c => +c.slice(0, -1))
+	const dx = currCoords[0] - prevCoords[0]
+	const dy = currCoords[1] - prevCoords[1]
+	const radians = Math.atan2(dy, dx);
+	let degrees = radians * (180 / Math.PI);
+	// car.style.transform = `rotate(${degrees}deg) scaleX(-1)`
+	// car.style.rotate = `${degrees}deg`
+	let selectedSprite = 0
+	if (degrees < 0) {
+		degrees += 360;
+	}
+	console.log(degrees)
+	selectedSprite = Math.floor(degrees / 7.5)
+	const selectedSpriteString = (selectedSprite+"").padStart(2, "0")
+	car.src = `assets/car/Green_JEEP_CLEAN_All_0${selectedSpriteString}.png`
+	console.log(selectedSpriteString)
+
+// 
+	/*if (+(coords[city][0].slice(0, -1)) > +(coords[popc.car][0].slice(0, -1))) {
 		car.style.transform = "scaleX(-1)"
 		car.style.translate = "50% -50%"
 	} else {
 		car.style.transform = "scaleX(1)"
 		car.style.translate = "-50% -50%"
 
-	}
+	}*/
+
 	popc.car = city
 	car.style.left = coords[popc.car][0]
 	car.style.top = coords[popc.car][1]
@@ -112,7 +132,7 @@ const coins = []
 car.style.position = "absolute"
 // car.style.backgroundColor = "#0008"
 car.style.transition = "1700ms, transform 400ms, translate 700ms"
-car.style.transformOrigin = "left"
+// car.style.transformOrigin = "left"
 // car.style.borderRadius = "50%"
 car.style.width = "12%"
 car.style.filter = "drop-shadow(0 4px 3px #0008)"
