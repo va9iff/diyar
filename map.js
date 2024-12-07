@@ -62,8 +62,43 @@ for (const pathTitle of pathTitles) {
 
 const popc = {
 	car: "Bakı",
-	coins: []
+	sprite: 0,
+	destSprite: 0,
+	coins: [],
+	willRotate: false
 }
+function fixCarSprite(selectedSprite) {
+	console.log(popc.sprite, popc.destSprite)
+
+	let phaseSprite
+	if (popc.destSprite == popc.sprite) {
+		return
+	}
+	else if (popc.destSprite < popc.sprite) phaseSprite = popc.sprite-1
+	else if (popc.destSprite > popc.sprite) phaseSprite = popc.sprite+1
+
+	popc.sprite = phaseSprite
+	const spriteString = (phaseSprite+"").padStart(2, "0")
+	car.src = `assets/car/Green_JEEP_CLEAN_All_0${spriteString}.png`
+
+	if (!popc.willRotate) {
+		popc.willRotate = true
+		setTimeout(()=>{
+			popc.willRotate = false
+			fixCarSprite()
+		}, 50)
+	}
+
+	// if (popc.sprite == selectedSprite) return null
+	// let phaseSprite = selectedSprite > popc.sprite ? selectedSprite + 1 : selectedSprite < popc.sprite ? selectedSprite - 1 : popc.sprite
+	// popc.sprite = phaseSprite
+	// const selectedSpriteString = (phaseSprite+"").padStart(2, "0")
+	// car.src = `assets/car/Green_JEEP_CLEAN_All_0${selectedSpriteString}.png`
+	// if (phaseSprite !== selectedSprite) setTimeout(() => {
+	// 	fixCarSprite(selectedSprite)
+	// }, 400)
+}
+
 export function moveCar(city) {
 	if (!city) return car.style.display = "none"
 	else car.style.display = "inline"
@@ -83,9 +118,8 @@ export function moveCar(city) {
 	}
 	console.log(degrees)
 	selectedSprite = Math.floor(degrees / 7.5)
-	const selectedSpriteString = (selectedSprite+"").padStart(2, "0")
-	car.src = `assets/car/Green_JEEP_CLEAN_All_0${selectedSpriteString}.png`
-	console.log(selectedSpriteString)
+	popc.destSprite = selectedSprite
+	fixCarSprite()
 
 // 
 	/*if (+(coords[city][0].slice(0, -1)) > +(coords[popc.car][0].slice(0, -1))) {
