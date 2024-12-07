@@ -1,6 +1,7 @@
 .svg-image {
 	/* filter: drop-shadow(0 14px 25px #25252540); */
 	/* filter: drop-shadow(3px 16px 24px #252525); */
+	filter: drop-shadow(-3px 4px 0 #25252588) 
 }
 
 .svg-image path {
