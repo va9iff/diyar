@@ -78,14 +78,14 @@ function fixCarSprite(selectedSprite) {
 		phaseSprite = popc.sprite - 1
 		if (Math.abs(popc.destSprite - popc.sprite) > 24){
 			phaseSprite = popc.sprite + 2
-			if (phaseSprite >= 49) phaseSprite = 0
+			if (phaseSprite >= 48) phaseSprite = 0
 		}
 	}
 	else if (popc.destSprite > popc.sprite) {
 		phaseSprite = popc.sprite + 1
 		if (Math.abs(popc.destSprite - popc.sprite) > 24){
 			phaseSprite = popc.sprite - 2
-			if (phaseSprite <= -1) phaseSprite = 48
+			if (phaseSprite <= -1) phaseSprite = 47
 		}
 	}
 
@@ -98,7 +98,7 @@ function fixCarSprite(selectedSprite) {
 		setTimeout(()=>{
 			popc.willRotate = false
 			fixCarSprite()
-		}, 80 / ((Math.abs(popc.destSprite - popc.sprite)) + 1))
+		}, 200 / ((Math.abs(popc.destSprite - popc.sprite)) + 1))
 	}
 
 	// if (popc.sprite == selectedSprite) return null
@@ -178,6 +178,7 @@ const coins = []
 car.style.position = "absolute"
 // car.style.backgroundColor = "#0008"
 car.style.transition = "1700ms, transform 400ms, translate 700ms"
+car.style.transitionDelay = "400ms"
 // car.style.transformOrigin = "left"
 // car.style.borderRadius = "50%"
 car.style.width = "12%"
