@@ -86,7 +86,7 @@ function fixCarSprite(selectedSprite) {
 		setTimeout(()=>{
 			popc.willRotate = false
 			fixCarSprite()
-		}, 50)
+		}, 90 / ((Math.abs(popc.destSprite - popc.sprite)) + 1))
 	}
 
 	// if (popc.sprite == selectedSprite) return null
