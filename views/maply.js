@@ -54,7 +54,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			`)}}>i</button>	
 		</div>
 		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
-			<img src="./assets/img/azebg.png" class="azebg">
+			<img src="./assets/img/preblurred.jpg" class="azebg">
 			<div class="bgfade"></div>
 			<div class="svg-container">
 				${put(mapSvgElement)}
@@ -62,18 +62,39 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			</div>
 		</div>
 		<div class="contentside col grow" 
-			${{ on, scroll: e => 
-					state.modeId == "ride" ? immerseMap() :
-					e.target.scrollTop > 150 ? immerseContent() : 
-					e.target.scrollTop < 50  ? immerseMap() 
-			: 0 }}
+			${{ on, touchend: e => {
+				if (state.modeId == "ride") return 
+				let target = e.changedTouches[0].target
+				let i = 0
+				console.log(target)
+				while ((!(target.classList.contains("contentside"))) && i < 30) {
+					target = target.parentElement
+					i++
+					console.log(i, target)
+				}
+				console.log(target)
+				if (target.scrollTop > 5) immerseContent()
+				else if (target.scrollTop < 5 ) immerseMap()
+			},
+			scroll: e => {
+				if (state.modeId == "ride") return 
+				let target = e.target
+				if (target.scrollTop <= 0) {
+					immerseMap()
+				}
+			}}}
 		>
-			<div class="drawer-glance col middle centered" style="position: sticky; top:0">
+			<div ${{
+					cls, hidden: state.modeId == "ride"
+				}}
+				class="drawer-glance col middle centered" style="position: sticky; top:0">
 					<h1 ${{ onn, click: e => setPage("startPage")}}>&lt;-Diyar</h1>
 			</div>
 			<div class="drawer col">
 					${state.mode.content()}
-				<div class="drawer-padding-bottom"></div>
+				<div class="drawer-padding-bottom" ${{
+					cls, hidden: state.modeId == "ride"
+				}}></div>
 			</div>
 		</div>
 	</div>

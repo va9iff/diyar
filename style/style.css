@@ -31,3 +31,7 @@ html {
 html, body {
   overscroll-behavior: contain;
 }
+
+.hidden {
+	display: none !important
+}
