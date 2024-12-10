@@ -15,13 +15,13 @@ const setMode = async modeId => {
 	update()
 }
 
+		// <button class="start-mode"
+		// 	${{ onn, click: e => setMode('explore')}}>
+		// 	İşsiz
+		// </button>
 
 export const startPage = () => v`
 	<div class="centered middle row flips startPage" ${{ style, minHeight: '100svh'}}>
-		<button class="start-mode"
-			${{ onn, click: e => setMode('explore')}}>
-			İşsiz
-		</button>
 		<button class="start-mode"
 			${{ onn, click: e => setMode('shortestPathCities')}}>
 			Kaşif
