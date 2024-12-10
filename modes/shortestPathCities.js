@@ -104,7 +104,7 @@ export const shortestPathCities = {
 					<div class="centered row"><div class="dot-mark" style="background-color: #0D92F4"></div>${m.to}</div> <br>
 				</div>
 				<div class="path-find-stats" style="font-size: 16px;">
-					${m.from} şəhərindən ${m.top} şəhərinə getmək üçün keçiləcək şəhərləri tapın. <br><br>
+					${m.from} şəhərindən ${m.to} şəhərinə getmək üçün keçiləcək şəhərləri tapın. <br><br>
 					<img height='18px' style="margin: 0 8px" src="./assets/img/roader.svg">tapılan ${m.tried} 
 					ideal: ${m.ideal}
 				</div>
