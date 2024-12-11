@@ -53,7 +53,10 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 				</div>
 			`)}}>i</button>	
 		</div>
-		<div class="mapside row" ${{ on, touchstart: e => document.querySelector(".contentside")?.scrollTo({ top: 0 })}}>
+		<div class="mapside row" ${{ on, touchstart: e => {
+			if (state.modeId == "ride") return
+			document.querySelector(".contentside")?.scrollTo({ top: 0 })
+		}}}>
 			<img src="./assets/img/preblurred.jpg" class="azebg">
 			<div class="bgfade"></div>
 			<div class="svg-container">
