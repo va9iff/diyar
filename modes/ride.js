@@ -26,6 +26,7 @@ const m = {
 }
 
 function drawerContent() {
+	console.log('drawed')
 	switch (m.step) {
 		case "init":
 		return v`
@@ -82,13 +83,7 @@ function drawerContent() {
 				</div>
 			<div class="row middle wrap">
 				${neighbours[m.at].map(city=>v`<button class="bbtn"
-					style="
-
-	padding: 15px 20px;
-	font-size: 16px;
-	border-radius: 30px;
-					margin: 7px;
-					"
+					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
 					${{ onn, click: e => {
 						m.at = city
 						const coin = m.coins.find(c => c.city == city)
@@ -139,9 +134,9 @@ export const ride = {
 const img_name = "Green_JEEP_CLEAN_All"
 const img_dir = "./assets/car"
 const img_ext = "png"
-// setTimeout(() => {
-	// for (let i = 0; i <= 48; i++) {
-		// let img = new Image();
-		// img.src = img_dir + "/" + img_name + "_" + (i + "").padStart(3, "0") + "." + img_ext
-	// }
-// })
+setTimeout(() => {
+	for (let i = 0; i <= 48; i++) {
+		let img = new Image();
+		img.src = img_dir + "/" + img_name + "_" + (i + "").padStart(3, "0") + "." + img_ext
+	}
+}, 200)
