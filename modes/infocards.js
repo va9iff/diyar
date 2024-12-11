@@ -6,6 +6,7 @@ import { setPage } from "../pages.js"
 import { mapSvgElement, pathes,  clear, clearClass, fill, fillClass } from "../map.js"
 import { pathTitles } from "../path-titles.js"
 import { pop } from "../pieces/modal/modal.js"
+import { facts } from "../data/facts.js"
 
 import { ipucus } from "../assets/ipucus.js"
 
@@ -111,11 +112,11 @@ export const infocards = {
 								</div>`)
 							m.misclicks.push(city)
 						}
-					}}}>burada ${city} haqqında elə bir fakt var ki hörmətli istifadəçimiz bu faktı
-					istifadə edərək kartın ${ipucus[city]} şəhərini təmsil etdiyini tapmalıdır</div>
-				`)}
+					}}}>${facts[city][Math.floor(facts[city].length * Math.random())]}`)}
 				<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			</div>
 		`
 	}
 }
+
+console.log(Object.keys(facts))
