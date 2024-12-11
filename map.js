@@ -67,6 +67,8 @@ const popc = {
 	coins: [],
 	willRotate: false
 }
+
+// IS NOT USED IN ANYWHERE
 function fixCarSprite(selectedSprite) {
 	console.log(popc.sprite, popc.destSprite)
 
@@ -130,7 +132,10 @@ export function moveCar(city) {
 	console.log(degrees)
 	selectedSprite = Math.floor(degrees / 7.5)
 	popc.destSprite = selectedSprite
-	fixCarSprite()
+	// fixCarSprite()
+	popc.sprite = popc.destSprite
+	const spriteString = (popc.sprite+"").padStart(2, "0")
+	car.src = `assets/car/Green_JEEP_CLEAN_All_0${spriteString}.png`
 	car.style.display = "inline"
 
 // 

@@ -65,10 +65,11 @@ function drawerContent() {
 				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 				<button class="bbtn" ${{ onn, click: e =>{
 					ride.reset()
-					setTimeout(()=>{
-						moveCar(null)
-						setTimeout(()=>moveCar(m.at), 60)
-					}, 60)
+					moveCar(m.at)
+					// setTimeout(()=>{
+					// 	moveCar(null)
+					// 	setTimeout(()=>moveCar(m.at), 60)
+					// }, 60)
 				}}}>Yenidən başla</button>
 			</div>
 			<h1 style="color: #252525">📍${m.at}</h1>
@@ -138,9 +139,9 @@ export const ride = {
 const img_name = "Green_JEEP_CLEAN_All"
 const img_dir = "./assets/car"
 const img_ext = "png"
-setTimeout(() => {
+// setTimeout(() => {
 	for (let i = 0; i <= 48; i++) {
 		let img = new Image();
 		img.src = img_dir + "/" + img_name + "_" + (i + "").padStart(3, "0") + "." + img_ext
 	}
-})
+// })
