@@ -3,7 +3,7 @@ export const facts = {
         `Azərbaycanın "Odlar yurdu" adlanmasının səbənlərindən biri olan Yanar dağ burada yerləşir.`,
         `Mərkəzi Xırdalan şəhəri olan bu rayonda XVII əsrə aid Şal Sultan Hüseyn Məscidi yerləşir.`,
     ],
-    "Astara ": [
+    "Astara": [
         `İl ərzində çox böyük yağıntı alan bu rayon "Hikran milli parkını"-nın böyük hissəsini əhatə edir.`,
         `1963-cü ildə ləğv olunaraq Lənkərana birləşdirilsə də, 1965-ci ildə yenidən müstəqil olmuşdur.`,
     ],
@@ -49,7 +49,7 @@ export const facts = {
         `Bu ərazidə yerləşən eyniadlı şəhər "Arranın paytaxtı adlanırdı. (Söhbət Qəbələdən getmir)`,
         `944-cü ildə slavyanların hücumu ilə məhv edilən bu rayon tarix boyu bir daha əvvəlki kimi güclü ola bilmədi.`,
     ],
-    "Culfa ": [
+    "Culfa": [
         `Buradakı eyniadlı şəhər Naxçıvan Muxtar Respublikasının ən böyük şəhəridir.`,
         `İran ərazisində, Araz çayının əks sahilində bu şəhərə simmetrik şəkildə eyniadlı şəhər yerləşir.`,
     ],
@@ -69,7 +69,7 @@ export const facts = {
         `Bu rayondakı eyniadlı şəhər 17 oktyabr 2020-ci ildə erməni işğalından azad olunmuşdur.`,
         `Quruçay mədəniyyəti deyilən tarixi ərazi bu rayonumuzun ərazisindədir.`,
     ],
-    "Goranboy ": [
+    "Goranboy": [
         `Kiçik Qafqazda yerləşən bu rayonumuzda Acıdərə və Qazanbulaq neft yatağları yerləşir.`,
         `Korçay yasaqlığı məhz bu rayon ərazisində yerləşir.`,
     ],
@@ -107,7 +107,7 @@ export const facts = {
         `Vətən müharibəsi zamanı məhz bu rayonda yerləşən dəhlizin Azərbaycan ordusunun nəzarətinə keçməsi ermənilərin Ermənistanla olan əlaqələtini kəsdi.`,
         `Qarabağın general qubernatoru olan Xosrov bəy Sultanov məhz bu rayonda dünyaya gözlərini açmışdır.`,
     ],
-    "Lerik ": [
+    "Lerik": [
         `Bu rayonun ən yüksək zirvələri cənub silsiləsindəki Gömürgöy (2493 m) və Qızyurdudur (2433 m).`,
         `Rayonun Zuvand ərazisində Zuvand dövlət yasaqlığı (qoruq) vardır.`,
     ],
@@ -127,7 +127,7 @@ export const facts = {
         `Həm palçıq vulkanları, həm də neftlə bol olan bu rayonda Azırbaycanın ilk neft mədənlərindən biri olan Qarasu neft yatağı yerləşir.`,
         `Kür çayı Xəzər dənizinə məhz bu ərazidə tökülür.`,
     ],
-    "Ordubad ": [
+    "Ordubad": [
         `Quru meyvələr dedikdə ilk ağla gələn yer məhz bu rayondur.`,
         `Bu rayonun əhalisi 1603-cü ildə Səfəvilərə yardımlna görə vergidən azad olunmuşdur.`,
     ],
@@ -135,19 +135,19 @@ export const facts = {
         `Bu rayonda alban məbədlərinin, Muxas qülləsinin (XIV əsr), Surxayxan qalasının qalıqları (XVIII əsr) bu günə kimi qalmışdır.`,
         `Türklər, ləzgilər, avarlar və digər etnik azlıqların bir yerdə yaşadığı nu rayonda olan Nohurqışlaq gölü turistlərin diqqətini cəlb edir.`,
     ],
-    "Qax ": [
+    "Qax": [
         `XVI əsrə qədər bu rayon dağlar arasında sığınacaq mənasınl verən "Torağay" adlandırılmışdır.`,
         `XVI əsrdə yaranan İlisu sultanlığı məhz bu rayonun ərazisində formalaşmışdı.`,
     ],
-    "Qazax ": [
+    "Qazax": [
         `Buradakı bulaqlardan biri təbii çatlardan süzülən su damcılarına görə Damcılı adlandırılmışdır.`,
         `Bu rayondakı Daş Salahlı mağarasındakı qayaüstü rəsmlər buranın ilk insan məskənlərindən biri olduğunu göstərir.`,
     ],
-    "Qobustan ": [
+    "Qobustan": [
         `Qədim Diribaba türbəsi əvvəlki adı "Mərəzə" olan bu rayonda yerləşir.`,
         `Bu rayonda Mezolit dövrünə aid olan 5000-dən çox qayaüstü rəsm var və Tur Heyerdal Skandinaviyadakı qayaüstü rəsmlərlə çox bənzədiyini bildirmişdi.`,
     ],
-    "Quba ": [
+    "Quba": [
         `Türk mənşəli massaget tayfalarının yaşadığı bu rayon günümüzdə dadlı almaları ilə seçilir.`,
         `Peyğəmbərimizin Mədinə şəhəri ətrafında tikdiyi ilk məscidin adı belə adlanır.`,
     ],
@@ -155,7 +155,7 @@ export const facts = {
         `1921-ci ildə rus-erməni, eləcə də daşnak-bolşevik ittifaqının məntiqi nəticəsi olaraq, imperiya mahalı iki yerə bölmüşdür.`,
         `25 oktyabr 2020-ci ilədək mənfur düşmənin işğalı altında olan bu şəhərin adı adı Şirvanşah Şeyx İbrahim Dərbəndinin babasının adı KeyQubadın adı ilə bağlıdır`,
     ],
-    "Qusar ": [
+    "Qusar": [
         `Bu rayon mövqeyinə gürə Azərbaycanın şimal qapısı adlanır.`,
         `Azərbaycanın ən hündür zirvəsi olan Bazardüzü ləzgilərin say çoxluğu ilə seçilən bu rayonda yerləşir.`,
     ],
@@ -193,15 +193,15 @@ export const facts = {
     "Saatlı ": [
         `Bu rayon Əmir Səədin adını daşıyan və Ağrıdağ vadisində yaşayan türk mənşəli Saadlı tayfasının adı ilə adlandırılıb.`,
     ],
-    "Sabirabad ": [
+    "Sabirabad": [
         `Bu rayon dadlı və şirin qarpızı ilə seçilir.`,
         `Kür və Araz çaylarının bir-birinə qovuşduğu Suqovuşan kəndi burada yerləşir.`,
     ],
-    "Salyan ": [
+    "Salyan": [
         `Bütün cənubi Rusiyada və Qafqazda ilk dəfə olaraq 1864-cü ildə burada metroloji stansiya yaradılmışdır.`,
         `Orta əsrlərdə buradan Ərdəbilə, Təbrizə və digər ərazilərə Babazənən dağının ətəyindən çıxarılan neft və duz göndərilirdi.`,
     ],
-    "Samux ": [
+    "Samux": [
         `Eldar Şamı Dövlət qoruğu məhz bu rayonda yerləşir.`,
         `Bu rayonun ərazisindən Kür, Qabırrıçay (İori), Alazan (Qanıx), Gəncəçay və Qoşqarçay çayları keçir.`,
     ],
@@ -215,13 +215,13 @@ export const facts = {
         `Bu rayon həm Ermənistan, həm Türkiyə, həm də İranla sərhəddə yerləşir.`,
         `Türkiyə ilə yeganə quru sərhədimiz olan bu rayonda Əjdahan mağarası yerləşir.`,
     ],
-    "Tovuz ": [
+    "Tovuz": [
         `2020-ci ilin iyulunda döyüş zamanı General Polad Həşimov bu rayonda şəhid olmuşdur.`,
     ],
     "Tərtər ": [
         `Bu rayonun keşmiş adı Mirbəşirdir.`,
     ],
-    "Ucar ": [
+    "Ucar": [
         `Əfsanəyə görə bu rayon adını "Ucqar" sözündən götürüb; belə ki, bura ilə Şirvanşahların paytaxtı arasında uzun məsaf var idi.`,
     ],
     "Xaçmaz ": [
@@ -251,11 +251,11 @@ export const facts = {
     "Yardımlı ": [
         `İranla həmsərhəd olan bu rayon ərazisindən axan ən böyük çay Viləşçaydır.`,
     ],
-    "Yevlax ": [
+    "Yevlax": [
         `Kimmer-İskit-Sak tayfalarından qalan Zərgərtəpə kurqanı bu rayon ərazisində yerləşir.`,
         `2023-cü il 19 sentyabrda həyata keçirilən antiterror əməliyyatı məhz bu ərazidə imzalanan müqavilə ilə bitmişdir.`,
     ],
-    "Zaqatala ": [
+    "Zaqatala": [
         `Bu rayonun adının etimalogiyası türk mənşəlisak tayfalarından gəlir; "Sak düzü" və ya "Sak tala" birləşmələrindən yaranmışdır.`,
         `Bu rayonun ən uca zirvəsi Qutondağdır. (3648 metr)`,
     ],
@@ -271,3 +271,5 @@ export const facts = {
         `Bu rayon 1963-cü ildə ləğv olunub Ucarın tabeliyinə verilmiş, 1965-ci ildə isə yenidən  müstəqil olmuşdur.`,
 	]
 }
+
+window.facts = facts
