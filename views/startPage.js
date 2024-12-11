@@ -34,6 +34,10 @@ export const startPage = () => v`
 			${{ onn, click: e => setMode('infocards')}}>
 			Səyyar
 		</button>
+		<button class="start-mode"
+			${{ onn, click: e => setMode('detector')}}>
+			Detektor
+		</button>
 	</div>
 `
 
