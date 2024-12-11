@@ -25,6 +25,8 @@ const m = {
 }
 
 function drawerContent() {
+		const steps = shortest(m.at, m.to).length - 1
+		const progress = steps == 0 ? 100 : 100 / (steps+1) + 50
 		return v`		
 		<div class="mpadded">
 			<div class="row" style="gap: 14px; margin-bottom: 14px">
@@ -35,7 +37,15 @@ function drawerContent() {
 				}}}>↻</button>
 			</div>
 			<h1 style="color: #252525">📍${m.at}</h1>
-			<div class="row progress">${shortest(m.at, m.to).length - 1}</div>
+			<div class="row centered progressfield" ${{ cls, oneleft: steps == 1}}>
+				<div class="row progress grow">
+					<div class="progressbar" ${{ style, width: progress + "%"}}></div>
+				</div>
+				<span style="font-size: 24px; margin: 0 10px ">
+					${steps}
+				</span>
+			</div>
+			<br>
 			<div class="row middle wrap">
 				${neighbours[m.at].map(city=>v`<button class="bbtn"
 					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "

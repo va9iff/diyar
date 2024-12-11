@@ -42,4 +42,4 @@ export const startPage = () => v`
 `
 
 
-// setTimeout(()=>setMode('ride'), 200)
+setTimeout(()=>setMode('detector'), 200)

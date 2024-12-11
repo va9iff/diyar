@@ -1,0 +1,41 @@
+.progressbar {
+	background: linear-gradient(to right, #7de047 80%, #fecb00);
+	height: 15px;
+	border-radius: 16px;
+	transition: 400ms;
+}
+
+.progressfield {
+	font-size: 20px;
+	border: 2px solid #252525;
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+
+}
+
+
+@keyframes oneleftanim {
+	0% {
+		/* box-shadow: 0 0 0 0 #77f; */
+		filter: hue-rotate(0deg)
+	}
+	50% {
+		filter: hue-rotate(-180deg)
+		/* box-shadow: 0 0 0 4px #77f; */
+	}
+	100% {
+		filter: hue-rotate(-360deg)
+		/* box-shadow: 0 0 0 0 #77f; */
+	}
+
+}
+.oneleft .progressbar{
+	/* animation: oneleftanim 400ms infinite; */
+	animation: oneleftanim 1400ms infinite linear;
+	/* animation: coin-anim 1700ms infinite linear, win-coin-anim 3000ms cubic-bezier(.14,.66,.14,1.09); */
+}
+
+.progress {
+	padding: 4px;
+}
