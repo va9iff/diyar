@@ -31,7 +31,7 @@ function drawerContent() {
 		case "init":
 		return v`
 		<div>
-			<button class="pc bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
+			<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
 			Siz bu modda düşdüyünüz şəhərdən irəliləyərək qızılı rəngli şəhərlərə sərbəst şəkildə çatmalı və oradakı xəzinələri toplamalısınız. Bütün xəzinələri topladığınızda oyunun qalibi olacqaqsınız. <br><br>
 			<button class="bbtn" style="font-size: 16px" ${{ onn, click: e => {
 				m.step = "game"
