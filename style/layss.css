@@ -160,6 +160,9 @@
 	.col.flips {
 		flex-direction: row
 	}
+	.modes {
+		width: 100%
+	}
 }
 
 

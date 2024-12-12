@@ -21,41 +21,52 @@ const setMode = async modeId => {
 		// </button>
 
 
-	// later
-// const modeNames = {
-// 	ride: "Xəzinədar",
-// 	detector: "Detektor",
-// 	shortestPathCities: "Kaşif",
-// 	infocards: "Səyyar"
-// }
-//
-// const modeStarter = modeId => v`
-// 	<button class="modeCard" ${{ onn, click: e => setMode(modeId)}}>
-// 		<img ${{attr, src: `../assets/modeimg/${modeId}.jpg` }}>
-// 		<span>${modeNames[modeId]}</span>
-// 	</button>
-// `
-//
-export const startPage = () => v`
-	<div class="centered middle row flips startPage" ${{ style, minHeight: '100svh'}}>
-		<button class="start-mode"
-			${{ onn, click: e => setMode('shortestPathCities')}}>
-			Kaşif
+const modeNames = {
+	ride: "Xəzinədar",
+	detector: "Detektor",
+	shortestPathCities: "Kaşif",
+	infocards: "Səyyar"
+}
+
+const modeStarter = modeId => v`
+	<div class="col centered modeContainer">
+		<button class="modeCard" ${{ onn, click: e => setMode(modeId)}}>
+			<img style="z-index: 17" class="modeCardImage" ${{attr, src: `../assets/modeimgs/${modeId}.jpeg` }}>
 		</button>
-		<button class="start-mode"
-			${{ onn, click: e => setMode('ride')}}>
-			Xəzinədar
-		</button>
-		<button class="start-mode"
-			${{ onn, click: e => setMode('infocards')}}>
-			Səyyar
-		</button>
-		<button class="start-mode"
-			${{ onn, click: e => setMode('detector')}}>
-			Detektor
-		</button>
+		<span style="z-index: 18" class="modeName">${modeNames[modeId]}</span>
 	</div>
 `
 
+export const startPage = () => v`
+	<div class="startPage" style="height: 100svh; width: 100%;">
+		<div class="col box" style="height: 100%; width: 100%;">
+			<div class="modes centered row flips">
+				${[
+					"ride",
+					"detector",
+					"infocards",
+					"shortestPathCities"
+				].map(modeId=>modeStarter(modeId))}
+			</div>
+		</div>
+	</div>
+`
+		// <button class="start-mode"
+		// 	${{ onn, click: e => setMode('shortestPathCities')}}>
+		// 	Kaşif
+		// </button>
+		// <button class="start-mode"
+		// 	${{ onn, click: e => setMode('ride')}}>
+		// 	Xəzinədar
+		// </button>
+		// <button class="start-mode"
+		// 	${{ onn, click: e => setMode('infocards')}}>
+		// 	Səyyar
+		// </button>
+		// <button class="start-mode"
+		// 	${{ onn, click: e => setMode('detector')}}>
+		// 	Detektor
+		// </button>
 
-setTimeout(()=>setMode('detector'), 200)
+
+// setTimeout(()=>setMode('detector'), 200)
