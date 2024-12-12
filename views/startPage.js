@@ -20,6 +20,22 @@ const setMode = async modeId => {
 		// 	İşsiz
 		// </button>
 
+
+	// later
+// const modeNames = {
+// 	ride: "Xəzinədar",
+// 	detector: "Detektor",
+// 	shortestPathCities: "Kaşif",
+// 	infocards: "Səyyar"
+// }
+//
+// const modeStarter = modeId => v`
+// 	<button class="modeCard" ${{ onn, click: e => setMode(modeId)}}>
+// 		<img ${{attr, src: `../assets/modeimg/${modeId}.jpg` }}>
+// 		<span>${modeNames[modeId]}</span>
+// 	</button>
+// `
+//
 export const startPage = () => v`
 	<div class="centered middle row flips startPage" ${{ style, minHeight: '100svh'}}>
 		<button class="start-mode"

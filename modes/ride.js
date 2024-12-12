@@ -106,6 +106,7 @@ export const ride = {
 		// }, 1000)
 		clear()
 		moveCar(null)
+		// immerseContent() // later
 	},
 	die() {
 		setCoins([])
