@@ -10,7 +10,7 @@
 @import url("./niceys.css");
 @import url("./mobile.css");
 @import url("./detector.css");
-
+@import url("./scrollbars.css");
 * {
 	padding: 0;
 	margin: 0;

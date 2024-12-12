@@ -1,0 +1,33 @@
+/* width */
+
+:root {
+	--scroll-bg: #aaa;
+	--scroll-fg: #F75C03;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scroll-bg);
+  box-shadow: 0 0 0 4px #eee inset;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-fg);
+  opacity: 0.7;
+  border-radius: 40px;
+  box-shadow: 0 0 0 2px var(--scroll-bg) inset;
+  box-shadow: 2px 3px 4px 0px rgba(255, 255, 255, 0.25) inset, -2px -5px 4px 0px rgba(99, 83, 19, 0.30) inset;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	border: 2px solid #444c
+}
+
