@@ -32,7 +32,9 @@ const modeNames = {
 const modeStarter = modeId => v`
 	<div class="col centered modeContainer" ${{ onn, click: e => setMode(modeId)}}>
 		<button class="modeCard">
-			<img style="z-index: 17" class="modeCardImage" ${{attr, src: `./assets/modeimgs/${modeId}.jpeg` }}>
+			<img style="z-index: 17" class="modeCardImage" ${{attr, src: `./assets/modeimgs/${modeId}.jpeg` }}
+			${{ style, transform: `translateX(${-4*(rx-0.5)*2}%)`}}
+	>
 		</button>
 		<span style="z-index: 18" class="modeName">${modeNames[modeId]}</span>
 	</div>
