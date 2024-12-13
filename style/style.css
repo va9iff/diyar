@@ -11,6 +11,7 @@
 @import url("./mobile.css");
 @import url("./detector.css");
 @import url("./scrollbars.css");
+@import url("./swaper.css");
 * {
 	padding: 0;
 	margin: 0;

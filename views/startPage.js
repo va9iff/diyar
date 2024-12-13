@@ -25,7 +25,8 @@ const modeNames = {
 	ride: "Xəzinədar",
 	detector: "Detektor",
 	shortestPathCities: "Kaşif",
-	infocards: "Səyyar"
+	infocards: "Səyyar",
+	swaper: "Seçici",
 }
 
 const modeStarter = modeId => v`
@@ -44,6 +45,7 @@ export const startPage = () => v`
 				${[
 					"ride",
 					"detector",
+					"swaper",
 					"infocards",
 					"shortestPathCities"
 				].map(modeId=>modeStarter(modeId))}
@@ -69,4 +71,4 @@ export const startPage = () => v`
 		// </button>
 
 
-setTimeout(()=>setMode('infocards'), 200)
+setTimeout(()=>setMode('swaper'), 200)
