@@ -1,5 +1,5 @@
 
-import { v, state, onn,  cls, style, attr, none, update } from "../v.js"
+import { v, state, onn, on, cls, style, attr, none, update } from "../v.js"
 import { input } from "../pieces/input.js"
 import { drawerHandle } from "../pieces/drawer-handle.js"
 import { setPage } from "../pages.js"
@@ -19,12 +19,12 @@ function win() {
 	pop(close => v`
 		<div>
 			Qalib gəldiniz! Oynamağa dəvam etmək istəyirsiniz?
-			<button class="btn" ${{ onn, click: e => { 
+			<button class="bbtn" ${{ onn, click: e => { 
 				infocards.reset()
 				m.won = false
 				close()
 			}}}>yenidən başla</button>
-			<button class="btn" ${{ onn, click: close}}>bağla</button>
+			<button class="bbtn" ${{ onn, click: close}}>bağla</button>
 		</div>
 	`)
 	update()
@@ -59,6 +59,14 @@ function setCurrentStep(currentStep) {
 		m.shownTips[city] = facts[city][Math.floor(facts[city].length * Math.random())]
 }
 
+let interval = null
+function repeat(fun) {
+	if (interval) clearInterval(interval)
+	if (fun) interval = setInterval(fun, 15)
+}
+
+let focusedCard = 0
+
 export const infocards = {
 	reset() {
 		m.won = false
@@ -88,40 +96,58 @@ export const infocards = {
 		fill(m.shortestRoad[m.currentStep], "#77f")
 		fillClass(m.shortestRoad[m.currentStep], "current-blinking")
 		return v`
-			<div class="mpadded">
-				<button class="pc btn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
-				<button class="btn" ${{ onn, click: e => infocards.reset()}}>yenidən başlat</button>
-			</div>
 			<div class="sticky-top" style="background-color: var(--content-bg); z-index: 10">
-				${drawerHandle()}
-				<div style="text-align: center; font-size: 30px; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
+				<div class="centered row wrap" style="padding-left: 20px; gap: 5px;" >
+					${drawerHandle()}
+					<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+					<button class="bbtn" ${{ onn, click: e => infocards.reset()}}>↻</button>
+					<div class="row middle" style="margin-left: auto; gap: 5px; margin-right: 20px; text-align: center; font-size: 30px; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
+				</div>
 			</div>
-			<div class="mpadded">
+			<div class="mpadded" ${{on, touchstart: e=>repeat(null)}}>
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
-					çata bildiniz! <button class="btn" ${{ onn, click: e => { infocards.reset() }}}>
-						yenidən başlaya</button> və ya <button class="btn" ${{ onn, click: e => setPage("startPage")}}>
+					çata bildiniz! <button class="bbtn" ${{ onn, click: e => { infocards.reset() }}}>
+						yenidən başlaya</button> və ya <button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>
 						&lt; geri qayıda</button> bilərsiniz.
 					</div>` :
-						m.cards.map(city => v`
-					<div class="game-card" ${{ cls, disabled: m.misclicks.includes(city)}} ${{ onn, click: e => {
+						v`
+					<div class="row box scroll-x cards-scroller" style="position: relative"> 
+						<div class="leftScroller" ${{on, mouseover: e => {
+							repeat(()=> e.target.parentElement.scrollLeft -= 5)
+							// e.target.parentElement.scrollLeft -= 2
+						}, mouseleave: e => repeat(null), 
+							// mousemove: e => e.target.parentElement.scrollLeft -= 3, // speeder
+							// click: e => e.target.parentElement.scrollLeft -= 1300
+						}}></div>
+						${m.cards.map((city, i) => v`
+						<button class="game-card" ${{ cls, disabled: m.misclicks.includes(city), [`game-c${i}`]: true}} ${{ onn, click: e => {
 						if (m.misclicks.includes(city)) return null
 						if (city == m.shortestRoad[m.currentStep]) {
 							if (m.currentStep == m.shortestRoad.length - 1) return m.won = pop(close => v`
 								<h1>Qalib oldunuz! </h1>
-								<button class="btn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
+								<button class="bbtn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
 								`) || true
 							setCurrentStep(m.currentStep+1)
 							m.cards = getGameCards()
 						} else {
 							m.lives--
 							if (m.lives <= 0) return pop(close => v`<div>
-								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="btn" ${{
+								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="bbtn" ${{
 									onn, click: e => { infocards.reset(); close() }
 								}}>yenidən başla</button> 
 								</div>`)
 							m.misclicks.push(city)
 						}
-					}}}>${m.shownTips[city]}`)}
+					}}}>${m.shownTips[city]}</button>`)}
+						<div class="rightScroller" ${{on, mouseover: e => {
+							repeat(()=> e.target.parentElement.scrollLeft += 5)
+							// e.target.parentElement.scrollLeft -= 2
+						}, mouseleave: e => repeat(null), 
+							// mousemove: e => e.target.parentElement.scrollLeft += 3, // speeder
+							// click: e => e.target.parentElement.scrollLeft += 1300
+						}}></div>
+
+					</div>`}
 				<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			</div>
 		`

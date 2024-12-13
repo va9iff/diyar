@@ -1,22 +1,36 @@
 .game-card {
 	border: 5px solid #444;
 	cursor: pointer;
-	margin: 4px;
-	border-radius: 13px;
-	padding: 17px;
-	transition: 200ms
+	/* margin: 4px; */
+	border-radius: 30px;
+	padding: 20px;
+	flex: 1;
+	transition: 200ms;
+	display: block;
+	min-height: 450px;
+	min-width: 300px;
+	font-size: 18px;
+	color: #252525;
+	background-color: #fff;
+
+
+	/* for .box class  */
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+
+}
+
+
+.game-card:hover {
+	box-shadow: 0 14px 16px #25252599;
+	transform: scale(1.1) translate(0 -10px);
 }
 
 .game-card.disabled {
 	opacity: 0.6;
+	box-shadow: 0 0 14px 14px red inset;
+	transition: 200ms;
 } 
-
-.game-card:hover {
-	box-shadow: 0 0 16px #25252599;
-	/* scale: 1.01; */
-	translate: 10px 0
-}
-
 
 .destination-text {
 	font-size: 36px;
@@ -69,4 +83,44 @@
 	background-color: red;
 	border-radius: 50%;
 	margin: 0 10px;
+}
+
+
+.leftScroller, .rightScroller { 
+	position: sticky; 
+	transform: scale(1);
+	/* min-width: 20%; */
+	/* min-height:	150px;  */
+	min-height: 150px;
+	min-width: 50px;
+	border-radius: 40px;
+	background-color: #25252533;
+	transition: 200ms;
+}
+.leftScroller { 
+	left: 0;
+	/* background: red; */
+	border-radius: 40px 10px 10px 40px;
+	transform-origin:left;
+}
+
+.rightScroller { 
+	right: 0;
+	border-radius: 10px 40px 40px 10px;
+	transform-origin:right;
+	/* background: blue; */
+}
+
+.cards-scroller {
+	gap: 15px;
+	padding: 23px 3px;
+	align-items: stretch;
+}
+
+
+.leftScroller:hover, .rightScroller:hover { 
+	transform: scale(1.1);
+	z-index: 66;
+	/* background-color: transparent; */
+	border: 2px solid #33a3
 }
