@@ -10,6 +10,7 @@
 	border-radius: 30px;
 	/* background-color: hsl(120deg, 100%, 60%); */
 	transition: 143ms;
+	-webkit-tap-highlight-color: transparent;
 
 }
 
@@ -18,11 +19,12 @@
 	left: 60px;
 	z-index: 7;
 	transition: 400ms;
+	pointer-events: none;
 }
 
 .isSwapping {
 	/* border: 5px solid red */
-	box-shadow: 0 0 0 4px #222;
+	box-shadow: 0 0 0 5px #222;
 }
 
 .swapperIndexes {

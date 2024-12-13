@@ -23,10 +23,10 @@ const setMode = async modeId => {
 
 const modeNames = {
 	ride: "Xəzinədar",
-	detector: "Detektor",
+	detector: "Detektiv",
 	shortestPathCities: "Kaşif",
 	infocards: "Səyyar",
-	swaper: "Seçici",
+	swaper: "Nizamkar",
 }
 
 const modeStarter = modeId => v`

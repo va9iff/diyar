@@ -18,7 +18,7 @@ function repaint() {
 
 const m = {
 	step: "init",
-	swapCount: 5,
+	swapCount: 3,
 	cards: [],
 	winningCards: [],
 	swapping: null,
@@ -46,7 +46,11 @@ function getNewCities() {
 			card.i = shuffled.indexOf(card.city) // assign i
 		}
 }
-
+const difficulties = {
+	"Asan": 3,
+	"Orta": 5,
+	"Çətin": 10
+}
 function drawerContent() {
 		const steps = shortest(m.at, m.to).length - 1
 		const progress = steps == 0 ? 100 : 100 / (steps+1) + 50
@@ -54,6 +58,21 @@ function drawerContent() {
 		<div class="mpadded">
 			<div class="row" style="gap: 14px; margin-bottom: 14px">
 				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
+				<details style="position: relative">
+					<summary class="bbtn">çətinlik</summary>
+					<div class="row" style="position: absolute; top: 110%; gap: 6px; transform: scale(1); z-index: 19;
+						filter: drop-shadow(4px 9px 4px #26262699)">
+						${Object.entries(difficulties).map(([difficulty, count]) => v`
+							<button class="bbtn" ${{ onn, click: e => {
+								e.target.parentElement.parentElement.removeAttribute("open")
+								m.swapCount = count
+								swaper.reset()
+							}}}>
+								${difficulty}
+							</button>
+							`)}
+					</div>
+				</details>
 				<button class="bbtn" ${{ onn, click: e =>{
 					swaper.reset()
 					moveCar(m.at)
@@ -93,7 +112,7 @@ function drawerContent() {
 			<button class="bbtn" ${{
 				onn, click: e => {
 					for (const [i, city] of m.winningCards.entries()) {
-						// if (m.cards.find(card => card.city == city).i != i) return
+						if (m.cards.find(card => card.city == city).i != i) return
 					}
 					m.openedCities.push(...m.winningCards)
 					getNewCities()
