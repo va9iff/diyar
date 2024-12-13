@@ -9,21 +9,43 @@ import { pop } from "../pieces/modal/modal.js"
 function repaint() {
 	clear()
 	for (const [j, winningCity] of m.winningCards.entries()) {
-		fill(winningCity, `hsl(${(350/(j+1))}deg, 80%, 60%)`)
+		fill(winningCity, `hsl(${360/m.winningCards.length * j}deg, 80%, 60%)`)
+	}
+	for (const city of m.openedCities) {
+		fill(city ,"transparent")
 	}
 }
 
 const m = {
 	step: "init",
-	swapCount: 3,
+	swapCount: 5,
 	cards: [],
 	winningCards: [],
 	swapping: null,
+	openedCities: []
 }
 
 const holderHeight = 70
 const gaps = 20
 const swapHeight = 40
+
+function getNewCities() {
+		if (m.openedCities.length >= pathTitles.length) alert("won")
+		const cards = []
+		for (let i = 0; i < m.swapCount; i++) {
+			if (m.openedCities.length + cards.length >= pathTitles.length) break
+			console.log(m.openedCities.length)
+			cards.push(randomCity([...cards, ...m.openedCities]))
+		}
+		m.cards = cards.map(city => city) // just names
+		m.winningCards = [...m.cards]
+		const shuffled = shuffle(m.cards) // shuffled strings
+		// const shuffled = (m.cards) // shuffled strings
+		m.cards = m.cards.map(city => ({ city })) // now objs for i
+		for (const card of m.cards) {
+			card.i = shuffled.indexOf(card.city) // assign i
+		}
+}
 
 function drawerContent() {
 		const steps = shortest(m.at, m.to).length - 1
@@ -45,7 +67,7 @@ function drawerContent() {
 					<div class="swapHold" 
 					${{ cls, isSwapping: m.swapping == j}}
 					${{ style, height: `${holderHeight}px`, top: `${j*(holderHeight + gaps)}px`,
-							backgroundColor: `hsl(${(350/(j+1))}deg, 80%, 60%)`
+							backgroundColor: `hsl(${360/m.winningCards.length * j}deg, 80%, 60%)`
 					}}
 						${{onn, click: e => {
 							console.log(m.cards)
@@ -71,9 +93,10 @@ function drawerContent() {
 			<button class="bbtn" ${{
 				onn, click: e => {
 					for (const [i, city] of m.winningCards.entries()) {
-						if (m.cards.find(card => card.city == city).i != i) return
+						// if (m.cards.find(card => card.city == city).i != i) return
 					}
-					alert("won")
+					m.openedCities.push(...m.winningCards)
+					getNewCities()
 				}
 			}}>Təsdiqlə</button>
 		</div>
@@ -95,18 +118,8 @@ export const swaper = {
 	},
 	reset() {
 		m.step = "game"
-		const cards = []
-		for (let i = 0; i < m.swapCount; i++) {
-			cards.push(randomCity(cards))
-		}
-		m.cards = cards.map(city => city) // just names
-		m.winningCards = [...m.cards]
-		const shuffled = shuffle(m.cards) // shuffled strings
-		// const shuffled = (m.cards) // shuffled strings
-		m.cards = m.cards.map(city => ({ city })) // now objs for i
-		for (const card of m.cards) {
-			card.i = shuffled.indexOf(card.city) // assign i
-		}
+		m.openedCities = []
+		getNewCities()
 	},
 	content() {
 		repaint()
