@@ -37,14 +37,16 @@ function immerseContent() {
 	document.body.classList.remove("immerse-map")
 }
 function immerseMap() {
-	if (state.mode?.fixed) return
+	// if (state.mode?.fixed) return
 	document.body.classList.add("immerse-map")
 	document.body.classList.remove("immerse-content")
 }
 
 immerseMap()
 
-export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
+export const maply = () => {
+	if (state.mode?.fixed) setTimeout(()=>immerseMap(), 300)
+	return !state.mode ? v`<h1>loading</h1>` : v`
 	<div class="view toprow row flips">
 		<div class="pinneds">
 			<button style="position: fixed" class="pc" ${{ on, click: e => pop(() => v`
@@ -102,3 +104,4 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 		</div>
 	</div>
 `
+}
