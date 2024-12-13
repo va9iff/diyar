@@ -37,10 +37,21 @@ const modeStarter = modeId => v`
 		<span style="z-index: 18" class="modeName">${modeNames[modeId]}</span>
 	</div>
 `
-
+let rx = 0
 export const startPage = () => v`
-	<div class="startPage" style="height: 100svh; width: 100%;">
-		<div class="col box" style="height: 100%; width: 100%;">
+	<div class="startPage" style="height: 100svh; width: 100%; overflow: hidden" ${{ on, mousemove: e => {
+				rx = e.clientX / window.innerWidth
+				update()
+			}}}>
+		<div class="col box" 
+			style="height: 100%; width: 100%; transition: 30ms; transition-timing-function: linear;"
+			${{ custom, update: el=> {
+				// console.log(window.innerWidth , el.scrollWidth)
+				const diff = window.innerWidth - el.scrollWidth
+				console.log(diff)
+				el.style.transform = `translateX(${diff * rx}px)`
+			}}}
+		>
 			<div class="modes centered row flips">
 				${[
 					"ride",
@@ -71,4 +82,4 @@ export const startPage = () => v`
 		// </button>
 
 
-setTimeout(()=>setMode('swaper'), 200)
+// setTimeout(()=>setMode('swaper'), 200)
