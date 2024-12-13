@@ -22,12 +22,24 @@ const m = {
 	cards: [],
 	winningCards: [],
 	swapping: null,
-	openedCities: []
+	openedCities: [],
+	mistakeChanges: 3,
+	mistakes: 0,
 }
 
 const holderHeight = 70
 const gaps = 20
 const swapHeight = 40
+
+function checkLose() {
+	if (m.mistakeChanges - m.mistakes <= 0) pop(c=>v`
+		<div>
+		<span class="f3">Məğlub oldunuz.</span> <br><br>
+		<button class="bbtn" ${{ onn, click: e=>{ swaper.reset(); c();}}}>yenidən başla</button>
+		<button class="bbtn" ${{ onn, click: e=>{ setPage("startPage"); c();}}}>geri</button>
+		</div>
+		`, { close: false})
+}
 
 function getNewCities() {
 		if (m.openedCities.length >= pathTitles.length) alert("won")
@@ -77,6 +89,11 @@ function drawerContent() {
 					swaper.reset()
 					moveCar(m.at)
 				}}}>↻</button>
+		<div class="row centered" style=" min-width: 0; gap: 9px; margin-left: auto;">${[...new Array(m.mistakeChanges).keys()].map(i => 
+			i+1<=m.mistakeChanges-m.mistakes ? 
+			v` <img src="./assets/img/red-cross.png" height=30 style="filter: saturate(0)" alt=""> ` :
+			v` <img src="./assets/img/red-cross.png" height=30 alt="">`)}
+		</div>
 			</div>
 			<div class="swapcards" style="margin-top: 40px;" 
 				${{ style, height: `${(holderHeight + gaps) * m.cards.length}px`}}>
@@ -112,7 +129,11 @@ function drawerContent() {
 			<button class="bbtn" ${{
 				onn, click: e => {
 					for (const [i, city] of m.winningCards.entries()) {
-						if (m.cards.find(card => card.city == city).i != i) return
+						if (m.cards.find(card => card.city == city).i != i) {
+							m.mistakes++
+							checkLose()
+							return
+						}
 					}
 					m.openedCities.push(...m.winningCards)
 					getNewCities()
@@ -138,6 +159,7 @@ export const swaper = {
 	reset() {
 		m.step = "game"
 		m.openedCities = []
+		m.mistakes = 0
 		getNewCities()
 	},
 	content() {
