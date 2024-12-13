@@ -69,4 +69,4 @@ export const startPage = () => v`
 		// </button>
 
 
-// setTimeout(()=>setMode('detector'), 200)
+setTimeout(()=>setMode('infocards'), 200)

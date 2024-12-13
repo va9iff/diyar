@@ -51,17 +51,26 @@ function getGameCards() {
 	return shuffle(arr)
 }
 
+function setCurrentStep(currentStep) {
+	m.currentStep = currentStep
+	m.cards = getGameCards()
+	m.shownTips = {}
+	for (const city of m.cards) 
+		m.shownTips[city] = facts[city][Math.floor(facts[city].length * Math.random())]
+}
+
 export const infocards = {
 	reset() {
 		m.won = false
 		m.from = randomCity()
 		m.to = randomCity([m.from, ...neighbours[m.from]])
 		m.shortestRoad=shortest(m.from, m.to)
-		m.currentStep = 0
+		// m.currentStep = 0
+		setCurrentStep(0)
 		m.wents = []
 		m.misclicks = []
 		m.lives = 3
-		m.cards = getGameCards()
+		// m.cards = getGameCards()
 		clear("#eee")
 		clearClass()
 		// fill(m.current, "#f33")
@@ -101,7 +110,7 @@ export const infocards = {
 								<h1>Qalib oldunuz! </h1>
 								<button class="btn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
 								`) || true
-							m.currentStep++
+							setCurrentStep(m.currentStep+1)
 							m.cards = getGameCards()
 						} else {
 							m.lives--
@@ -112,7 +121,7 @@ export const infocards = {
 								</div>`)
 							m.misclicks.push(city)
 						}
-					}}}>${facts[city][Math.floor(facts[city].length * Math.random())]}`)}
+					}}}>${m.shownTips[city]}`)}
 				<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			</div>
 		`
