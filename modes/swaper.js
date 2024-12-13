@@ -121,7 +121,7 @@ function drawerContent() {
 					</div>
 					<div class="bbtn swapping" ${{ 
 						style, height: `${swapHeight}px`, top: `${(card.i*(gaps + holderHeight)) + Math.abs(swapHeight - holderHeight)/2}px`, backgroundColor: "#444", color: "#eee"}}>
-					${j}=${card.i} - ${card.city}
+					${0 ? `${j}=${card.i} -` : ""} ${card.city}
 					</div>
 				`
 				})}	
