@@ -97,6 +97,7 @@ function drawerContent() {
 	}
 }
 export const ride = {
+	fixed: true, // don't scroll and minimize the map
 	// if exists, only firest this in the start and does not fire reset
 	init() {
 		m.step = "init"

@@ -37,7 +37,7 @@ function immerseContent() {
 	document.body.classList.remove("immerse-map")
 }
 function immerseMap() {
-	if (state.modeId == "ride") return
+	if (state.mode?.fixed) return
 	document.body.classList.add("immerse-map")
 	document.body.classList.remove("immerse-content")
 }
@@ -54,7 +54,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			`)}}>i</button>	
 		</div>
 		<div class="mapside row" ${{ on, touchstart: e => {
-			if (state.modeId == "ride") return
+			if (state.mode?.fixed) return
 			document.querySelector(".contentside")?.scrollTo({ top: 0 })
 		}}}>
 			<img src="./assets/img/preblurred.jpg" class="azebg">
@@ -66,7 +66,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 		</div>
 		<div class="contentside col grow" 
 			${{ on, touchend: e => {
-				if (state.modeId == "ride") return 
+				if (state.mode?.fixed) return 
 				let target = e.changedTouches[0].target
 				let i = 0
 				console.log(target)
@@ -80,7 +80,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 				else if (target.scrollTop < 5 ) immerseMap()
 			},
 			scroll: e => {
-				if (state.modeId == "ride") return 
+				if (state.mode?.fixed) return 
 				let target = e.target
 				if (target.scrollTop <= 0) {
 					immerseMap()
@@ -88,7 +88,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			}}}
 		>
 			<div ${{
-					cls, hidden: state.modeId == "ride"
+					cls, hidden: state.mode?.fixed
 				}}
 				class="drawer-glance col middle centered" style="position: sticky; top:0">
 					<h1 ${{ onn, click: e => setPage("startPage")}}>&lt;-Diyar</h1>
@@ -96,7 +96,7 @@ export const maply = () => !state.mode ? v`<h1>loading</h1>` : v`
 			<div class="drawer col">
 					${state.mode.content()}
 				<div class="drawer-padding-bottom" ${{
-					cls, hidden: state.modeId == "ride"
+					cls, hidden: state.mode?.fixed
 				}}></div>
 			</div>
 		</div>
