@@ -59,6 +59,7 @@ function drawerContent() {
 	`
 }
 export const detector = {
+	fixed: true,
 	// if exists, only firest this in the start and does not fire reset
 	// init() {
 	// 	clear()
