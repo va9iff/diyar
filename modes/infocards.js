@@ -26,7 +26,7 @@ function win() {
 			}}}>yenidən başla</button>
 			<button class="bbtn" ${{ onn, click: close}}>bağla</button>
 		</div>
-	`)
+	`, { close: true })
 	update()
 }
 
@@ -95,7 +95,13 @@ export const infocards = {
 		// fill(m.to, "#ff7")
 		fill(m.shortestRoad[m.currentStep], "#77f")
 		fillClass(m.shortestRoad[m.currentStep], "current-blinking")
-		return v`
+		return m.won ? v`
+			<div class="mpadded">
+				Səfər tamamlandı. Yeni oyun başladılsın? <br><br>
+				<button class="bbtn" ${{ onn, click: e => { infocards.reset(); setPage("startPage")}}}>geri</button>
+				<button class="bbtn" ${{ onn, click: e => infocards.reset()}}>Yenidən başla</button>
+			</div>
+		` : v`
 			<div class="sticky-top" style="background-color: var(--content-bg); z-index: 10">
 				<div class="centered row wrap" style="padding-left: 20px; gap: 5px;" >
 					${drawerHandle()}
@@ -123,10 +129,13 @@ export const infocards = {
 						<button class="game-card" ${{ cls, disabled: m.misclicks.includes(city), [`game-c${i}`]: true}} ${{ onn, click: e => {
 						if (m.misclicks.includes(city)) return null
 						if (city == m.shortestRoad[m.currentStep]) {
-							if (m.currentStep == m.shortestRoad.length - 1) return m.won = pop(close => v`
+							if (m.currentStep == m.shortestRoad.length - 1) {
+							pop(close => v`
 								<h1>Qalib oldunuz! </h1>
+								<button class="bbtn" ${{ onn, click: e => { infocards.reset(); setPage("startPage"); close();}}}>geri</button>
 								<button class="bbtn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
-								`) || true
+								`, { close: false })
+							} 
 							setCurrentStep(m.currentStep+1)
 							m.cards = getGameCards()
 						} else {
@@ -135,7 +144,8 @@ export const infocards = {
 								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="bbtn" ${{
 									onn, click: e => { infocards.reset(); close() }
 								}}>yenidən başla</button> 
-								</div>`)
+									<button class="bbtn" ${{ onn, click: e => { setPage("startPage"); close(); }}}>geri</button>
+								</div>`, { close: false })
 							m.misclicks.push(city)
 						}
 					}}}>${m.shownTips[city]}</button>`)}
