@@ -26,6 +26,7 @@ export const modalWrapper = () => {
 ` 
 }
 
+// closes only if closable with bg click
 export const closeLastPop = e => {
 	if (!modalFuns.length) return console.warn("no popup")
 	const { contentfun, opts } = modalFuns[activeModalIndex]
