@@ -1,9 +1,9 @@
 :root {
 	--content-bg: #eee
 }
-	body {
-		background-color: #eee
-	}
+body, body > div {
+	background-color: #eee
+}
 .mobile {
 	display: none !important
 }

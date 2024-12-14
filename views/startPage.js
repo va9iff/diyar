@@ -2,6 +2,7 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update
 // import { shortestPathCities } from "../modes/shortestPathCities.js"
 // import { explore } from "../modes/explore.js"
 import { setPage } from "../pages.js"
+import { pop } from "../pieces/modal/modal.js"
 // shortestPathCities
 const setMode = async modeId => {
 	const prevMode = state.mode
@@ -85,3 +86,17 @@ export const startPage = () => v`
 
 
 // setTimeout(()=>setMode('swaper'), 200)
+
+setTimeout(()=>pop(c=>v`
+	<div class="col grow">
+		<span class="f5">Oyun tam ekranda başladılsın?</span>
+		<div class="row" style="margin-top: 20px; gap: 16px">
+			<button class="bbtn" ${{ on, click: c}}>Çıxış</button>
+			<button class="bbtn" ${{ on, click: e => {
+					document.querySelector(".toQuery").parentElement.requestFullscreen()
+					// console.log(document.querySelector(".toQuery").parentElement)
+					c()
+			}}}>Hə</button>
+		</div>
+	</div>
+	`), 500)

@@ -5,6 +5,7 @@ import { current, setPage } from "./pages.js"
 import { modalWrapper } from "./pieces/modal/modal.js"
 
 const main = _ => div`
+	<div class="toQuery" style="display: none"></div>
 	${current()}
 	${modalWrapper()}
 `
