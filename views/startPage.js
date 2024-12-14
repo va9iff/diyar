@@ -68,8 +68,8 @@ export const startPage = () => v`
 			<div class="modes centered row flips">
 				${[
 					"ride",
-					"detector",
 					"swaper",
+					"detector",
 					"infocards",
 					"shortestPathCities"
 				].map(modeId=>modeStarter(modeId))}
