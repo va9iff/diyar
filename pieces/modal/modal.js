@@ -1,6 +1,6 @@
 import { v, put, update, state, onn, on, cls, set, custom, style, attr, none, fn } from "../../v.js"
 
-const modalFuns = []
+export const modalFuns = []
 let activeModalIndex = 0
 
 export const modalWrapper = () => {
@@ -11,6 +11,7 @@ export const modalWrapper = () => {
 	opts.anim ??= true
 	const closeFunc = () => {
 		modalFuns.splice(activeModalIndex, 1)
+		if (opts.onClose) opts.onClose()
 		update()
 	}
 	return  v`
@@ -23,6 +24,16 @@ export const modalWrapper = () => {
 			${modalFuns[activeModalIndex].contentfun(closeFunc)}
 	</div>
 ` 
+}
+
+export const closeLastPop = e => {
+	if (!modalFuns.length) return console.warn("no popup")
+	const { contentfun, opts } = modalFuns[activeModalIndex]
+	opts.close ??= true
+	if (opts.close) {
+		if (opts.onClose) opts.onClose()
+		modalFuns.splice(activeModalIndex, 1)
+	}
 }
 
 // contentfun will get a way to close itself aas argument
