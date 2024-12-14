@@ -72,16 +72,15 @@ function drawerContent() {
 					// 	moveCar(null)
 					// 	setTimeout(()=>moveCar(m.at), 60)
 					// }, 60)
-				}}}>Yenidən başla</button>
+				}}}>↻</button>
+				<div class="row" style="margin-left: auto">
+				${m.coins.map(coin => v`
+						<img src="./assets/img/coin-no-dollar.png" 
+							class="indicator-coin" ${{ cls, collected: coin.collected }}>
+				`)}
+				</div>
 			</div>
 			<h1 style="color: #252525">📍${m.at}</h1>
-			<div class="centered row middle wrap" style="margin-bottom: 10px">
-
-			${m.coins.map(coin => v`
-					<img src="./assets/img/coin-no-dollar.png" 
-						class="indicator-coin" ${{ cls, collected: coin.collected }}>
-			`)}
-				</div>
 			<div class="row middle wrap">
 				${!showButtons ? "" : neighbours[m.at].map(city=>v`<button class="bbtn popping"
 					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
