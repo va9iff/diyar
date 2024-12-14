@@ -63,6 +63,7 @@ window.onpopstate = history.onpushstate = function(e) {
 		const opts = modalFuns[0].opts
 		opts.close ??= true
 		if (!opts.close) {
+			pushToPrevent()
 			return //pushToPrevent()
 		}
 	}
