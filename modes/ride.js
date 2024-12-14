@@ -29,6 +29,7 @@ function drawerContent() {
 	console.log('drawed')
 	switch (m.step) {
 		case "init":
+			moveCar(randomCity())
 		return v`
 		<div>
 			<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button> <br><br>
@@ -66,7 +67,7 @@ function drawerContent() {
 				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 				<button class="bbtn" ${{ onn, click: e =>{
 					ride.reset()
-					moveCar(m.at)
+					// moveCar(m.at)
 					// setTimeout(()=>{
 					// 	moveCar(null)
 					// 	setTimeout(()=>moveCar(m.at), 60)
@@ -106,7 +107,7 @@ export const ride = {
 		// 	update()
 		// }, 1000)
 		clear()
-		moveCar(null)
+		// moveCar(null)
 		// immerseContent() // later
 	},
 	die() {
@@ -124,9 +125,6 @@ export const ride = {
 	content() {
 		// repaint()
 		return v`
-				<div class="sticky-top">
-					${drawerHandle()}
-				</div>
 				<div class="mpadded">
 					${drawerContent()}
 				</div>
