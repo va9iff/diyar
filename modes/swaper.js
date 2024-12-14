@@ -74,7 +74,7 @@ function drawerContent() {
 		const progress = steps == 0 ? 100 : 100 / (steps+1) + 50
 		return v`		
 		<div class="mpadded">
-			<div class="swapcards"
+			<div class="swapcards" style="margin-top: 10px"
 				${{ style, height: `${(holderHeight + gaps) * m.cards.length}px`}}>
 				${m.cards.map((card, j) => {
 					// const i = card.i
