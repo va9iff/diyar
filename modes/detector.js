@@ -33,7 +33,7 @@ function drawerContent() {
 				<button class="bbtn" ${{ onn, click: e => setPage("startPage")}}>&lt;</button>
 				<button class="bbtn" ${{ onn, click: e =>{
 					detector.reset()
-					moveCar(m.at)
+					// moveCar(m.at)
 				}}}>↻</button>
 			</div>
 			<h1 style="color: #252525">📍${m.at}</h1>
@@ -78,9 +78,6 @@ export const detector = {
 		switch (m.step) {
 			case "game": 
 			return v`
-					<div class="sticky-top">
-						${drawerHandle()}
-					</div>
 					<div class="mpadded">
 						${drawerContent()}
 					</div>
