@@ -43,19 +43,19 @@
 	transform: scale(1.1)
 }
 /* latar */
-/**/
-/* @keyframes popping-anim { */
-/* 	from { */
-/* 		scale: 0 */
-/* 	} */
-/* 	to { */
-/* 		scale: 1 */
-/* 	} */
-/**/
-/* } */
-/* .poppinng { */
-/* 	animation: popping-anim 200ms */
-/* } */
+
+@keyframes popping-anim {
+	from {
+		scale: 0
+	}
+	to {
+		scale: 1
+	}
+
+}
+.popping {
+	animation: popping-anim 200ms
+}
 
 
 .f1 {
