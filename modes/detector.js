@@ -11,7 +11,6 @@ const currColor = "#7f7"
 function repaint() {
 	clear()
 	fill(m.at, currColor)
-	moveCar(m.at)
 }
 
 // function win() {
@@ -23,6 +22,8 @@ function repaint() {
 const m = {
 	step: "init",
 }
+
+let showButtons = true
 
 function drawerContent() {
 		const steps = shortest(m.at, m.to).length - 1
@@ -47,11 +48,17 @@ function drawerContent() {
 			</div>
 			<br>
 			<div class="row middle wrap">
-				${neighbours[m.at].map(city=>v`<button class="bbtn"
-					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
+				${!showButtons ? "" : neighbours[m.at].map(city=>v`<button class="bbtn popping"
+					style="animation-duration: 400ms; padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
 					${{ onn, click: e => {
 						if (city == m.to) m.step = "win"
+						showButtons = false
+						setTimeout(()=>{
+							showButtons = true
+							update()
+						}, 400)
 						m.at = city
+						moveCar(m.at)
 					}}}>${city}
 				</button>`)}
 			</div>
@@ -72,6 +79,7 @@ export const detector = {
 		m.step = "game"
 		m.at = randomCity()
 		m.to = randomCity([m.at])
+		moveCar(m.at)
 	},
 	content() {
 		repaint()
