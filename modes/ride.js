@@ -12,7 +12,7 @@ function repaint() {
 		fill(coin.city, coin.collected ? "#7ff" : "#ff7")
 	fillClass(m.at, "current-blinking")
 	setCoins(m.coins.filter(coin=>!coin.collected).map(coin => coin.city))
-	moveCar(m.at)
+	// moveCar(m.at)
 }
 
 function win() {
@@ -24,7 +24,7 @@ function win() {
 const m = {
 	step: "init",
 }
-
+let showButtons = true
 function drawerContent() {
 	console.log('drawed')
 	switch (m.step) {
@@ -83,13 +83,19 @@ function drawerContent() {
 			`)}
 				</div>
 			<div class="row middle wrap">
-				${neighbours[m.at].map(city=>v`<button class="bbtn"
+				${!showButtons ? "" : neighbours[m.at].map(city=>v`<button class="bbtn popping"
 					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
 					${{ onn, click: e => {
 						m.at = city
 						const coin = m.coins.find(c => c.city == city)
 						if (coin) coin.collected = true
 						if (m.coins.every(coin => coin.collected)) win()
+						showButtons = false
+						setTimeout(()=>{
+							showButtons = true
+							update()
+						}, 500)
+						moveCar(m.at)
 					}}}>${city}
 				</button>`)}
 			</div>
@@ -121,6 +127,7 @@ export const ride = {
 		m.coins.push({collected: false, city: randomCity([m.at])})
 		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0].city])})
 		m.coins.push({collected: false, city: randomCity([m.at, m.coins[0].city, m.coins[1].city])})
+		moveCar(m.at)
 	},
 	content() {
 		// repaint()
