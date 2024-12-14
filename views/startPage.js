@@ -78,7 +78,7 @@ export const startPage = () => v`
 		<div class="fullscreenButton" ${{
 			onn, click: e => goFullScreen()
 		}}>
-			<img src="../assets/img/fullscreen.svg" width=80 height=80 alt="">
+			<img src="./assets/img/fullscreen.svg" width=80 height=80 alt="">
 		</div>
 	</div>
 `
