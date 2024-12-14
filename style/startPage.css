@@ -115,3 +115,32 @@ span.modeName {
 		padding-right: 80px
 	}
 }
+
+.fullscreenButton {
+	position: fixed;
+	bottom: 30px;
+	right: 20px;
+	z-index: 30;
+	/* background: linear-gradient(115deg, #3cc5d7, #47d794); */
+	background: linear-gradient(115deg, #175fab, #3be06d);
+	/* background: linear-gradient(115deg, #fec163, #de4313); */
+	padding: 30px;
+	border-radius: 130px;
+	transition: 130ms;
+	cursor: pointer;
+	box-shadow: 6px 8px 0 #25252577
+}
+.fullscreenButton:hover {
+	padding: 50px;
+	/* box-shadow: 8px 10px 0 #25252577 */
+}
+.fullscreenButton:hover * {
+	transition: 300ms;
+	transform: scale(1.2)
+}
+
+/* we change path fill in svg itself. crazy. it's #eee */
+
+.isFullScreen .fullscreenButton { 
+	display: none
+} 

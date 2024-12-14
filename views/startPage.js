@@ -40,6 +40,16 @@ const modeStarter = modeId => v`
 		<span style="z-index: 18" class="modeName">${modeNames[modeId]}</span>
 	</div>
 `
+
+let isGoingFull = false
+const goFullScreen = () => {
+	isGoingFull = true
+	document.querySelector(".toQuery").parentElement.requestFullscreen()
+	document.body.classList.add("isFullScreen")
+	setTimeout(()=>{
+		isGoingFull = false
+	}, 500)
+}
 let rx = 0
 export const startPage = () => v`
 	<div class="startPage" style="height: 100svh; width: 100%; overflow: hidden" ${{ on, mousemove: e => {
@@ -64,6 +74,11 @@ export const startPage = () => v`
 					"shortestPathCities"
 				].map(modeId=>modeStarter(modeId))}
 			</div>
+		</div>
+		<div class="fullscreenButton" ${{
+			onn, click: e => goFullScreen()
+		}}>
+			<img src="../assets/img/fullscreen.svg" width=80 height=80 alt="">
 		</div>
 	</div>
 `
@@ -93,10 +108,16 @@ setTimeout(()=>pop(c=>v`
 		<div class="row" style="margin-top: 20px; gap: 16px">
 			<button class="bbtn" ${{ on, click: c}}>Çıxış</button>
 			<button class="bbtn" ${{ on, click: e => {
-					document.querySelector(".toQuery").parentElement.requestFullscreen()
+					goFullScreen()
 					// console.log(document.querySelector(".toQuery").parentElement)
 					c()
 			}}}>Hə</button>
 		</div>
 	</div>
 	`), 500)
+
+
+window.addEventListener("resize", e => {
+	if (isGoingFull) return
+	document.body.classList.remove("isFullScreen")
+})
