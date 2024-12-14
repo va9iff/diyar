@@ -27,8 +27,8 @@ const m = {
 	mistakes: 0,
 }
 
-const holderHeight = 70
-const gaps = 20
+const holderHeight = 60
+const gaps = 13
 const swapHeight = 40
 
 function checkLose() {
@@ -119,7 +119,7 @@ function drawerContent() {
 							}
 						}}}><span class="centered row swapperIndexes">${j}</span>
 					</div>
-					<div class="bbtn swapping" ${{ 
+					<div class="bbtn swapping" ${{ cls, isSwapping: m.swapping == card.i}} ${{ 
 						style, height: `${swapHeight}px`, top: `${(card.i*(gaps + holderHeight)) + Math.abs(swapHeight - holderHeight)/2}px`, backgroundColor: "#444", color: "#eee"}}>
 					${0 ? `${j}=${card.i} -` : ""} ${card.city}
 					</div>
