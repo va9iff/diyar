@@ -83,7 +83,7 @@ function drawerContent() {
 			<h1 style="color: #252525">📍${m.at}</h1>
 			<div class="row middle wrap">
 				${!showButtons ? "" : neighbours[m.at].map(city=>v`<button class="bbtn popping"
-					style=" padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
+					style="animation-duration:400ms; padding: 15px 20px; font-size: 16px; border-radius: 30px; margin: 7px; "
 					${{ onn, click: e => {
 						m.at = city
 						const coin = m.coins.find(c => c.city == city)
@@ -93,7 +93,7 @@ function drawerContent() {
 						setTimeout(()=>{
 							showButtons = true
 							update()
-						}, 500)
+						}, 400)
 						moveCar(m.at)
 					}}}>${city}
 				</button>`)}

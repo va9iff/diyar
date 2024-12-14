@@ -57,6 +57,18 @@
 	animation: popping-anim 200ms
 }
 
+@keyframes fadein-anim {
+	from {
+		opacity: 0
+	}
+	to {
+		opacity: 1
+	}
+
+}
+.fadein {
+	animation: fadein-anim 200ms
+}
 
 .f1 {
 	font-size: 36px; /* Mobile size for f1 */
