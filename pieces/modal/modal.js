@@ -34,6 +34,7 @@ export const closeLastPop = e => {
 		if (opts.onClose) opts.onClose()
 		modalFuns.splice(activeModalIndex, 1)
 	}
+	update()
 }
 
 // contentfun will get a way to close itself aas argument
