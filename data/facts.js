@@ -268,7 +268,7 @@ export const facts = {
 		"Bu rayondakı çinar meşəsi Avropada ən böyük, dünyada isə Kanadadan sonra ikincidir.",
 		"Vejnəli qızıl yatağı yerləşən by rayonun mərkəzi şəhəri 20 oktyabr 2020-ci ildə işğaldan azad olunmuşdur."
 	],
-	"Zəngəzur": [
+	"Zəngəzur dəhlizi": [
 		"Bu tarixi Azərbaycan torpaqları Cavidan, Cavanşir və Babəkin dövründə xürrəmilər, ərəblərə qarşı savaşların əsas mərkəzi, 30 ildən artıq sürən döyüşlərin məkanı olub.",
 		"2020-ci il 10 noyabrda imzalanan üçtərəfli bıyanata əsasən buradan keçən dəhliz Naxçıvan ilə Azərbaycanı quru yolla bağlayacaq."
 	],
