@@ -88,6 +88,7 @@ const losepop = () => pop(close => v`<div>
 	</div>`, { close: false })
 
 export const infocards = {
+	nopad: true,
 	reset() {
 		m.won = false
 		m.from = randomCity()
@@ -132,6 +133,7 @@ export const infocards = {
 					<div class="row middle" style="margin-left: auto; gap: 5px; margin-right: 20px; text-align: center; font-size: 30px; padding: 4px">${new Array(m.lives).fill(v`<span>❤️</span>`)}<br></div>
 				</div>
 			</div>
+			<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			<div class="mpadded" ${{on, touchstart: e=>repeat(null)}}>
 				${m.won ? v` <div>Siz uğurlu bir şəkildə ${m.from} şəhərindən ${m.to} şəhərinə mədəni məlumatlarla 
 					çata bildiniz! <button class="bbtn" ${{ onn, click: e => { infocards.reset() }}}>
@@ -183,7 +185,6 @@ export const infocards = {
 						}}></div>
 
 					</div>`}
-				<div style="opacity: 0.7; text-align: center; padding-top: 30px">Şəkildə yanıb sönən şəhər üçün uyğun gələn kartı seçərək yolunuza dəvam etməlisiniz</div>
 			</div>
 		`
 	}

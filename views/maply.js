@@ -95,10 +95,11 @@ export const maply = () => {
 				class="drawer-glance col middle centered" style="position: sticky; top:0">
 					<h1 ${{ onn, click: e => setPage("startPage")}}>&lt;-Diyar</h1>
 			</div>
-			<div class="drawer col">
+			<div class="drawer col"
+			${state.mode?.nopad ? { style, paddingBottom: 0 } : { style }}>
 					${state.mode.content()}
 				<div class="drawer-padding-bottom" ${{
-					cls, hidden: state.mode?.fixed
+					cls, hidden: state.mode?.fixed || state.mode?.nopad
 				}}></div>
 			</div>
 		</div>
