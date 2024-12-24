@@ -40,21 +40,28 @@ const shuffle = arr => arr
 function getGameCards() {
 	m.misclicks = []
 	if (m.currentStep >= m.shortestRoad.length) throw new Error("Qaqa hara belə? axırıncı şəhərin kartları lazımdı?")
-	let neighs = shuffle(neighbours[m.shortestRoad[m.currentStep]])
-	console.log(neighs)
-	if (neighs.length > 3) neighs = neighs.filter(neigh => !m.shortestRoad.slice(0, m.currentStep).includes(neigh))
-	console.log(neighs)
+	// let neighs = shuffle(neighbours[m.shortestRoad[m.currentStep]])
+	// console.log(neighs)
+	// if (neighs.length > 3) neighs = neighs.filter(neigh => !m.shortestRoad.slice(0, m.currentStep).includes(neigh))
+	// console.log(neighs)
+	// const arr = []
+	// arr.push(m.shortestRoad[m.currentStep])
+	// if (neighs.length) arr.push(neighs.pop())
+	// if (neighs.length) arr.push(neighs.pop())
 	const arr = []
 	arr.push(m.shortestRoad[m.currentStep])
-	if (neighs.length) arr.push(neighs.pop())
-	if (neighs.length) arr.push(neighs.pop())
+	const pushurr = () => arr.push(randomCity([...arr, m.from, m.to]))
+	pushurr()
+	pushurr()
+	console.log(arr)
 	return shuffle(arr)
 }
 
 function setCurrentStep(currentStep) {
+	// if (m.currentStep == currentStep)  return 
 	m.currentStep = currentStep
-	m.cards = getGameCards()
 	m.shownTips = {}
+	m.cards = getGameCards()
 	for (const city of m.cards) 
 		m.shownTips[city] = facts[city][Math.floor(facts[city].length * Math.random())]
 }
@@ -67,6 +74,19 @@ function repeat(fun) {
 
 let focusedCard = 0
 
+const winpop = () => pop(close => v`
+	<h1>Qalib oldunuz! </h1>
+	<button class="bbtn" ${{ onn, click: e => { infocards.reset(); setPage("startPage"); close();}}}>geri</button>
+	<button class="bbtn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
+	`, { close: false })
+
+const losepop = () => pop(close => v`<div>
+	Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="bbtn" ${{
+		onn, click: e => { infocards.reset(); close() }
+	}}>yenidən başla</button> 
+	<button class="bbtn" ${{ onn, click: e => { setPage("startPage"); close(); }}}>geri</button>
+	</div>`, { close: false })
+
 export const infocards = {
 	reset() {
 		m.won = false
@@ -74,10 +94,10 @@ export const infocards = {
 		m.to = randomCity([m.from, ...neighbours[m.from]])
 		m.shortestRoad=shortest(m.from, m.to)
 		// m.currentStep = 0
-		setCurrentStep(0)
 		m.wents = []
 		m.misclicks = []
 		m.lives = 3
+		setCurrentStep(0)
 		// m.cards = getGameCards()
 		clear("#eee")
 		clearClass()
@@ -87,6 +107,8 @@ export const infocards = {
 	content() {
 		clear()
 		clearClass()
+		for (const misclick of m.misclicks) 
+			fill(misclick, "#f77")
 		for (const city of m.shortestRoad) 
 			fill(city, "#aca")
 		for (let i = 0; i < m.currentStep && i < m.shortestRoad.length; i++) 
@@ -128,27 +150,17 @@ export const infocards = {
 						${m.cards.map((city, i) => v`
 						<button class="game-card" ${{ cls, disabled: m.misclicks.includes(city), [`game-c${i}`]: true}} ${{ onn, click: e => {
 						if (m.misclicks.includes(city)) return null
+						console.log(city, m.shortestRoad[m.currentStep])
 						if (city == m.shortestRoad[m.currentStep]) {
-							if (m.currentStep == m.shortestRoad.length - 1) {
-							pop(close => v`
-								<h1>Qalib oldunuz! </h1>
-								<button class="bbtn" ${{ onn, click: e => { infocards.reset(); setPage("startPage"); close();}}}>geri</button>
-								<button class="bbtn" ${{onn, click: e => { infocards.reset(); close(); }}}>yenidən başlat</button>
-								`, { close: false })
-							} 
+							if (m.currentStep == m.shortestRoad.length - 1) return winpop()
 							setCurrentStep(m.currentStep+1)
-							m.cards = getGameCards()
+							// m.cards = getGameCards()
 						} else {
-							m.lives--
-							if (m.lives <= 0) return pop(close => v`<div>
-								Təəssüflər olsun ki səhvləriniz bütün canınızı apardı. <br><br> <button class="bbtn" ${{
-									onn, click: e => { infocards.reset(); close() }
-								}}>yenidən başla</button> 
-									<button class="bbtn" ${{ onn, click: e => { setPage("startPage"); close(); }}}>geri</button>
-								</div>`, { close: false })
 							m.misclicks.push(city)
+							m.lives--
+							if (m.lives <= 0) return losepop()
 						}
-					}}}>${m.shownTips[city]}</button>`)}
+					}}}>${city}${m.shownTips[city]}</button>`)}
 						<div class="rightScroller" ${{on, mouseover: e => {
 							repeat(()=> e.target.parentElement.scrollLeft += 5)
 							// e.target.parentElement.scrollLeft -= 2
