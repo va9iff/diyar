@@ -175,7 +175,7 @@ export const infocards = {
 							m.lives--
 							if (m.lives <= 0) return losepop()
 						}
-					}}}>${city}${m.shownTips[city]}</button>`)}
+					}}}>${m.shownTips[city]}</button>`)}
 						<div class="rightScroller" ${{on, mouseover: e => {
 							repeat(()=> e.target.parentElement.scrollLeft += 5)
 							// e.target.parentElement.scrollLeft -= 2
