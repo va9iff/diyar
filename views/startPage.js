@@ -102,7 +102,7 @@ export const startPage = () => v`
 
 // setTimeout(()=>setMode('swaper'), 200)
 
-setTimeout(()=>pop(c=>v`
+if (true) setTimeout(()=>pop(c=>v`
 	<div class="col grow">
 		<span class="f5">Oyun tam ekranda başladılsın?</span>
 		<div class="row" style="margin-top: 20px; gap: 16px">

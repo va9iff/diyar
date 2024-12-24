@@ -139,7 +139,20 @@ export const infocards = {
 						&lt; geri qayıda</button> bilərsiniz.
 					</div>` :
 						v`
-					<div class="row box scroll-x cards-scroller" style="position: relative"> 
+					<div class="row box scroll-x cards-scroller" style="position: relative"
+					${{ on, wheel: e => {
+						if (!e.ctrlKey) e.preventDefault();
+						const cardsScroller = e.currentTarget
+						// Determine the scroll amount
+						// const scrollAmount = e.deltaY > 0 ? 5 : -5; // Scroll right for positive deltaY, left for negative
+						if (e.deltaY == 0) return
+						const scrollAmount = e.deltaY > 0 ? 300 : -300
+						cardsScroller.scrollBy({
+							left: scrollAmount,
+							behavior: 'smooth' // Smooth scrolling
+						});
+					}}}
+						> 
 						<div class="leftScroller" ${{on, mouseover: e => {
 							repeat(()=> e.target.parentElement.scrollLeft -= 5)
 							// e.target.parentElement.scrollLeft -= 2
