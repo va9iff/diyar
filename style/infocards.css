@@ -97,6 +97,12 @@
 	background-color: #25252533;
 	transition: 200ms;
 }
+@media only screen and (max-width: 750px) {
+	.leftScroller, .rightScroller { 
+		display: none
+	}
+
+}
 .leftScroller { 
 	left: 0;
 	/* background: red; */
