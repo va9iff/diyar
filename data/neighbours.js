@@ -206,3 +206,8 @@ export const randomCity = (exceptions = []) => {
 	return a[Math.floor(Math.random()*a.length)]
 }
 
+
+export const shuffle = arr => arr
+	.map(value => ({ value, sort: Math.random() }))
+	.sort((a, b) => a.sort - b.sort)
+	.map(({ value }) => value)

@@ -28,6 +28,7 @@ const modeNames = {
 	shortestPathCities: "Kaşif",
 	infocards: "Səyyar",
 	swaper: "Nizamkar",
+	pops: "Tapmaca"
 }
 
 const modeStarter = modeId => v`
@@ -69,9 +70,10 @@ export const startPage = () => v`
 				${[
 					"ride",
 					"swaper",
+					"pops",
 					"detector",
 					"infocards",
-					"shortestPathCities"
+					"shortestPathCities",
 				].map(modeId=>modeStarter(modeId))}
 			</div>
 		</div>
@@ -102,7 +104,7 @@ export const startPage = () => v`
 
 // setTimeout(()=>setMode('swaper'), 200)
 
-if (true) setTimeout(()=>pop(c=>v`
+if (false) setTimeout(()=>pop(c=>v`
 	<div class="col grow">
 		<span class="f5">Oyun tam ekranda başladılsın?</span>
 		<div class="row" style="margin-top: 20px; gap: 16px">
