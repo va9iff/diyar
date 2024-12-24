@@ -58,7 +58,7 @@ export const startPage = () => v`
 				update()
 			}}}>
 		<div class="col box" 
-			style="height: 100%; width: 100%; transition: 30ms; transition-timing-function: linear;"
+			style="height: 100%; width: 100%; transition: 1400ms cubic-bezier(0.27, 0.81, 0.15, 0.88);"
 			${{ custom, update: el=> {
 				// console.log(window.innerWidth , el.scrollWidth)
 				const diff = window.innerWidth - el.scrollWidth
