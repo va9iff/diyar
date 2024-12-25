@@ -194,6 +194,7 @@ car.style.top = coords[popc.car][1]
 
 export const popups = document.createElement("div")
 popups.classList.add("map-popups")
+popups.style.zIndex = 100
 // setCoins(["Bakı"])
 // setInterval(()=>setCoins([pathTitles[Math.floor(Math.random() * pathTitles.length)], pathTitles[Math.floor(Math.random() * pathTitles.length)], pathTitles[Math.floor(Math.random() * pathTitles.length)]]), 200)
 // const popups = document.querySelector(".map-popups")
