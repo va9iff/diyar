@@ -78,6 +78,7 @@ function drawerContent() {
 }
 export const pops = {
 	fixed: true,
+	outline: true,
 	// die() {
 		// moveCar(null)
 	// },

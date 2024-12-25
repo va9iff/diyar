@@ -62,6 +62,7 @@ export const maply = () => {
 			<img src="./assets/img/preblurred.jpg" class="azebg">
 			<div class="bgfade"></div>
 			<div class="svg-container">
+				${ state.mode?.outline ? v`<img class="map-popups" src="./assets/maply/outline.png" >` : ""}
 				${put(mapSvgElement)}
 				${put(popups)}
 			</div>
