@@ -44,10 +44,20 @@ function immerseMap() {
 
 immerseMap()
 
+let initialDistance = null
+let currentDistance = null
+
+let initialMedian = []
+function getDistance(touch1, touch2) {
+    const dx = touch2.clientX - touch1.clientX;
+    const dy = touch2.clientY - touch1.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
 export const maply = () => {
 	if (state.mode?.fixed) setTimeout(()=>immerseMap(), 300)
 	return !state.mode ? v`<h1>loading</h1>` : v`
-	<div class="view toprow row flips">
+	<div class="view toprow row flips" ${{ cls, mapScale: state.mapScale }}>
 		<div class="pinneds">
 			<button style="position: fixed" class="pc" ${{ on, click: e => pop(() => v`
 				<div class="col box">
@@ -55,10 +65,41 @@ export const maply = () => {
 				</div>
 			`)}}>i</button>	
 		</div>
-		<div class="mapside row" ${{ on, touchstart: e => {
-			if (state.mode?.fixed) return
-			document.querySelector(".contentside")?.scrollTo({ top: 0 })
-		}}}>
+		<div class="mapside row" ${{ on, 
+		touchstart: e => {
+			if (!state.mode?.fixed) document.querySelector(".contentside")?.scrollTo({ top: 0 })
+			if (e.touches.length === 2) {
+				initialMedian = [(e.touches[0].clientX + e.touches[1].clientX) / 2, (e.touches[0].clientY + e.touches[1].clientY) / 2]
+				initialDistance = getDistance(e.touches[0], e.touches[1]);
+			}
+			state.mapScale = true
+			update()
+		},
+		touchmove: e => {
+			e.preventDefault()
+			if (e.touches.length === 2) {
+				currentDistance = getDistance(e.touches[0], e.touches[1])
+				
+
+				const currentMedian = [(e.touches[0].clientX + e.touches[1].clientX) / 2, (e.touches[0].clientY + e.touches[1].clientY) / 2]
+				// e.currentTarget.style.transform = `scale(${currentDistance/initialDistance})`
+				mapSvgElement.style.transform =  `
+				scale(${currentDistance/initialDistance}) 
+				translateX(${(currentMedian[0] - initialMedian[0])*0.5}px) 
+				translateY(${(currentMedian[1] - initialMedian[1])*0.3}px)
+				`
+				mapSvgElement.style.transformOrigin = "center"
+				// mapSvgElement.style.position = "absolute"
+			}
+			
+		},
+		touchend: e => {
+			state.mapScale = false,
+			mapSvgElement.style.transform =  `scale(1)`
+			update()
+
+		}
+		}}>
 			<img src="./assets/img/preblurred.jpg" class="azebg">
 			<div class="bgfade"></div>
 			<div class="svg-container">

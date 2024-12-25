@@ -8,6 +8,11 @@ body, body > div {
 	display: none !important
 }
 
+.mapScale .map-popups {
+	opacity: 0 !important;
+	transition: 500ms;
+}
+
  .map-popups {
 	 transition: 200ms;
 	 position: absolute;
@@ -156,6 +161,13 @@ body, body > div {
 		background-color: #bbb;
 		box-shadow: 0 0 0 1px #bbb;
 		width: 3px
+	}
+	.mapScale .contentside {
+		transform: translateY(90%);
+		transition: 500ms;
+	}
+	.contentside {
+		transition: 200ms;
 	}
 }
 
