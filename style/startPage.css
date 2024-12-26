@@ -124,7 +124,8 @@ span.modeName {
 	/* background: linear-gradient(115deg, #3cc5d7, #47d794); */
 	background: linear-gradient(115deg, #175fab, #3be06d);
 	/* background: linear-gradient(115deg, #fec163, #de4313); */
-	padding: 30px;
+	padding: 20px !important ;
+	box-shadow: 6px 8px 12px 0px rgba(255, 255, 255, 0.25) inset, -6px -15px 12px 0px rgba(99, 83, 19, 0.30) inset !important;
 	border-radius: 130px;
 	transition: 130ms;
 	cursor: pointer;

@@ -77,10 +77,10 @@ export const startPage = () => v`
 				].map(modeId=>modeStarter(modeId))}
 			</div>
 		</div>
-		<div class="fullscreenButton" ${{
+		<div class="bbtn fullscreenButton" ${{
 			onn, click: e => goFullScreen()
 		}}>
-			<img src="./assets/img/fullscreen.svg" width=80 height=80 alt="">
+			<img src="./assets/img/fullscreen.svg" width=55 height=55 alt="">
 		</div>
 	</div>
 `
