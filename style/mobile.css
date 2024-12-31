@@ -77,6 +77,10 @@ body, body > div {
 	body.immerse-map .svg-container {
 		/*moved from top bubu*/
 		/* padding-top: 60px  */
+		margin: 12% 5% 6% 5%
+	}
+	body.immerse-content .svg-container {
+		margin: 3%
 	}
 	body.immerse-content .svg-container svg {
 		width: 40%;
@@ -89,6 +93,9 @@ body, body > div {
 	.svg-container {
 		/* padding: 10px ; */
 		padding: 0; /*bubu*/
+		/* margin: 10px; */
+		margin: 0;
+		transition: 200ms
 	}
 	.mb-align-center {
 		 align-items: center;
