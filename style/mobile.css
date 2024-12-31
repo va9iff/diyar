@@ -41,7 +41,7 @@ body, body > div {
 		transform-origin: center;
 	}
 	body.immerse-map .map-popups {
-		top: 60px;
+		/* top: 60px; */
 	}
 	body.immerse-content .map-popups {
 		top: 0;
@@ -73,7 +73,10 @@ body, body > div {
 		width: 80%;
 		transition: 120ms;
 		/* transform: translateY(60px); */
-		padding-top: 60px
+	}
+	body.immerse-map .svg-container {
+		/*moved from top bubu*/
+		/* padding-top: 60px  */
 	}
 	body.immerse-content .svg-container svg {
 		width: 40%;
@@ -84,7 +87,8 @@ body, body > div {
 		flex-direction: column
 	}
 	.svg-container {
-		padding: 10px 
+		/* padding: 10px ; */
+		padding: 0; /*bubu*/
 	}
 	.mb-align-center {
 		 align-items: center;
