@@ -12,6 +12,7 @@
 @import url("./detector.css");
 @import url("./scrollbars.css");
 @import url("./swaper.css");
+@import url("./loadwaiter.css");
 * {
 	padding: 0;
 	margin: 0;

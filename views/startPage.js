@@ -3,12 +3,17 @@ import { v, put, state, onn, on, cls, set, custom, style, attr, none, fn, update
 // import { explore } from "../modes/explore.js"
 import { setPage } from "../pages.js"
 import { pop } from "../pieces/modal/modal.js"
+import { loadwaiter } from "./loadwaiter.js"
 // shortestPathCities
 const setMode = async modeId => {
 	const prevMode = state.mode
 	// console.log(state.mode)
+	state.loadwaiting = { header: modeNames[modeId], text: loadingscreentips[modeId]}
+	update()
 	const m = await import(`../modes/${modeId}.js`)
-	await setPage("maply")
+	state.loadwaiting = null
+	update()
+	/*await bro it's not async*/setPage("maply")
 	state.modeId = modeId
 	state.mode = m[modeId]
 	if (prevMode) prevMode.die?.()
@@ -29,6 +34,16 @@ const modeNames = {
 	infocards: "Səyyar",
 	swaper: "Nizamkar",
 	pops: "Tapmaca"
+}
+
+
+const loadingscreentips = {
+	"ride": `Siz bu oyun modunda xəzinə olan 3 şəhərin hər birinə gedib qızılları toplamalısınız. Hər 3 xəzinəni əldə etdikdən sonra qalib olursunuz. Siz bu oyun modunda xəzinə yerləşdirilmiş rayonlara bir-bir getməli və onları toplamalısınız. Hansı rayondakı xəzinədən başlamağın oyunun nəticəsinə təsiri yoxdur. Avtomobilin olduğu rayonun qonşuları ekranda əks olunacaq və siz avtomobili xəzinəyə doğru aparacaq rayonu seçməlisiniz. Yalnız bütün xəzinələri əldə etdikdən sonra qalib olacaqsınız.`,
+	"swaper": `Bu oyun modunda xəritədə bir neçə rayon fərqli rənglərdə göstərilir. Ekranda eyni rənglərdə və içində bu rayonların adı yazılan xanalar da olur, lakin rayonlar müvafiq rəngli xanalarda yerləşdirilmir. Rayonları xəritədəki rənglə eyni olan xanalara yerləşdirmək lazımdır. Ən çox 2 səhv edərək bütün rayonları doğru sırala və qalib ol!!!`,
+	"pops": `Xəritədə göstərilən rayonun adını müəyyən edib, həmin ad əks olunan kartı seçin. Jokerdən istifadə edərək qonşu rayonların ərazilərini müəyyən edə bilərsiniz.`,
+	"detector": `Avtomobili sizə məlum olmayan təyinat nöqtəsinə çatdırmalısınız. Təyinat nöqtəsini isə ondan nə qədər uzaq olduğunuzu göstərən şkaladan istifadə edərək müəyyənləşdirin.`,
+	"infocards": `Bu oyun modunda bir rayondan digərinə gedən yol göstərilir. Hər rayon haqqında, biri doğru olan 3 fakt verilir. Doğru faktı taparaq növbəti rayona keçirsiniz. 3 canınız var və məqsəd, onları səmərəli istifadə edərək təyinat nöqtəsinə çatmaqdır.`,
+	"shortestPathCities": `Bu oyun modunda siz hər hansısa bir rayonda olursunuz və sizə getməli olduğunuz rayon göstərilir, Sizin əsas məqsədiniz, təyinat nöqtəsinə ən qısa yolu tapmaq və bu yol üzərindəki rayonları doğru şəkildə qeyd etməkdir.`
 }
 
 const modeStarter = modeId => v`
