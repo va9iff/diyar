@@ -46,6 +46,15 @@ const loadingscreentips = {
 	"shortestPathCities": `Bu oyun modunda siz hər hansısa bir rayonda olursunuz və sizə getməli olduğunuz rayon göstərilir, Sizin əsas məqsədiniz, təyinat nöqtəsinə ən qısa yolu tapmaq və bu yol üzərindəki rayonları doğru şəkildə qeyd etməkdir.`
 }
 
+const quicktexts = {
+	"ride":`Siz bu oyun modunda xəzinə olan 3 şəhərin hər birinə gedib qızılları toplamalısınız. Hər 3 xəzinəni əldə etdikdən sonra qalib olursunuz.`,
+	"swaper":`Bu oyun modunda kartlarda göstərilən rayonları xəritədə göstərilən rayonlara uyğun şəkildə sıralamaq lazımdır. Hər bir rayon xəritədə göstərilən rəngdə olan xanaya yerləşdirilməlidir.`,
+	"pops":`Siz bu oyun modunda xəritədə işarələnən rayonun hansı rayon olduğunu tapmalısınız. Jokerdən istifadə edərək bu rayonun qonşu rayonlarını və sərhədlərini görə bilərsiniz.`,
+	"detector":`Bu oyun modunda avtomobil hər hansısa bir rayonda olur və təyinat məntəqəsinə neçə rayon qaldığı sizə göstərilir. Siz təyinat məntəqəsinin hansı rayon ola biləcəyini təxmin edib ora getdikdən sonra qalib olursunuz.`,
+	"infocards":`Bu oyun modunda sizə bir rayondan digərinə getməli olduğunuz yol göstərilir. Olduğunuz rayondan digərinə gedə bilmək üçün olduğunuz rayonla bağlı doğru faktı tapmalısınız.`,
+	"shortestPathCities":`Bu oyun modunda sizə təqdim olunan 2 inzibati rayondan birindən digərinə minimum sayda rayon qət edərək çatmaq lazımdır.`,
+}
+
 const modeStarter = modeId => v`
 	<div class="col centered modeContainer" ${{ onn, click: e => setMode(modeId)}}>
 		<button class="modeCard">
@@ -54,6 +63,9 @@ const modeStarter = modeId => v`
 	>
 		</button>
 		<span style="z-index: 18" class="modeName">${modeNames[modeId]}</span>
+		<span class="modeText">
+			${quicktexts[modeId]}
+		</span>
 	</div>
 `
 
