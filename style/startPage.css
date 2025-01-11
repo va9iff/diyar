@@ -118,6 +118,7 @@ span.modeText {
 
 .modeContainer .modeText {
 	overflow: hidden;
+	/* text-align: center; */
 }
 .modeContainer:hover .modeText {
 	overflow: auto;

@@ -47,12 +47,12 @@ const loadingscreentips = {
 }
 
 const quicktexts = {
-	"ride":`Siz bu oyun modunda xəzinə olan 3 şəhərin hər birinə gedib qızılları toplamalısınız. Hər 3 xəzinəni əldə etdikdən sonra qalib olursunuz.`,
-	"swaper":`Bu oyun modunda kartlarda göstərilən rayonları xəritədə göstərilən rayonlara uyğun şəkildə sıralamaq lazımdır. Hər bir rayon xəritədə göstərilən rəngdə olan xanaya yerləşdirilməlidir.`,
-	"pops":`Siz bu oyun modunda xəritədə işarələnən rayonun hansı rayon olduğunu tapmalısınız. Jokerdən istifadə edərək bu rayonun qonşu rayonlarını və sərhədlərini görə bilərsiniz.`,
-	"detector":`Bu oyun modunda avtomobil hər hansısa bir rayonda olur və təyinat məntəqəsinə neçə rayon qaldığı sizə göstərilir. Siz təyinat məntəqəsinin hansı rayon ola biləcəyini təxmin edib ora getdikdən sonra qalib olursunuz.`,
+	"ride":`Bütün qızılları toplayın və qələbə çalın! Olduğunuz rayona qonşu rayonların adları sıralanacaq və maşın sizin seçdiyiniz adlı rayona doğru hərəkət edəcək.`,
+	"swaper":`Verilmiş adları xəritədəki hissələrin rənkləri ilə uyğunlaşdırın. Bütün xəritəni bu şəkildə ortaya çıxardın və qələbə çalın.`,
+	"pops":`Çıxan şəhərin adını verilmiş adlar arasından hansı olduğunu tapın. Kömək üçün jokerdən istifadə edə bilərsiniz!`,
+	"detector":`Hədəf rayona neçə addım yaxınlıqda olduğunuzu göstərən bir detektor ilə həmin rayona yaxınlaşmağa çalışın. Çatdığınızda qalib olursunuz!`,
 	"infocards":`Bu oyun modunda sizə bir rayondan digərinə getməli olduğunuz yol göstərilir. Olduğunuz rayondan digərinə gedə bilmək üçün olduğunuz rayonla bağlı doğru faktı tapmalısınız.`,
-	"shortestPathCities":`Bu oyun modunda sizə təqdim olunan 2 inzibati rayondan birindən digərinə minimum sayda rayon qət edərək çatmaq lazımdır.`,
+	"shortestPathCities":`Verilmiş şəhərləri birləşdirən bir yol çəkmək üçün hansı rayonlar lazım olduğunu tapın!`,
 }
 
 const modeStarter = modeId => v`
